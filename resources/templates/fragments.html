@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
+<meta th:name="#{author.name.label}" th:content="#{author.name}" />
+<title th:text="#{page.title}"></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" th:href="@{/css/final.css}" />
+<link rel="icon" type="image/x-icon" th:href="@{/public/favicon.ico}" />
+<link rel="stylesheet" th:href="@{/fontawesome/css/all.css}" />
+</head>
+<body>
+<div th:fragment="header(activeLink, chromId, locusName)">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark " role="navigation">			
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" th:href="@{/}" ><img class="img-fluid" th:src="@{/images/logo_1.png}" th:with="text=#{alt.text}" th:attr="alt=${text}" /></a>
+				<div class="collapse navbar-collapse" id="navbarResponsive">				
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-font-size" id="my_menu">
+						<li th:class="${#strings.equals(activeLink, 'home')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'home')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/}" th:text="#{navbar.home}"></a> </li>
+						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.about}"></a> </li>
+						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.methodology}"></a> </li>
+						<li th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-link disabled' : 'nav-link'" href="#" th:href="@{/chromosomes}" th:text="#{navbar.browse}"></a> </li>
+						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.karyotype}"></a> </li>
+						<li class="dropdown p-1" th:classappend="${#strings.contains(activeLink, 'chromosomeEdit')} ? 'none': ${#strings.contains(activeLink, 'locusEdit') ? 'none' : #strings.contains(activeLink, 'locusNew') ? 'none' : ''}"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{navbar.lang}"><b class="caret"></b></a>
+							<ul class="dropdown-menu ">               			
+                				<li th:switch="${activeLink}">
+                					<a th:case="'home'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'registration'" th:href="@{/register?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'login'" th:href="@{/login?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'search'" th:href="@{/search?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                				</li>
+                			
+				                <li th:switch="${activeLink}">
+				                	<a th:case="'home'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'chromosomes'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+									<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '/locus/' + ${locusName} + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'registration'" th:href="@{/register?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'login'" th:href="@{/login?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'search'" th:href="@{/search?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                </li>
+                			</ul>							
+						</li>
+					</ul>					
+				</div>				
+					<form class="form-inline  my-2 my-lg-0" id="upper_form" method="get" th:action="@{/search}">				
+				    	<input class="form-control mr-sm-1" type="search" th:placeholder="#{navbar.search}" name="q" aria-label="Search" />
+				    	<button id="search" class="btn btn-info " ><i class="fab fa-searchengin"></i></button>
+			  		</form>
+		  			
+			</nav>
+</div>
+<div th:fragment="footer">
+	<footer class="bg-dark">
+	<div class="container-fluid">
+		<div class="row text-left">
+				<div class="col-md-4">
+					<hr class="light"/>
+					<h5 th:text="#{footer.references}"></h5>
+					<hr class="light"/>
+					<p>[1]. <a href="https://en.wikipedia.org/wiki/Chromosome" target="_blank" id="wiki" class="info">Wikipedia [chromosome]</a></p>
+					<p>[2]. <a href="https://en.wikipedia.org/wiki/DNA" target="_blank" id="wikidna" class="info">Wikipedia [DNA]</a></p>
+					<p>[3]. <a href="https://www.sciencedirect.com/topics/neuroscience/human-chromosome" target="_blank" class="info" id="science">ScienceDirect</a></p>
+					<p>[4]. <a href="https://www.ncbi.nlm.nih.gov/" target="_blank" class="info" id="national">National Center for Biotechnology</a></p>
+					<p>[5]. <a href="https://www.genecards.org/" target="_blank" class="info" id="gene_card">Gene Cards</a></p>
+				</div>
+				<div class="col-md-4">
+					<hr class="light">
+					<h5 th:text="#{site.map}"></h5>
+					<hr class="light">
+					<p>Monday: 9am - 5pm</p>
+					<p>Saturday: 10am - 4pm</p>
+					<p>Sunday: closed</p>
+				</div>
+				<div class="col-md-4">
+					<hr class="light">
+					<h5>News letter area</h5>
+					<hr class="light">
+					
+					<form method="post"  th:object = "${subscriber}" th:action="@{/subscribe}"  id="lower_form">
+						<input type="hidden" th:field="*{id}" />
+						<div class="form-group form-group-sm">
+							<label for="email" class="col-form-label">Email:</label>
+							<div class="form-inline">
+								<input type="text" th:field="*{email}" id="email" th:placeholder="#{newsletter.subscribe}" class="form-control col-sm-12" />
+								<span class="error" th:if ="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+								<span id="error" class="error"></span>
+								<span id="success" class="success"></span>
+							</div>
+							<div class="form-group">
+								<input type="submit" th:value="#{newsletter.button}"  id="subscribe" class="btn btn-info mt-2"/>
+							</div>
+						</div>
+						
+						
+					</form>
+					
+					<p class="disclaimer">Submitted emails will never be visible to others.</p>
+				</div>
+				<div class="col-md-12 text-center">
+					<hr class="light">
+					<h5>&copy; www.humankaryotype.com</h5>
+					<h6><small class="font-weight-light font-weight-bold">poweredBy <img th:src="@{/images/spring_logo.png}" /> <span>Spring Boot</span></small> <small class="dev">devBy <a href="mailto:bane74@yahoo.com">author</a></small></h6>
+				</div>
+			</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script th:src="@{/js/genotype.js}"></script>
+</footer>
+
+</div>
+</body>
+</html>

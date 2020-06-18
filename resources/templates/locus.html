@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body id="top" class="transparent">
+<div th:replace="fragments :: header(activeLink='locus', chromId = ${chromosome.id}, locusName=${locus.name})"></div>
+<div class="container lead mt-5" id="locus">
+	<h1 class="mb-5 font-weight-bold gradient" th:text=${locus.name}></h1>
+	<hr class="my-4"/>
+	<h4 th:text="${locus.fullName}"></h4>
+	
+	<h5 class="badge badge-warning"><span th:text="#{locus.position}">Position: </span> <span  th:text="${locus.position}"></span></h5>
+	<div id="fade" class="card p-5 mt-3 mb-5 bg-light">
+		<h5 class="font-weight-bold mb-3" th:text="#{organism.role}">Role in the organism:</h5>
+		<p th:utext="${locus.bioRole}" class="link"></p>
+		<h5 class="font-weight-bold mb-3 mt-3" th:text="#{disorder.role}">Role in the disorder:</h5>
+		<p th:utext="${locus.disease.description}" class="link"></p>
+	</div>
+	<div class="text-right mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+	</div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

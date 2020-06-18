@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body id="top" class="transparent">
+<div th:replace="fragments :: header(activeLink = 'chromosome', chromId = ${chromosome.id}, locusName='')"></div>
+<div class="container lead" id="chromosome">
+	<h1 class="mt-5 mb-5 font-weight-bold gradient" th:text="${chromosome.name}"></h1>
+	<hr class="my-4"/>
+	<div class="">
+		<p>
+			<span class="font-weight-bold text-info" th:text="#{chromosome.size}">Size:</span>
+			<span class="font-weight-bold text-info" th:text="${chromosome.size}"></span><br />
+			<span class="font-weight-bold text-info" th:text="#{chromosome.genes}">Approx. no. of genes:</span>
+			<span class="font-weight-bold text-info" th:text="${chromosome.genes}"></span>
+		</p>	
+		<p class="lead mt-5" th:text="${chromosome.description}"></p>
+	</div>
+	<div id="chromosomeDetails" class="card p-5 mb-5 mt-5 bg-light" >
+		<p class="font-italic font-weight-bold" th:text="#{chromosome.loci.title}"></p>
+		<div th:each="c : ${chromosome.loci}">
+			<a th:href="@{/chromosomes/{id}(id=${chromosome.id})} + '/locus/' + ${c.name}" th:text="${c.name} + ' - ' + ${c.fullName}"></a>
+		</div>
+	</div>
+	<div class="text-right mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+	</div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

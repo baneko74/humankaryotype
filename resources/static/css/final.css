@@ -1,0 +1,565 @@
+@charset "UTF-8";
+@font-face {
+	font-family: "custom-font";
+	src: url("Merriweather-Reg.otf");
+}
+@font-face {
+	font-family: "custom";
+	src: url("Merriweather-Black.otf");
+}
+div#chromosomes h1,
+div#chromosome h1, 
+div#locus h1 {
+	color: #21a2b8;
+	font-style: oblique;
+	text-shadow:2px 2px 5px DarkGrey;
+}
+span#dna {
+	border-radius: 3vh;
+	padding: .4em;
+}
+a#chromosomesAct.nav-link.active {
+	background-color: #21a2b8;
+}
+a#chromosomesAct.nav-link:hover {
+	color: DarkGrey;
+}
+.min-height {
+	min-height: 200px;
+}
+.dev {
+	color: DarkGrey;
+}
+.dev a {
+	color: rgba(112, 193, 249, 1);
+} 
+h6 small span {
+	color: LightGreen;
+}
+.gradient {
+	background: repeating-linear-gradient(
+	  45deg,
+	  LightCyan,
+	  LightCyan 10px,
+	  #c4dfe6 10px,
+	  #c4dfe6 20px
+	);
+	padding: .1em;
+	padding-left: 1em;
+	border-radius:.3em;
+	border: 1px solid LightGray;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+.none {
+	display: none;
+}
+.snipplet {
+	font-size:.9em;
+	font-style: italic;
+}
+.snipplet2{
+	font-size:.9em;
+	font-style: italic;
+}
+.inline {
+	display: inline;
+}
+.transparent {
+	background: rgba(224, 255, 255, 0.3);
+}
+.tableTitle {
+	background-color: Azure;
+}
+.error {
+	color: #fe1b59;
+}
+.login-error {
+	color: #ffffff;
+	border: 1px solid red;
+	width:60%;
+	margin: auto;
+	background-color: #fe1b59;
+	padding:.1em;
+	font-weight: bold;
+}
+.success {
+	color: MediumSeaGreen;
+}
+h6 small {
+	color: MediumSeaGreen;
+}
+.info {
+	color: DeepSkyBlue;
+}
+.highlight {
+	color:#17a2b8;
+	font-weight: bold;
+}
+.info:visited {
+	color: #17a2b8;
+}
+.info:hover {
+	color: PowderBlue;
+}
+.gold {
+	color: Gold;
+}
+.tooltip [class$="inner"] {
+	font-weight: bold;
+	font-size: .8em;
+	background-color: rgba(112, 193, 249, 1);
+	border: 1px solid #17a2b8;
+}
+.tooltip [class$="arrow"] {
+ 	display: none;
+}
+p#naslov.badge {
+	font-size:.9em;
+}
+.bgd {
+	background-image:url("../images/microscope.jpg");
+	background-repeat: no-repeat;
+	background-position: -100px 0px;
+	background-attachments: fixed;
+}
+div#error_container {
+	color: DeepSkyBlue;
+	width:50%;
+	height: 50%;
+	border-radius: 3vh;
+}
+map area {
+	/*outline: none;*/
+	cursor: default;
+}
+
+hr#hor {
+	width: 85%;
+}
+.dropdown-menu li{
+	text-align: center;
+}
+.dropdown-menu li a:hover {
+	text-decoration: underline;
+}
+.dropdown-menu a.nav-link {
+	padding:.2em!important;
+	margin-bottom:.1em;
+}
+.dropdown-menu li a {
+	display: block;
+}
+.dropdown-menu {
+	background-color: #e9ecef!important;
+}
+.underlined {
+	text-decoration: underline;
+}
+.white {
+	color: Silver!important;
+}
+ol li {
+	padding:.5em;
+}
+p.twitter {
+	display: block;
+	border: 1px solid #c6c6c6;
+	border-radius: 15px;
+	margin-top:1em;
+}
+ul.dropdown-menu a {
+	text-decoration:none;
+}
+.fixed {
+	width:75%;
+	height:650px;
+	margin:0 auto;
+	background-image: url("../images/microscope.jpg");
+	border-radius: 5px;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat:no-repeat;
+	opacity: .65;
+}
+.border-lbr {
+	border-bottom:1px solid #17a2b8;
+	border-left:1px solid #17a2b8;
+	border-right:1px solid #17a2b8;
+}
+.upperborder {
+	border: 3px solid #fe1b59;
+}
+a#lang-choice {
+	color: grey;
+}
+a#lang-choice:hover {
+	color: #17a2b8;
+}
+ul.dropdown-menu {
+	color: #50474e;
+	background-color: #e9ecef;
+}
+ul#my_menu li a.nav-link:hover {
+	color: #17a2b8;
+	border-radius:1vh;
+}
+.link a {
+	text-decoration: underline;
+}
+
+.text-shadow {
+	text-shadow:2px 2px 5px #000;
+}
+.col-12 h5 {
+	font-size: 1em;
+}
+.span-center {
+	display: inline-block;
+	width:100%;
+	margin:auto;
+	border-radius: 5vh;
+	padding: .4em;
+}
+.imagetitle {
+	font-weight: bold;
+	font-size: .8em;
+}
+.padd p {
+	padding: 1rem;
+	padding-top: 1em;
+	text-align: left;
+	text-justify: inter-character;
+}
+.jumbotron {
+	border-radius: 3vh;
+}
+.jumbotron img {
+	margin-top:0vh;
+	border-radius: 3vh;
+}
+.jumbotron h2, .jumbotron hr + p {
+	font-family: "custom-font", sans-serif;
+}
+.jumbotron img {
+	margin-top: -20px;
+}
+div.fixed p {
+	border-radius: 3vh;
+	color: rgba(255,255,255,1);
+	background-color: rgba(104,194,209, .6);
+}
+input[type=search]{
+	background-color:#e9ecef;
+}
+input[type=search], input[type=search] + button {
+	border-radius: 3vh;
+}
+.search-p {
+	padding-bottom:2em;
+	margin:0;
+}
+ul.pagination li.page-item.active a{
+	color: White;
+	background:rgba(23,162,184, 1);
+	font-weight: bold;
+}
+ul.pagination li.page-item a {
+	color: #17a2b8;
+	font-weight: bold;
+}
+ul.pagination li.page-item a:hover {
+	background: rgba(23, 162, 184, .1);
+	color: DarkGrey;
+}
+div#slides h1{
+		font-family: "custom-font", sans-serif;
+		word-spacing: 5px;
+		letter-spacing: .7vh;
+}
+.disclaimer {
+	font-style: italic;
+	font-size: .8em;
+	color: #ffff00;
+}
+footer {
+	color:#d5d5d5;
+	padding:2rem;
+	margin-bottom:0;
+}
+footer hr.light {
+	border:1px solid grey;
+}
+
+@media screen and (max-width:992px){
+	ul#my_menu li a:hover {
+		background-color: transparent!important;
+	}
+	
+}
+
+@media screen and (max-width:576px) {
+	map {
+		display: none;
+	}
+	form#upper_form {
+		float: right;
+		right: 10;
+	}
+	h3#res_title {
+		font-size: 1.5em;
+	}
+	ul.dropdown-menu {
+		width: 50%;
+	}
+	ul.dropdown-menu li a{
+		font-size:.8em;
+	}
+	.navbar-font-size {
+		font-size: .8em;
+	}
+	img[data-toggle] {
+		width:1.2em;
+		height:1.2em;
+	}
+	.tooltip {
+		font-size:.7em;
+	}
+	div p {
+		margin-left: 0;
+	}
+	span.error, span.success {
+		font-size: .8em;
+	}
+	
+	h3 span.badge {
+		font-size: .6em;
+	}
+	#lower_form input {
+		font-size: .7em;		
+	} 
+	button.navbar-toggler {
+		font-size: .8em;
+	}
+	.padd p {
+		font-size: 2em;
+	}
+	#upper_form .form-control {
+		width:65%;
+		margin-right:.3em;
+	}
+	.navbar-brand img {
+		display: none;
+	}
+	#upper_form {
+		position: absolute;
+		float: right;
+		top: 0px;
+		left: 90px;
+	}
+	div#slides {
+		display: none;
+	}
+	.col-md-4 p, .col-md-6 p {
+		font-size: .7em;
+		padding:0;
+	}
+	.col-md-4 .jumbotron p {
+		font-size: 1em;
+	}
+	.jumbotron h2 {
+		font-size: 1.3em;
+	}
+	div#chromosomes p, 
+	div#chromosome p {
+		padding: .5em;
+		font-size: .7em;
+	}
+	div#chromosomes table a , 
+	div#chromosomes table, 
+	div#chromosomes table,
+	div#chromosomes ul li a,
+	div#chromosome div div a
+	  {
+		font-size: .7em;
+	}
+	div#locus {
+		font-size: .8em;
+	}
+	div#chromosomes h1, 
+	div#chromosome h1,
+	div#chromosome  {
+		font-size: 1.2em;
+	}
+	div#locus h4,h1{
+		font-size:1.5em;
+	}
+	h5 {
+		font-size: 1em;
+	}
+	form#upper_form button, form#upper_form input {
+		font-size:.7em;
+	}
+	
+}
+
+@media screen and (min-width: 576px) and (max-width:768px){
+	h3#res_title {
+		font-size: 1.3em;
+	}
+	ul.dropdown-menu li a{
+		font-size:.9em;
+	}
+	.navbar-font-size {
+		font-size: .9em;
+	}
+	span.error, span.success {
+		font-size: .9em;
+	}
+	.carousel-caption h1 {
+		font-size: 200%;
+	}
+	.carousel-caption h3 {
+		font-size: 1.2em;
+	}
+	.carousel-caption .btn {
+		font-size: 80%;
+	}
+	#upper_form {
+		position: absolute;
+		float: right;
+		top: 0.6em;
+		left: 90px;
+	}
+	.col-md-4 p, .col-md-6 p {
+		font-size: .9em;
+	}
+	.col-md-4 .jumbotron p {
+		font-size: 1.2em;
+	}
+	.jumbotron h2 {
+		font-size: 1.4em;
+	}
+	div#chromosomes p, 
+	div#chromosome p {
+		font-size: .9em;
+	}
+	div#chromosomes table a , 
+	div#chromosomes table, 
+	div#chromosomes table,
+	div#chromosomes ul li a,
+	div#chromosome div div a {
+		font-size: .8em;
+	}
+	
+	div#chromosomes h1, 
+	div#chromosome h1
+	{
+		font-size: 1.5em;
+	}
+	div#locus h1{
+		font-size:1.3em;
+	}
+	div#locus div {
+		font-size: .9em;
+	}
+	h5{
+		font-size: .9em;
+	}
+	form#upper_form button, form#upper_form input {
+		font-size:.9em;
+	}
+	
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+	ul.dropdown-menu li a{
+		font-size:.9em;
+	}
+	.navbar-font-size {
+		font-size: .9em;
+	}
+	.carousel-caption h1 {
+		font-size: 250%;
+	}
+	.carousel-caption h3 {
+		font-size: 1.5em;
+	}
+	.carousel-caption .btn {
+		font-size: 90%;
+	}
+	#upper_form {
+		position: absolute;
+		float: right;
+		top: 0.6em;
+		left: 90px;
+	}
+	.col-md-4 p, .col-md-6 p {
+		font-size: .9em;
+	}
+	.col-md-4 .jumbotron p {
+		font-size: 1.1em;
+	}
+	.jumbotron h2 {
+		font-size: 1.5em;
+	}
+	div#home {
+		padding-top:1.3em;
+	}
+	form#upper_form button, form#upper_form input {
+		font-size:.9em;
+	}
+	
+	
+}
+@media screen and (min-width: 992px) and (max-width: 1200px){
+	#upper_form input, #upper_form button {
+	font-size:.9em;
+	}
+	ul.dropdown-menu li a{
+		font-size:.9em;
+	}
+	.navbar-font-size {
+		font-size: .9em;
+	}
+	.carousel-caption h1 {
+		font-size: 300%;
+	}
+	.carousel-caption h3 {
+		font-size: 1.7em;
+	}
+	div#home {
+		padding-top:1.3em;
+	}
+}
+@media screen and (min-width:1200px) {
+	div#home {
+		padding-top:1.3em;
+	}
+	#upper_form input, #upper_form button {
+		font-size:1em;
+	}
+}
+@media screen and (max-width:1200px) {
+	div#img_map {
+		display: none;
+	}
+}
+@media screen and (min-width:576px) {
+	img#virtual_img {
+		display: none;
+	}
+}
+
+
+
+
+
+
+
+
+
+
