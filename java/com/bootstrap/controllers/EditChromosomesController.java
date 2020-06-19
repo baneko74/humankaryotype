@@ -156,12 +156,19 @@ public class EditChromosomesController {
 		return "edits/disease_edit";
 	}
 
-	@PostMapping("save-disease")
+	@PostMapping("/save-disease")
 	public String saveDisease(@ModelAttribute Disease disease, Model model) {
 		chromosomeService.saveDisease(disease);
-		Locus locus = chromosomeService.findLocusById(disease.getLocus().getId());
-		String lang = LocaleContextHolder.getLocale().getLanguage();
-		solrService.saveSolrLocusDocument(lang, locus);
+		return "redirect:/edit/chromosomes";
+	}
+	@PostMapping("/save-new-disease")
+	public String saveNewDisease(@ModelAttribute Disease disease, Model model) {
+		chromosomeService.saveDisease(disease);
+		/*
+		 * Locus locus = chromosomeService.findLocusById(disease.getLocus().getId());
+		 * String lang = LocaleContextHolder.getLocale().getLanguage();
+		 * solrService.saveSolrLocusDocument(lang, locus);
+		 */
 		return "redirect:/edit/chromosomes";
 	}
 }
