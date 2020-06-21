@@ -15,11 +15,8 @@ import lombok.NoArgsConstructor;
 @SolrDocument(collection = "chromosomes")
 public class SolrLocusEnDocument {
 
-	@Autowired
-	private MatchEnRepository matchRepo;
-
+	
 	public SolrLocusEnDocument(Locus locus) {
-		this.id = (int) matchRepo.count() + 1;
 		this.locusName = locus.getName();
 		this.fullName = locus.getFullName();
 		this.locusRole = locus.getBioRole();
