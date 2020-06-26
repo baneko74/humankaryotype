@@ -101,12 +101,4 @@ public class ChromosomeController {
 			return chromosomeService.findById(id + 24, lang);
 		}
 	}
-
-	@GetMapping("/lang")
-	@ResponseBody
-	public String getLang() {
-		String country = LocaleContextHolder.getLocale().getLanguage();
-		return country;
-	}
-
 }
