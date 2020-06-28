@@ -2,11 +2,14 @@ package com.bootstrap.controllers;
 
 import javax.validation.Valid;
 
+import org.apache.http.conn.HttpHostConnectException;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +58,11 @@ public class HomeController {
 		}
 		subService.save(subscriber);
 		return "redirect:/";
+	}
+
+	@ExceptionHandler({ DataAccessResourceFailureException.class, HttpHostConnectException.class })
+	public String solrError() {
+		return "service_not_found";
 	}
 
 }

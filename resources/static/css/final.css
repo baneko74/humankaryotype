@@ -145,6 +145,9 @@ hr#hor {
 .dropdown-menu li a:hover {
 	text-decoration: underline;
 }
+h3#not_found_title {
+	margin-top: 1em;
+}
 .dropdown-menu a.nav-link {
 	padding:.2em!important;
 	margin-bottom:.1em;
@@ -402,6 +405,14 @@ footer hr.light {
 	form#upper_form button, form#upper_form input {
 		font-size:.7em;
 	}
+	div#error_container, div#error_container h3{
+		font-size: .9em;
+		padding-top: 0;
+	}
+	div#error_container h3 {
+		font-size: 1.1em;
+		padding-top: .5em;
+	}
 	
 }
 
@@ -471,6 +482,13 @@ footer hr.light {
 	form#upper_form button, form#upper_form input {
 		font-size:.9em;
 	}
+	div#error_container, div#error_container h3{
+		font-size: 1.1em;
+		padding-top: 0;
+	}
+	div#error_container h3 {
+		font-size: 1.1em;
+	}
 	
 }
 
@@ -511,6 +529,10 @@ footer hr.light {
 	}
 	form#upper_form button, form#upper_form input {
 		font-size:.9em;
+	}
+	div#error_container, div#error_container h3{
+		font-size: 1.1em;
+		padding-top: 0;
 	}
 	
 	

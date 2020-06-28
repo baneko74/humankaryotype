@@ -4,6 +4,4 @@ import com.bootstrap.dao.model.Locus;
 
 public interface SolrService {
 	void saveSolrLocusDocument(String lang, Locus locus);
-
-	void saveExistingSolrLocusDocument(String lang, Locus locus);
 }

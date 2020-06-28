@@ -1,11 +1,8 @@
 package com.bootstrap.dao.model;
 
 import org.apache.solr.client.solrj.beans.Field;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.SolrDocument;
-
-import com.bootstrap.dao.repositories.MatchRsRepository;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,7 @@ public class SolrLocusRsDocument {
 
 
 	public SolrLocusRsDocument(Locus locus) {
+		this.id = locus.getId();
 		this.locusName = locus.getName();
 		this.fullName = locus.getFullName();
 		this.locusRole = locus.getBioRole();

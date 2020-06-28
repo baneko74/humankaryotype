@@ -33,27 +33,10 @@ public class SolrServiceImpl implements SolrService {
 		switch (lang) {
 		case "en":
 			SolrLocusEnDocument solrEnDoc = new SolrLocusEnDocument(locus);
-			solrEnDoc.setId((int) (matchEnRepo.count() + 1));
 			getSolrEnRepository().save(solrEnDoc);
 			break;
 		case "rs":
 			SolrLocusRsDocument solrRsDoc = new SolrLocusRsDocument(locus);
-			solrRsDoc.setId((int) (matchRsRepo.count() + 1));
-			getSolrRsRepository().save(solrRsDoc);
-			break;
-		}
-	}
-	
-	public void saveExistingSolrLocusDocument(String lang, Locus locus) {
-		switch (lang) {
-		case "en":
-			SolrLocusEnDocument solrEnDoc = new SolrLocusEnDocument(locus);
-			solrEnDoc.setId(locus.getId());
-			getSolrEnRepository().save(solrEnDoc);
-			break;
-		case "rs":
-			SolrLocusRsDocument solrRsDoc = new SolrLocusRsDocument(locus);
-			solrRsDoc.setId(locus.getId());
 			getSolrRsRepository().save(solrRsDoc);
 			break;
 		}
