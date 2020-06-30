@@ -8,7 +8,7 @@
 		<h3 id="res_title" class="font-weight-bold text-info"><span  th:text="${not (page eq null)} ? #{search.for}"></span> <span class="text-warning text-decoration-underline" th:text="${query}"></span></h3>
 		<hr />
 		<th:block th:if="${page == null}">
-			<p class="mb-5 search-p" th:text="${error}"></p>
+			<p class="mb-5 search-p text-secondary font-weight-bold" th:text="${error}"></p>
 		</th:block>
 		<th:block th:if="${page != null}">
 			<th:block th:if="${#lists.isEmpty(page.content)}">

@@ -1,6 +1,7 @@
 package com.bootstrap.dao.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bootstrap.dao.model.Locus;
 import com.bootstrap.dao.model.SolrLocusEnDocument;
@@ -13,6 +14,7 @@ import com.bootstrap.dao.repositories.SolrLocusRsRepository;
 import lombok.Data;
 
 @Service("solrService")
+@Transactional
 @Data
 public class SolrServiceImpl implements SolrService {
 
@@ -29,6 +31,7 @@ public class SolrServiceImpl implements SolrService {
 		this.matchRsRepo = matchRsRepo;
 	}
 
+	@Transactional
 	public void saveSolrLocusDocument(String lang, Locus locus) {
 		switch (lang) {
 		case "en":

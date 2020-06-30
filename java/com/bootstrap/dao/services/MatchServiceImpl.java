@@ -11,12 +11,14 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bootstrap.dao.model.Match;
 import com.bootstrap.dao.repositories.MatchEnRepository;
 import com.bootstrap.dao.repositories.MatchRsRepository;
 
 @Service
+@Transactional
 public class MatchServiceImpl implements MatchService {
 
 	private static final Pattern IGNORED_CHARS_PATTERN = Pattern.compile("\\p{Punct}");
@@ -32,6 +34,7 @@ public class MatchServiceImpl implements MatchService {
 	}
 
 	@Override
+	@Transactional
 	public Page<Match> findByTerm(String searchTerm, Pageable pageable) throws IllegalArgumentException {
 		if (StringUtils.isEmpty(searchTerm)) {
 			throw new IllegalArgumentException(
