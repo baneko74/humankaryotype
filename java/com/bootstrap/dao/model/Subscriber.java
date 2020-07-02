@@ -31,6 +31,9 @@ public class Subscriber implements Serializable {
 	@Email(message = "{com.bootstrap.dao.Email.message}")
 	private String email;
 
+	@Column
+	private String lang;
+
 	public Subscriber() {
 	}
 
@@ -61,6 +64,14 @@ public class Subscriber implements Serializable {
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
 	}
 
 }

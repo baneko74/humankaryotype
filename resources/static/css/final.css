@@ -358,9 +358,13 @@ footer hr.light {
 	}
 	#upper_form {
 		position: absolute;
-		float: right;
 		top: 0px;
-		left: 90px;
+		left: 150px;
+		right: 0;
+		padding: 0;
+	}
+	#upper_form input {
+		width: 75%!important;
 	}
 	div#slides {
 		display: none;
@@ -573,6 +577,17 @@ footer hr.light {
 @media screen and (min-width:576px) {
 	img#virtual_img {
 		display: none;
+	}
+}
+@media screen and (min-width:576px) and (max-width:992px) {
+	a.navbar-brand {
+		
+	}
+	button.navbar-toggler {
+		
+	}
+	#upper_form {
+		
 	}
 }
 

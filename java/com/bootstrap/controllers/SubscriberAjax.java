@@ -37,6 +37,8 @@ public class SubscriberAjax {
 			result.setMessage(errors.getFieldError().getDefaultMessage());
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
+		String lang = LocaleContextHolder.getLocale().getLanguage();
+		subscriber.setLang(lang);
 		subService.save(subscriber);
 		result.setStatus("success");
 		result.setMessage(messageSource.getMessage("ajax.message", null, LocaleContextHolder.getLocale()));

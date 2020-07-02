@@ -45,13 +45,13 @@
 						 endIndex= ${T(java.lang.Math).min(beginIndex + 6, page.totalPages - 1)}">
 				  <ul class="pagination font-weight-medium">
 					<li class="page-item" th:classappend="${page.number eq 0} ? 'disabled' : ''">
-					  <a class="page-link"  th:href="@{/search?page={id}(id = ${page.totalElements / page.totalElements - 1})} + '&q=' + ${query}" th:title="#{first.txt}">
+					  <a class="page-link"  th:href="@{/search?page={id}(id = ${page.totalElements / page.totalElements - 1})} + '&amp;q=' + ${query}" th:title="#{first.txt}">
 					  	<span aria-hidden="true" th:class="${page.number eq 0} ? 'white': ''">&laquo;&laquo;</span>
         				<span class="sr-only">Previous</span>
 					  </a>
 				    </li>
 				    <li class="page-item" th:classappend="${page.number eq 0} ? 'disabled' : ''">
-				      <a class="page-link"  th:href="@{/search?page={id}(id = ${page.number - 1})} + '&q=' + ${query}" th:title="#{previous.txt}">
+				      <a class="page-link"  th:href="@{/search?page={id}(id = ${page.number - 1})} + '&amp;q=' + ${query}" th:title="#{previous.txt}">
 						<span aria-hidden="true" th:class="${page.number eq 0} ? 'white' : ''">&laquo;</span>
         				<span class="sr-only">Previous</span>
 					  </a>
@@ -61,16 +61,16 @@
 				    <li class="page-item" 
 				    th:each="i : ${#numbers.sequence(beginIndex, endIndex)}"
 				    th:classappend="${i eq page.number} ? 'active disabled' : ''">
-				    	<a class="page-link" th:href="@{/search?page={id}(id = ${i})} + '&q=' + ${query}" th:text="${i+1}"></a>
+				    	<a class="page-link" th:href="@{/search?page={id}(id = ${i})} + '&amp;q=' + ${query}" th:text="${i+1}"></a>
 				    </li>
 				    <li class="page-item" th:classappend="${page.number + 1 eq page.totalPages} ? 'disabled' : ''">
-				      <a class="page-link" th:href="@{/search?page={id}(id= ${page.number + 1})} + '&q=' + ${query}" th:title="#{next.txt}">
+				      <a class="page-link" th:href="@{/search?page={id}(id= ${page.number + 1})} + '&amp;q=' + ${query}" th:title="#{next.txt}">
 				      	<span aria-hidden="true" th:class="${page.number + 1 eq page.totalPages} ? 'white'">&raquo;</span>
         				<span class="sr-only">Next</span>
 				      </a>
 				    </li>
 				    <li class="page-item" th:classappend="${page.number eq (page.totalPages - 1)} ? 'disabled' : ''">
-					  <a class="page-link"  th:href="@{/search?page={id}(id = ${page.totalPages - 1})} + '&q=' + ${query}" th:title="#{last.txt}">
+					  <a class="page-link"  th:href="@{/search?page={id}(id = ${page.totalPages - 1})} + '&amp;q=' + ${query}" th:title="#{last.txt}">
 					  	<span aria-hidden="true" th:class="${page.number + 1 eq page.totalPages} ? 'white' : ''">&raquo;&raquo;</span>
         				<span class="sr-only">Next</span>
 					  </a>

@@ -53,7 +53,7 @@
 				<tbody>
 					<tr th:each="c : ${chromosome.loci}">
 						<td class="text-info font-weight-bold" th:text="${c.name}"></td>
-						<td><a class="btn btn-warning" th:href="@{'/edit/chromosomes/locus-detail?chromId=' + ${chromosome.id}} + '&locusName=' + ${c.name}" th:text="#{locus.edit}">Edit</a></td>
+						<td><a class="btn btn-warning" th:href="@{'/edit/chromosomes/locus-detail?chromId=' + ${chromosome.id}} + '&amp;locusName=' + ${c.name}" th:text="#{locus.edit}">Edit</a></td>
 					</tr>
 				</tbody>
 			</table>

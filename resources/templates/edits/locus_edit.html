@@ -42,7 +42,7 @@
 	<hr class="my-4" />
 	<p>
 		<h5 th:text="#{associated.disorder}"></h5>
-		<span th:text="#{edit.button}" class="badge badge-warning"></span>: <a th:href="@{'/edit/chromosomes/disorder-detail?chromId=' + ${chromosome.id} + '&locusName=' + ${locus.name} + '&disorderName=' + ${locus.disease.name}}">[[${locus.disease.name}]]</a>
+		<span th:text="#{edit.button}" class="badge badge-warning"></span>: <a th:href="@{'/edit/chromosomes/disorder-detail?chromId=' + ${chromosome.id} + '&amp;locusName=' + ${locus.name} + '&amp;disorderName=' + ${locus.disease.name}}">[[${locus.disease.name}]]</a>
 	</p>
 </div>
 <div th:replace="fragments :: footer"></div>
