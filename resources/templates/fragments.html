@@ -26,7 +26,7 @@
 						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.methodology}"></a> </li>
 						<li th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-link disabled' : 'nav-link'" href="#" th:href="@{/chromosomes}" th:text="#{navbar.browse}"></a> </li>
 						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.karyotype}"></a> </li>
-						<li class="dropdown p-1" th:classappend="${#strings.contains(activeLink, 'chromosomeEdit')} ? 'none': ${#strings.contains(activeLink, 'locusEdit') ? 'none' : #strings.contains(activeLink, 'locusNew') ? 'none' : ''}"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{navbar.lang}"><b class="caret"></b></a>
+						<li class="dropdown p-1" th:classappend="${#strings.contains(activeLink, 'chromosomeEdit')} ? 'none': ${#strings.contains(activeLink, 'locusEdit') ? 'none' : #strings.contains(activeLink, 'locusNew') ? 'none' : #strings.contains(activeLink, 'notifySubs') ? 'none' : ''}"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{navbar.lang}"><b class="caret"></b></a>
 							<ul class="dropdown-menu ">               			
                 				<li th:switch="${activeLink}">
                 					<a th:case="'home'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>

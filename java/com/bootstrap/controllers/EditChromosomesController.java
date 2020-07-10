@@ -1,10 +1,13 @@
 package com.bootstrap.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +19,12 @@ import com.bootstrap.dao.config.ChromosomesProps;
 import com.bootstrap.dao.model.Chromosome;
 import com.bootstrap.dao.model.Disease;
 import com.bootstrap.dao.model.Locus;
+import com.bootstrap.dao.model.NewsLetter;
 import com.bootstrap.dao.model.Subscriber;
 import com.bootstrap.dao.services.ChromosomeService;
+import com.bootstrap.dao.services.SendMail;
 import com.bootstrap.dao.services.SolrService;
+import com.bootstrap.dao.services.SubscriberService;
 
 @Controller
 @RequestMapping("/edit/chromosomes")
@@ -27,12 +33,16 @@ public class EditChromosomesController {
 	private ChromosomeService chromosomeService;
 	private ChromosomesProps props;
 	private SolrService solrService;
+	private SubscriberService subService;
+	private SendMail sendMail;
 
 	public EditChromosomesController(ChromosomeService chromosomeService, ChromosomesProps props,
-			SolrService solrService) {
+			SolrService solrService, SubscriberService subService, SendMail sendMail) {
 		this.chromosomeService = chromosomeService;
 		this.solrService = solrService;
 		this.props = props;
+		this.subService = subService;
+		this.sendMail = sendMail;
 	}
 
 	@GetMapping
@@ -110,7 +120,7 @@ public class EditChromosomesController {
 	}
 
 	@PostMapping("save-new-locus")
-	public String saveNewLocus(Model model, @ModelAttribute Locus locus, RedirectAttributes redirectAttrs) {
+	public String saveNewLocus(@ModelAttribute Locus locus, RedirectAttributes redirectAttrs) {
 		chromosomeService.saveLocus(locus);
 		redirectAttrs.addAttribute("locus", locus);
 		return "redirect:/edit/chromosomes/new-disease";
@@ -160,6 +170,25 @@ public class EditChromosomesController {
 	public String saveDisease(@ModelAttribute Disease disease, Model model) {
 		chromosomeService.saveDisease(disease);
 		indexSolrLocusDoc(disease);
+		return "redirect:/edit/chromosomes";
+	}
+
+	@GetMapping("/notify-subscribers")
+	public String notifyAllSubscribers(Model model) {
+		NewsLetter letter = new NewsLetter();
+		model.addAttribute("letter", letter);
+		model.addAttribute("subscriber", new Subscriber());
+		return "notify-subscribers";
+	}
+
+	@PostMapping("/sendEmail")
+	public String sendEmails(@Valid @ModelAttribute("letter") NewsLetter letter,
+			Errors errors,
+			@ModelAttribute("subscriber") Subscriber subscriber) {
+		if (errors.hasErrors()) {
+			return "notify-subscribers";
+		}
+		subService.findAll().stream().forEach(sub -> sendMail.sendEmail(sub, letter.getSubject(), letter.getBody()));
 		return "redirect:/edit/chromosomes";
 	}
 
