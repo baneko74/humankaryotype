@@ -2,6 +2,8 @@ package com.bootstrap.controllers;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bootstrap.dao.config.ChromosomesProps;
@@ -28,6 +31,7 @@ import com.bootstrap.dao.services.SubscriberService;
 
 @Controller
 @RequestMapping("/edit/chromosomes")
+@SessionAttributes("locus")
 public class EditChromosomesController {
 
 	private ChromosomeService chromosomeService;
@@ -36,6 +40,8 @@ public class EditChromosomesController {
 	private SubscriberService subService;
 	private SendMail sendMail;
 
+	Logger logger = LoggerFactory.getLogger(EditChromosomesController.class);
+
 	public EditChromosomesController(ChromosomeService chromosomeService, ChromosomesProps props,
 			SolrService solrService, SubscriberService subService, SendMail sendMail) {
 		this.chromosomeService = chromosomeService;
@@ -43,6 +49,11 @@ public class EditChromosomesController {
 		this.props = props;
 		this.subService = subService;
 		this.sendMail = sendMail;
+	}
+
+	@ModelAttribute("locus")
+	public Locus locus() {
+		return new Locus();
 	}
 
 	@GetMapping
@@ -173,7 +184,9 @@ public class EditChromosomesController {
 	@PostMapping("/save-disease")
 	public String saveDisease(@ModelAttribute Disease disease, Model model, RedirectAttributes redirAttr) {
 		chromosomeService.saveDisease(disease);
-		redirAttr.addAttribute("locus", disease.getLocus());
+		Locus locus = disease.getLocus();
+		redirAttr.addAttribute("locus", locus);
+		redirAttr.addAttribute("disease", disease);
 		return "redirect:/edit/chromosomes/index-new-data";
 	}
 
@@ -201,19 +214,17 @@ public class EditChromosomesController {
 	}
 
 	@GetMapping("/index-new-data")
-	private String indexSolrLocusDoc(@ModelAttribute("locus") Locus locus, Model model) {
+	private String indexSolrLocusDoc(@ModelAttribute("locus") Locus locus, Model model,
+			@ModelAttribute("disease") Disease disease) {
 		model.addAttribute("locus", locus);
 		model.addAttribute("subscriber", new Subscriber());
-		model.addAttribute("disease", locus.getDisease());
-		model.addAttribute("chrom", locus.getChromosome());
 		return "edits/index_new_data";
 	}
 
 	@PostMapping("/index-solr")
-	private String indexSolr(@ModelAttribute("locus") Locus locus, @ModelAttribute("disease") Disease disease,
-			@ModelAttribute("chrom") Chromosome chrom) {
+	private String indexSolr(@ModelAttribute("locus") Locus locus) {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
-		solrService.saveSolrLocusDocument(lang, locus, disease, chrom);
+		solrService.saveSolrLocusDocument(lang, locus);
 		return "redirect:/edit/chromosomes";
 	}
 }
