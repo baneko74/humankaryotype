@@ -30,6 +30,12 @@ public class SubscriberServiceImpl implements SubscriberService {
 				.findFirst();
 	}
 
+	@Transactional
+	@Override
+	public List<Subscriber> findAllByLang(String lang) {
+		return subscriberRepo.findAllByLang(lang);
+	}
+
 	@Override
 	public Subscriber findById(Long id) {
 		return subscriberRepo.findById(id).get();
@@ -50,5 +56,6 @@ public class SubscriberServiceImpl implements SubscriberService {
 	public boolean existByEmail(String email) {
 		return subscriberRepo.existByEmail(email);
 	}
+
 
 }

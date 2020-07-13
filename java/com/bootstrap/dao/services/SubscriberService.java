@@ -9,6 +9,8 @@ public interface SubscriberService {
 
 	List<Subscriber> findAll();
 
+	List<Subscriber> findAllByLang(String lang);
+
 	Optional<Subscriber> findByEmail(String email);
 
 	Subscriber findById(Long id);
@@ -18,4 +20,5 @@ public interface SubscriberService {
 	void delete(Subscriber subscriber);
 
 	boolean existByEmail(String email);
+
 }

@@ -9,5 +9,5 @@ public interface SendMail {
 
 	void sendEmail(Subscriber subscriber, String subject, String body);
 
-	EmailResponse sendRichMail(Subscriber subscriber, Map<String, Object> model);
+	EmailResponse sendRichMail(Subscriber subscriber, String subject, Map<String, Object> model, String lang);
 }

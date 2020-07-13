@@ -120,7 +120,11 @@ public class EditChromosomesController {
 	}
 
 	@PostMapping("save-new-locus")
-	public String saveNewLocus(@ModelAttribute Locus locus, RedirectAttributes redirectAttrs) {
+	public String saveNewLocus(@Valid @ModelAttribute("locus") Locus locus, Errors errors,
+			RedirectAttributes redirectAttrs, @ModelAttribute("subscriber") Subscriber subscriber) {
+		if (errors.hasErrors()) {
+			return "edits/locus_new";
+		}
 		chromosomeService.saveLocus(locus);
 		redirectAttrs.addAttribute("locus", locus);
 		return "redirect:/edit/chromosomes/new-disease";
@@ -167,10 +171,10 @@ public class EditChromosomesController {
 	}
 
 	@PostMapping("/save-disease")
-	public String saveDisease(@ModelAttribute Disease disease, Model model) {
+	public String saveDisease(@ModelAttribute Disease disease, Model model, RedirectAttributes redirAttr) {
 		chromosomeService.saveDisease(disease);
-		indexSolrLocusDoc(disease);
-		return "redirect:/edit/chromosomes";
+		redirAttr.addAttribute("locus", disease.getLocus());
+		return "redirect:/edit/chromosomes/index-new-data";
 	}
 
 	@GetMapping("/notify-subscribers")
@@ -188,13 +192,28 @@ public class EditChromosomesController {
 		if (errors.hasErrors()) {
 			return "notify-subscribers";
 		}
-		subService.findAll().stream().forEach(sub -> sendMail.sendEmail(sub, letter.getSubject(), letter.getBody()));
+		// dodati unsubscribe link
+		String lang = LocaleContextHolder.getLocale().getLanguage();
+		subService.findAllByLang(lang).stream().forEach(sub -> {
+			sendMail.sendEmail(sub, letter.getSubject(), letter.getBody());
+		});
 		return "redirect:/edit/chromosomes";
 	}
 
-	private void indexSolrLocusDoc(Disease disease) {
-		Locus locus = disease.getLocus(); // chromosomeService.findLocusById(disease.getLocus().getId());
+	@GetMapping("/index-new-data")
+	private String indexSolrLocusDoc(@ModelAttribute("locus") Locus locus, Model model) {
+		model.addAttribute("locus", locus);
+		model.addAttribute("subscriber", new Subscriber());
+		model.addAttribute("disease", locus.getDisease());
+		model.addAttribute("chrom", locus.getChromosome());
+		return "edits/index_new_data";
+	}
+
+	@PostMapping("/index-solr")
+	private String indexSolr(@ModelAttribute("locus") Locus locus, @ModelAttribute("disease") Disease disease,
+			@ModelAttribute("chrom") Chromosome chrom) {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
-		solrService.saveSolrLocusDocument(lang, locus);
+		solrService.saveSolrLocusDocument(lang, locus, disease, chrom);
+		return "redirect:/edit/chromosomes";
 	}
 }

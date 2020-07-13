@@ -2,6 +2,7 @@ package com.bootstrap.controllers;
 
 import javax.validation.Valid;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -38,7 +39,10 @@ public class SubscriberAjax {
 			return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
 		}
 		String lang = LocaleContextHolder.getLocale().getLanguage();
+		String sha1 = DigestUtils.sha1Hex(subscriber.getEmail());
 		subscriber.setLang(lang);
+		subscriber.setSha1(sha1);
+		// unsubscribe logic here
 		subService.save(subscriber);
 		result.setStatus("success");
 		result.setMessage(messageSource.getMessage("ajax.message", null, LocaleContextHolder.getLocale()));

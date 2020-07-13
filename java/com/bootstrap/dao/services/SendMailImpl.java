@@ -32,8 +32,7 @@ public class SendMailImpl implements SendMail {
 	}
 
 	@Override
-	public EmailResponse sendRichMail(Subscriber subscriber, Map<String, Object> model) {
-		// TODO Auto-generated method stub
+	public EmailResponse sendRichMail(Subscriber subscriber, String subject, Map<String, Object> model, String lang) {
 		return null;
 	}
 

@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.annotations.Type;
 
@@ -43,20 +44,25 @@ public class Locus implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@NotEmpty(message = "{locus.new.not.empty.error}")
 	@Column
 	private String name;
 
+	@NotEmpty(message = "{locus.new.not.empty.fname.error}")
 	@Column(name = "full_name")
 	private String fullName;
 
+	@NotEmpty(message = "{locus.new.not.empty.pos.error}")
 	@Column
 	private String position;
 
+	@NotEmpty(message = "{locus.new.not.empty.role.error}")
 	@JsonIgnore
 	@Column(name = "bio_role", columnDefinition = "text")
 	@Type(type = "text")
 	private String bioRole;
 
+	@NotEmpty(message = "{locus.new.not.empty.lang.error}")
 	@JsonIgnore
 	@Column
 	private String lang;

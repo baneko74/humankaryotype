@@ -34,6 +34,9 @@ public class Subscriber implements Serializable {
 	@Column
 	private String lang;
 
+	@Column
+	private String sha1;
+
 	public Subscriber() {
 	}
 
@@ -72,6 +75,14 @@ public class Subscriber implements Serializable {
 
 	public void setLang(String lang) {
 		this.lang = lang;
+	}
+
+	public String getSha1() {
+		return sha1;
+	}
+
+	public void setSha1(String sha1) {
+		this.sha1 = sha1;
 	}
 
 }

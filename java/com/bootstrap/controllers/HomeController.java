@@ -2,7 +2,9 @@ package com.bootstrap.controllers;
 
 import javax.validation.Valid;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.conn.HttpHostConnectException;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -56,6 +58,9 @@ public class HomeController {
 		if (error.hasErrors()) {
 			return "home";
 		}
+		subscriber.setLang(LocaleContextHolder.getLocale().getLanguage());
+		subscriber.setSha1(DigestUtils.sha1Hex(subscriber.getEmail()));
+		// unsubscribe logic
 		subService.save(subscriber);
 		return "redirect:/";
 	}

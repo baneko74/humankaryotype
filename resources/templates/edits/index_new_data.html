@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body>
-<div th:replace="fragments :: header(activeLink='locusEdit', chromId = ${chromosome.id}, locusName=${locus.name})"></div>
+<div th:replace="fragments :: header(activeLink='locusEdit', chromId = '', locusName=${locus.name})"></div>
 <div class="container lead" id="locus">
 	<div  class="d-flex justify-content-between flex-row-reverse mt-1">
 			<form method="post" th:action="@{/logout}">
@@ -13,39 +13,40 @@
 		</div>
 	<h1 class="mt-5 mb-5 font-weight-bold gradient" th:text=${locus.name}></h1>
 	<hr class="my-4"/>
-	<form method="post" th:action="@{/edit/chromosomes/save-locus}">
-		<input type="hidden" th:field="${locus.id}" />
-		<input type="hidden" th:field="${locus.version}" />
-		<input type="hidden" th:field="${locus.chromosome}" />
+	<form method="post" th:action="@{/edit/chromosomes/index-solr}">
 		<div class="form-group">
 			<label for="name" th:text="#{edit.chromosome.name}" class="font-weight-bold">Name:</label>
-			<input type="text" id="name" th:field="${locus.name}" class="form-control col-md-2 border-info"/>
+			<div id="name" th:text="${locus.name}" class="form-control col-md-2 border-info"></div>
 		</div>
 		<div class="form-group">
 			<label for="fullName" th:text="#{edit.locus.fullname}" class="font-weight-bold">Full name:</label>
-			<input type="text" id="fullName" th:field="${locus.fullName}" class="form-control col-md-8 border-info"/>
+			<div id="fullName" th:text="${locus.fullName}" class="form-control col-md-8 border-info"></div>
 		</div>
 		<div class="form-group">
 			<label for="position" th:text="#{edit.locus.position}" class="font-weight-bold">Position:</label>
-			<input type="text" id="position" th:field="${locus.position}" class="form-control col-md-2 border-info"/>
+			<div id="position" th:text="${locus.position}" class="form-control col-md-2 border-info"></div>
 		</div>
 		<div class="form-group">
 			<label for="bioRole" th:text="#{edit.locus.biorole}" class="font-weight-bold">Role in the organism:</label>
-			<textarea id="bioRole" th:field="${locus.bioRole}" rows="6" class="form-control border-info"></textarea>
+			<textarea id="bioRole" th:text="${locus.bioRole}" disabled rows="6" class="form-control border-info"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="diseaseName" th:text="#{edit.disease.name}" class="font-weight-bold">Disease name:</label>
+			<div id="diseaseName" th:text="${locus.disease.name}" class="form-control border-info"></div>
+		</div>
+		<div class="form-group">
+			<label for="disease" th:text="#{edit.disease.role}" class="font-weight-bold">Role in the disorder:</label>
+			<textarea id="disease" th:text="${locus.disease.description}" disabled rows="6" class="form-control border-info"></textarea>
 		</div>
 		<div class="form-group">
 			<label for="lang" th:text="#{edit.chromosome.lang}" class="font-weight-bold">Language:</label>
-			<input type="text" id="lang" th:field="${locus.lang}" class="form-control col-md-1 border-info"/>
+			<div id="lang" th:text="${locus.lang}" class="form-control col-md-1 border-info"></div>
 		</div>
 		<div class="form-group">
-			<input type="submit" th:value="#{submit.edit.form}" class="btn btn-danger">
+			<input type="submit" th:value="#{index.data}" class="btn btn-danger">
 		</div>
 	</form>
 	<hr class="my-4" />
-	<p>
-		<h5 th:text="#{associated.disorder}"></h5>
-		<span th:text="#{edit.button}" class="badge badge-warning"></span>: <a th:href="@{'/edit/chromosomes/disorder-detail?chromId=' + ${chromosome.id} + '&amp;locusName=' + ${locus.name} + '&amp;disorderName=' + ${locus.disease.name}}">[[${locus.disease.name}]]</a>
-	</p>
 </div>
 <div th:replace="fragments :: footer"></div>
 </body>

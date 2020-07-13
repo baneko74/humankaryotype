@@ -3,6 +3,8 @@ package com.bootstrap.dao.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bootstrap.dao.model.Chromosome;
+import com.bootstrap.dao.model.Disease;
 import com.bootstrap.dao.model.Locus;
 import com.bootstrap.dao.model.SolrLocusEnDocument;
 import com.bootstrap.dao.model.SolrLocusRsDocument;
@@ -32,14 +34,30 @@ public class SolrServiceImpl implements SolrService {
 	}
 
 	@Transactional
-	public void saveSolrLocusDocument(String lang, Locus locus) {
+	public void saveSolrLocusDocument(String lang, Locus locus, Disease disease, Chromosome chrom) {
 		switch (lang) {
 		case "en":
-			SolrLocusEnDocument solrEnDoc = new SolrLocusEnDocument(locus);
+			SolrLocusEnDocument solrEnDoc = new SolrLocusEnDocument();
+			solrEnDoc.setId(locus.getId());
+			solrEnDoc.setLocusName(locus.getName());
+			solrEnDoc.setLocusRole(locus.getBioRole());
+			solrEnDoc.setDiseaseName(disease.getName());
+			solrEnDoc.setDiseaseRole(disease.getDescription());
+			solrEnDoc.setFullName(locus.getFullName());
+			solrEnDoc.setChromId(chrom.getId());
+			solrEnDoc.setLocusId(locus.getId());
 			getSolrEnRepository().save(solrEnDoc);
 			break;
 		case "rs":
-			SolrLocusRsDocument solrRsDoc = new SolrLocusRsDocument(locus);
+			SolrLocusRsDocument solrRsDoc = new SolrLocusRsDocument();
+			solrRsDoc.setId(locus.getId());
+			solrRsDoc.setLocusName(locus.getName());
+			solrRsDoc.setLocusRole(locus.getBioRole());
+			solrRsDoc.setDiseaseName(disease.getName());
+			solrRsDoc.setDiseaseRole(disease.getDescription());
+			solrRsDoc.setFullName(locus.getFullName());
+			solrRsDoc.setChromId(chrom.getId());
+			solrRsDoc.setLocusId(locus.getId());
 			getSolrRsRepository().save(solrRsDoc);
 			break;
 		}
