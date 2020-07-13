@@ -11,8 +11,8 @@ import com.bootstrap.dao.model.Subscriber;
 
 import freemarker.template.Configuration;
 
-@Service("sendMail")
-public class SendMailImpl implements SendMail {
+@Service("sendMailService")
+public class SendMailImpl implements SendMailService {
 
 	private JavaMailSender mailSender;
 	private Configuration config;

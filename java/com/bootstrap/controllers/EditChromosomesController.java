@@ -25,7 +25,7 @@ import com.bootstrap.dao.model.Locus;
 import com.bootstrap.dao.model.NewsLetter;
 import com.bootstrap.dao.model.Subscriber;
 import com.bootstrap.dao.services.ChromosomeService;
-import com.bootstrap.dao.services.SendMail;
+import com.bootstrap.dao.services.SendMailService;
 import com.bootstrap.dao.services.SolrService;
 import com.bootstrap.dao.services.SubscriberService;
 
@@ -38,12 +38,12 @@ public class EditChromosomesController {
 	private ChromosomesProps props;
 	private SolrService solrService;
 	private SubscriberService subService;
-	private SendMail sendMail;
+	private SendMailService sendMail;
 
 	Logger logger = LoggerFactory.getLogger(EditChromosomesController.class);
 
 	public EditChromosomesController(ChromosomeService chromosomeService, ChromosomesProps props,
-			SolrService solrService, SubscriberService subService, SendMail sendMail) {
+			SolrService solrService, SubscriberService subService, SendMailService sendMail) {
 		this.chromosomeService = chromosomeService;
 		this.solrService = solrService;
 		this.props = props;

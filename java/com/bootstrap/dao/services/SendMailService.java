@@ -5,7 +5,7 @@ import java.util.Map;
 import com.bootstrap.dao.model.EmailResponse;
 import com.bootstrap.dao.model.Subscriber;
 
-public interface SendMail {
+public interface SendMailService {
 
 	void sendEmail(Subscriber subscriber, String subject, String body);
 
