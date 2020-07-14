@@ -15,4 +15,7 @@ public interface SubscriberRepository extends CrudRepository<Subscriber, Long> {
 
 	@Query("select distinct s from Subscriber s where s.lang = :lang")
 	List<Subscriber> findAllByLang(@Param("lang") String lang);
+
+	@Query("select distinct s from Subscriber s where s.sha1 = :code")
+	Subscriber findBySha1(@Param("code") String code);
 }

@@ -2,8 +2,6 @@ package com.bootstrap.controllers;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,8 +37,6 @@ public class EditChromosomesController {
 	private SolrService solrService;
 	private SubscriberService subService;
 	private SendMailService sendMail;
-
-	Logger logger = LoggerFactory.getLogger(EditChromosomesController.class);
 
 	public EditChromosomesController(ChromosomeService chromosomeService, ChromosomesProps props,
 			SolrService solrService, SubscriberService subService, SendMailService sendMail) {
@@ -205,10 +201,9 @@ public class EditChromosomesController {
 		if (errors.hasErrors()) {
 			return "notify-subscribers";
 		}
-		// dodati unsubscribe link
 		String lang = LocaleContextHolder.getLocale().getLanguage();
 		subService.findAllByLang(lang).stream().forEach(sub -> {
-			sendMail.sendEmail(sub, letter.getSubject(), letter.getBody());
+			sendMail.sendRichMail(sub, letter.getSubject(), letter.getBody());
 		});
 		return "redirect:/edit/chromosomes";
 	}

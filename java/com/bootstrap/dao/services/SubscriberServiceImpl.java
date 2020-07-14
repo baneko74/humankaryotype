@@ -42,6 +42,10 @@ public class SubscriberServiceImpl implements SubscriberService {
 	}
 
 	@Override
+	public Subscriber findBySha1(String code) {
+		return subscriberRepo.findBySha1(code);
+	}
+	@Override
 	public Subscriber save(Subscriber subscriber) {
 		return subscriberRepo.save(subscriber);
 	}

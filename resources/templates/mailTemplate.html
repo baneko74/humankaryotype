@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Insert title here</title>
+<style>
+	.container {
+		width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #17a2b8;
+	}
+</style>
+</head>
+<body>
+<div class="container">
+	<span>[[${message}]]</span>
+	<div class="footer"><span>[[${date}]]</span></div>
+	<div class="footer"><a th:href="@{${unsubscribe}}">Unsubscribe</a></div>
+</div>
+
+
+</body>
+</html>

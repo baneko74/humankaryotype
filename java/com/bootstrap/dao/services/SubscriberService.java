@@ -15,6 +15,8 @@ public interface SubscriberService {
 
 	Subscriber findById(Long id);
 
+	Subscriber findBySha1(String code);
+
 	Subscriber save(Subscriber subscriber);
 
 	void delete(Subscriber subscriber);

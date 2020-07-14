@@ -10,11 +10,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.solr.repository.config.EnableSolrRepositories;
-import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
@@ -82,14 +80,6 @@ public class ChromosomeConfig implements WebMvcConfigurer {
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
-	}
-
-	@Primary
-	@Bean
-	public FreeMarkerConfigurationFactory freeMarkerConfigurationFactory() {
-		FreeMarkerConfigurationFactory bean = new FreeMarkerConfigurationFactory();
-		bean.setTemplateLoaderPath("classpath:/templates/email");
-		return bean;
 	}
 
 
