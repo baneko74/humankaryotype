@@ -13,9 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bootstrap.dao.model.Chromosome;
 import com.bootstrap.dao.model.Disease;
 import com.bootstrap.dao.model.Locus;
-import com.bootstrap.dao.repositories.ChromosomeRepository;
-import com.bootstrap.dao.repositories.DiseaseRepository;
-import com.bootstrap.dao.repositories.LocusRepository;
+import com.bootstrap.dao.repositories.jpa.ChromosomeRepository;
+import com.bootstrap.dao.repositories.jpa.DiseaseRepository;
+import com.bootstrap.dao.repositories.jpa.LocusRepository;
 
 @Service("chromosomeService")
 @Repository

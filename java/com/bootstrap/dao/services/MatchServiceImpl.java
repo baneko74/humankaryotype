@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bootstrap.dao.model.Match;
-import com.bootstrap.dao.repositories.MatchEnRepository;
-import com.bootstrap.dao.repositories.MatchRsRepository;
+import com.bootstrap.dao.repositories.solr.MatchEnRepository;
+import com.bootstrap.dao.repositories.solr.MatchRsRepository;
 
 @Service
 @Transactional

@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.bootstrap.dao.repositories.UserRepository;
+import com.bootstrap.dao.repositories.jpa.UserRepository;
 import com.bootstrap.dao.services.UserDetailsServiceImpl;
 
 @Configuration

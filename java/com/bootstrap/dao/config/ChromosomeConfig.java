@@ -24,8 +24,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
 @ComponentScan(basePackages = "com.bootstrap")
-@EnableJpaRepositories(basePackages = "com.bootstrap.dao.repositories")
-@EnableSolrRepositories(basePackages = { "com.bootstrap.dao.repositories" })
+@EnableJpaRepositories(basePackages = "com.bootstrap.dao.repositories.jpa")
+@EnableSolrRepositories(basePackages = { "com.bootstrap.dao.repositories.solr" })
 public class ChromosomeConfig implements WebMvcConfigurer {
 
 	@Override
@@ -36,7 +36,7 @@ public class ChromosomeConfig implements WebMvcConfigurer {
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-		localeResolver.setDefaultLocale(new Locale("en"));
+		localeResolver.setDefaultLocale(Locale.ENGLISH);
 		return localeResolver;
 	}
 

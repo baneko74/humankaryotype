@@ -7,7 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.bootstrap.dao.model.RegistrationForm;
-import com.bootstrap.dao.repositories.UserRepository;
+import com.bootstrap.dao.repositories.jpa.UserRepository;
 
 @Component
 public class UserValidator implements Validator {

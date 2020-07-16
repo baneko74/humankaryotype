@@ -1,4 +1,4 @@
-package com.bootstrap.dao.repositories;
+package com.bootstrap.dao.repositories.solr;
 
 import org.springframework.data.solr.repository.SolrCrudRepository;
 

@@ -1,4 +1,4 @@
-package com.bootstrap.dao.repositories;
+package com.bootstrap.dao.repositories.solr;
 
 import java.util.Collection;
 
@@ -9,13 +9,14 @@ import org.springframework.data.solr.repository.Query;
 import org.springframework.data.solr.repository.SolrCrudRepository;
 
 import com.bootstrap.dao.model.Match;
-import com.bootstrap.dao.model.MatchEn;
+import com.bootstrap.dao.model.MatchRs;
 
-public interface MatchEnRepository extends SolrCrudRepository<MatchEn, Integer> {
+public interface MatchRsRepository extends SolrCrudRepository<MatchRs, Integer> {
 
-	@Query(value = "{!edismax v='?0' qf='chromosomeName description^5 locusName fullName locusRole diseaseRole content' pf='description locusRole diseaseRole content' pf2='description locusRole diseaseRole content' q.op='OR'}", fields = {
+	@Query(value = "{!type=edismax v='?0' qf='chromosomeName description^5 locusName fullName locusRole diseaseRole content' pf='description^30.0 locusRole diseaseRole content ' pf2='description^30.0 locusRole diseaseRole'}", fields = {
 			"id", "chromosomeName", "locusName", "chromId", "link" })
 	@Highlight(prefix = "<span class='highlight'>", postfix = "</span>", fields = { "description", "locusRole",
 			"diseaseRole", "fullName", "content" }, fragsize = 199)
 	HighlightPage<Match> findByNameIn(Collection<String> names, Pageable pageable);
+
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bootstrap.dao.model.Subscriber;
-import com.bootstrap.dao.repositories.SubscriberRepository;
+import com.bootstrap.dao.repositories.jpa.SubscriberRepository;
 
 @Service("subscriberService")
 @Transactional

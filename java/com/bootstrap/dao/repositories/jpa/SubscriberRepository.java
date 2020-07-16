@@ -1,4 +1,4 @@
-package com.bootstrap.dao.repositories;
+package com.bootstrap.dao.repositories.jpa;
 
 import java.util.List;
 

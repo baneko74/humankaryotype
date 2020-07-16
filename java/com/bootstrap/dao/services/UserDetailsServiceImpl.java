@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.bootstrap.dao.model.User;
-import com.bootstrap.dao.repositories.UserRepository;
+import com.bootstrap.dao.repositories.jpa.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

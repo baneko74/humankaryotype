@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bootstrap.dao.model.RegistrationForm;
 import com.bootstrap.dao.model.Subscriber;
-import com.bootstrap.dao.repositories.UserRepository;
+import com.bootstrap.dao.repositories.jpa.UserRepository;
 import com.bootstrap.dao.services.UserValidator;
 
 @Controller

@@ -6,10 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bootstrap.dao.model.Locus;
 import com.bootstrap.dao.model.SolrLocusEnDocument;
 import com.bootstrap.dao.model.SolrLocusRsDocument;
-import com.bootstrap.dao.repositories.MatchEnRepository;
-import com.bootstrap.dao.repositories.MatchRsRepository;
-import com.bootstrap.dao.repositories.SolrLocusEnRepository;
-import com.bootstrap.dao.repositories.SolrLocusRsRepository;
+import com.bootstrap.dao.repositories.solr.MatchEnRepository;
+import com.bootstrap.dao.repositories.solr.MatchRsRepository;
+import com.bootstrap.dao.repositories.solr.SolrLocusEnRepository;
+import com.bootstrap.dao.repositories.solr.SolrLocusRsRepository;
 
 import lombok.Data;
 

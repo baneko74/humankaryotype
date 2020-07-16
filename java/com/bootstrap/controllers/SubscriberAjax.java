@@ -53,10 +53,19 @@ public class SubscriberAjax {
 	@GetMapping("/unSubscribe")
 	public String unsubscribe(@RequestParam("code") String code) {
 		Subscriber subscriber = subService.findBySha1(code);
+		String answer = null;
 		if (subscriber != null) {
 			subService.delete(subscriber);
+			String lang = subscriber.getLang();
+			switch (lang) {
+			case "en":
+				answer = "You were successfully unsubscribed. We are sorry seeing you go.";
+				break;
+			case "rs":
+				answer = "Uspešno ste se odjavili. Žao nam je što odlazite.";
+			}
 		}
-		return "You were successfully unsubscribed. We are sorry seeing you go";
+		return answer;
 
 	}
 }
