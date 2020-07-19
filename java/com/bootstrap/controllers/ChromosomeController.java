@@ -1,8 +1,13 @@
 package com.bootstrap.controllers;
 
+import java.util.List;
+
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.hateoas.Resources;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bootstrap.dao.config.ChromosomesProps;
 import com.bootstrap.dao.model.Chromosome;
+import com.bootstrap.dao.model.ChromosomeResource;
+import com.bootstrap.dao.model.ChromosomeResourceAssembler;
 import com.bootstrap.dao.model.Locus;
 import com.bootstrap.dao.model.Subscriber;
 import com.bootstrap.dao.services.ChromosomeRepositoryService;
@@ -91,14 +98,17 @@ public class ChromosomeController {
 
 	}
 
-	@GetMapping("/info")
+	@GetMapping(path = "/rest/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Chromosome getChromInfo(@RequestParam(value = "chromId", required = false) Integer id) {
+	public Resources<ChromosomeResource> getChromInfo() {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
-		if (lang.equals("en")) {
-			return chromosomeService.findById(id, lang);
-		} else {
-			return chromosomeService.findById(id + 24, lang);
-		}
+		List<Chromosome> chroms = chromosomeService.findAll(lang);
+		List<ChromosomeResource> chromosomeResources = new ChromosomeResourceAssembler().toResources(chroms);
+		Resources<ChromosomeResource> resources = new Resources<ChromosomeResource>(chromosomeResources);
+		resources.add(ControllerLinkBuilder.linkTo(Chromosome.class).slash("chromosomes")
+				.slash("rest")
+				.slash("all")
+				.withRel("allChromosomes"));
+		return resources;
 	}
 }

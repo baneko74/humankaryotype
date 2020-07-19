@@ -108,6 +108,12 @@ public class ChromosomeRepositoryService implements ChromosomeService {
 	}
 
 	@Override
+	@Transactional
+	public List<Chromosome> findAll(String lang) {
+		return chromosomeRepository.findAll(lang);
+	}
+
+	@Override
 	@Transactional(readOnly = true)
 	public Chromosome findById(Integer id, String lang) {
 		return chromosomeRepository.findById(id, lang);

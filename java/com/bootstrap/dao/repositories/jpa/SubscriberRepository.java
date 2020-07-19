@@ -1,6 +1,7 @@
 package com.bootstrap.dao.repositories.jpa;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,5 +18,5 @@ public interface SubscriberRepository extends CrudRepository<Subscriber, Long> {
 	List<Subscriber> findAllByLang(@Param("lang") String lang);
 
 	@Query("select distinct s from Subscriber s where s.sha1 = :code")
-	Subscriber findBySha1(@Param("code") String code);
+	Optional<Subscriber> findBySha1(@Param("code") String code);
 }

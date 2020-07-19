@@ -29,6 +29,8 @@ public interface ChromosomeService {
 
 	Page<Chromosome> findAll(Pageable pageable, String lang);
 
+	List<Chromosome> findAll(String lang);
+
 	List<Chromosome> findAllWithLociAndDisease();
 
 	Set<Locus> findAllLociByChromosome(Integer id, String lang);

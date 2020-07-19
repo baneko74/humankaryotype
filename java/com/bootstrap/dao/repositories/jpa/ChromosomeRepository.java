@@ -34,6 +34,9 @@ public interface ChromosomeRepository extends PagingAndSortingRepository<Chromos
 	@Query("select distinct c from Chromosome c where c.lang = :lang")
 	Page<Chromosome> findAll(Pageable pageable, @Param("lang") String lang);
 
+	@Query("select distinct c from Chromosome c where c.lang = :lang")
+	List<Chromosome> findAll(@Param("lang") String lang);
+
 	@Query("select distinct c from Chromosome c join c.loci l where l.name = :name and l.lang = :lang")
 	Chromosome findChromosomeByLocusName(@Param("name") String name, @Param("lang") String lang);
 

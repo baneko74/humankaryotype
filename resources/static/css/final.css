@@ -74,7 +74,13 @@ html, body {
 	background-color: Azure;
 }
 .error {
-	color: #fe1b59;
+	color: #ffffff;
+	font-weight: bold;
+	background-color: #fe1b59;
+	margin-top: 5px;
+	border-radius: 5px;
+	padding-left: 2px;
+	padding-right: 4px;
 }
 .login-error {
 	color: #ffffff;
@@ -86,7 +92,12 @@ html, body {
 	font-weight: bold;
 }
 .success {
-	color: MediumSeaGreen;
+	color: #ffffff;
+	background-color: MediumSeaGreen;
+	margin-top: 5px;
+	border-radius: 5px;
+	padding-left: 4px;
+	padding-right: 4px;
 }
 h6 small {
 	color: MediumSeaGreen;

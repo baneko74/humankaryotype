@@ -1,5 +1,7 @@
 package com.bootstrap.controllers;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -52,9 +54,10 @@ public class SubscriberAjax {
 
 	@GetMapping("/unSubscribe")
 	public String unsubscribe(@RequestParam("code") String code) {
-		Subscriber subscriber = subService.findBySha1(code);
-		String answer = null;
-		if (subscriber != null) {
+		Optional<Subscriber> sub = subService.findBySha1(code);
+		String answer = "";
+		if (sub.isPresent()) {
+			Subscriber subscriber = sub.get();
 			subService.delete(subscriber);
 			String lang = subscriber.getLang();
 			switch (lang) {

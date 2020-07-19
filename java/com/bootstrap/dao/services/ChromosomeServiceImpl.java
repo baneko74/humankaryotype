@@ -65,6 +65,12 @@ public class ChromosomeServiceImpl implements ChromosomeService {
 		return null;
 	}
 
+	@Override
+	public List<Chromosome> findAll(String lang) {
+		return em.createQuery("select distinct c from Chromosome c where c.lang = :lang", Chromosome.class)
+				.setParameter("lang", lang).getResultList();
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Set<Locus> findAllLociByChromosome(Integer id, String lang) {

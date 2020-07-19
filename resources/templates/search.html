@@ -16,7 +16,8 @@
 			</th:block>
 			<th:block th:unless="${#lists.isEmpty(page.content)}">
 				<p><span th:text="#{results.total}"></span><span th:unless="${#strings.equals(#locale, 'en')}"
-				th:text="#{${page.totalElements % page.size eq 1 && page.totalElements != 11 || page.totalElements eq 1} ? 'resj': ${page.totalElements % page.size > 4 || page.totalElements > 4 ? 'resmm' : 'resm'}}"></span> 
+				th:text="#{${page.totalElements % page.size eq 1 && page.totalElements != 11 || page.totalElements eq 1} ? 'resj': 
+				${page.totalElements % page.size >= 2 && page.totalElements % page.size <= 4 || page.totalElements >= 2 && page.totalElements <= 4 ? 'resm' : 'resmm'}}"></span> 
 				<span th:text="${page.totalElements}"></span> 
 				<span th:with="modulus=${page.totalElements % page.size}" th:text="${modulus eq 1 && page.totalElements != 11} ? #{result.doc} : #{results.doc}"></span></p>
 				<hr class="my-2" />
