@@ -2,6 +2,8 @@ package com.bootstrap.dao.services;
 
 import java.time.LocalDateTime;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -15,14 +17,16 @@ import org.thymeleaf.context.Context;
 import com.bootstrap.dao.model.Subscriber;
 
 @Service("sendMailService")
-public class SendMailImpl implements SendMailService {
+public class SendMailServiceImpl implements SendMailService {
 
 	private JavaMailSender mailSender;
 	private TemplateEngine engine;
+	private MessageSource msgSource;
 
-	public SendMailImpl(JavaMailSender mailSender, TemplateEngine engine) {
+	public SendMailServiceImpl(JavaMailSender mailSender, TemplateEngine engine, MessageSource msgSource) {
 		this.mailSender = mailSender;
 		this.engine = engine;
+		this.msgSource = msgSource;
 	}
 
 	@Override
@@ -56,6 +60,8 @@ public class SendMailImpl implements SendMailService {
 		Context ctx = new Context();
 		LocalDateTime date = LocalDateTime.now();
 		String unSubLink = "http://localhost:8080/unSubscribe?code=" + code;
+		String title = msgSource.getMessage("email.title", null, LocaleContextHolder.getLocale());
+		ctx.setVariable("title", title);
 		ctx.setVariable("logo", "logo");
 		ctx.setVariable("unsubscribe", unSubLink);
 		ctx.setVariable("date", date);

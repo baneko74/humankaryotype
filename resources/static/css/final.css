@@ -431,7 +431,7 @@ footer hr.light {
 	
 }
 
-@media screen and (min-width: 576px) and (max-width:768px){
+@media screen and (min-width: 576px) and (max-width:767px){
 	h3#res_title {
 		font-size: 1.3em;
 	}
@@ -508,7 +508,7 @@ footer hr.light {
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 767px) and (max-width: 992px) {
 	ul.dropdown-menu li a{
 		font-size:.9em;
 	}

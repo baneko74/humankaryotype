@@ -79,33 +79,18 @@ public class Chromosome implements Serializable {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getSize() {
 		return size;
 	}
 
-	public void setSize(String size) {
-		this.size = size;
-	}
-
 	public Integer getGenes() {
 		return genes;
 	}
 
-	public void setGenes(Integer genesNumber) {
-		this.genes = genesNumber;
-	}
 
 	public String getDescription() {
 		return description;
@@ -113,14 +98,6 @@ public class Chromosome implements Serializable {
 
 	public String getLang() {
 		return lang;
-	}
-
-	public void setLang(String lang) {
-		this.lang = lang;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public Set<Locus> getLoci() {

@@ -34,7 +34,7 @@ public class SubscriberAjax {
 		this.subService = subService;
 	}
 
-	@PostMapping(value = "/subscribeEmail", consumes = "application/json")
+	@PostMapping(path = "/subscribeEmail", consumes = "application/json")
 	public ResponseEntity<AjaxResponse> getAjaxSubcsription(@Valid @RequestBody Subscriber subscriber, Errors errors) {
 		AjaxResponse result = new AjaxResponse();
 		if (errors.hasErrors()) {
@@ -55,7 +55,7 @@ public class SubscriberAjax {
 	@GetMapping("/unSubscribe")
 	public String unsubscribe(@RequestParam("code") String code) {
 		Optional<Subscriber> sub = subService.findBySha1(code);
-		String answer = "";
+		String answer = messageSource.getMessage("unsubscribe.already", null, LocaleContextHolder.getLocale());
 		if (sub.isPresent()) {
 			Subscriber subscriber = sub.get();
 			subService.delete(subscriber);

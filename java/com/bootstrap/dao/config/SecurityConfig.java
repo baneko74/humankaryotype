@@ -41,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/edit/**").authenticated().antMatchers("/", "/**").permitAll()
 				.and()
-				.formLogin().loginPage("/login").defaultSuccessUrl("/edit/chromosomes").permitAll().and().logout()
+				.formLogin().loginPage("/login").defaultSuccessUrl("/edit/chromosomes").permitAll().and()
+				.logout()
 				.permitAll().and().exceptionHandling().accessDeniedPage("/accessDenied");
 	}
 

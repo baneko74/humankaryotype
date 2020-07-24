@@ -7,7 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -100,15 +102,25 @@ public class ChromosomeController {
 
 	@GetMapping(path = "/rest/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Resources<ChromosomeResource> getChromInfo() {
+	public ResponseEntity<Resources<ChromosomeResource>> getChromInfo() {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
 		List<Chromosome> chroms = chromosomeService.findAll(lang);
 		List<ChromosomeResource> chromosomeResources = new ChromosomeResourceAssembler().toResources(chroms);
 		Resources<ChromosomeResource> resources = new Resources<ChromosomeResource>(chromosomeResources);
-		resources.add(ControllerLinkBuilder.linkTo(Chromosome.class).slash("chromosomes")
-				.slash("rest")
-				.slash("all")
+		resources.add(ControllerLinkBuilder.linkTo(Chromosome.class).slash("chromosomes").slash("rest").slash(
+				"all")
 				.withRel("allChromosomes"));
-		return resources;
+		return new ResponseEntity<>(resources, HttpStatus.OK);
+	}
+
+	@GetMapping(path = "/rest/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ResponseEntity<Chromosome> getChromosome(@PathVariable("id") Integer id) {
+		String lang = LocaleContextHolder.getLocale().getLanguage();
+		if (lang.equals("rs")) {
+			id = id + 24;
+		}
+		Chromosome chrom = chromosomeService.findById(id, lang);
+		return new ResponseEntity<>(chrom, HttpStatus.OK);
 	}
 }
