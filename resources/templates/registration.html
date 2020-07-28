@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="transparent">
 <div th:replace="fragments :: header(activeLink='registration', chromId = '', locusName='')"></div>
 <div class="container lead" id="locus">
 	<h1 class="mt-5 mb-5 font-weight-bold gradient text-center" th:text=#{registration}></h1>
 	<div class="d-flex justify-content-center mb-5">
-		<form method="post" th:action="@{/register}" th:object="${data}">
+		<form method="post" th:action="@{/admin/register}" th:object="${data}">
 		<div class="form-group">
 			<label for="name" th:text="#{registration.name}" class="badge badge-info"></label>
 			<input type="text" id="name" name="name" th:field="*{name}" class="form-control col-md-12 border-info"/>

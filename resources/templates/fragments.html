@@ -34,8 +34,8 @@
                 					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'registration'" th:href="@{/register?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'login'" th:href="@{/login?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'registration'" th:href="@{/admin/register?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'login'" th:href="@{/admin/login?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'search'" th:href="@{/search?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 				</li>
                 			
@@ -44,8 +44,8 @@
                 					<a th:case="'chromosomes'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 									<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '/locus/' + ${locusName} + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'registration'" th:href="@{/register?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'login'" th:href="@{/login?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'registration'" th:href="@{/admin/register?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'login'" th:href="@{/admin/login?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'search'" th:href="@{/search?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                </li>
                 			</ul>							

@@ -22,6 +22,14 @@ public class ChromosomeResource extends ResourceSupport {
 	@Getter
 	private final Set<Locus> loci;
 
+	public ChromosomeResource() {
+		this.name = null;
+		this.size = null;
+		this.genes = null;
+		this.desc = null;
+		this.loci = null;
+	}
+
 	public ChromosomeResource(Chromosome chromosome) {
 		this.name = chromosome.getName();
 		this.size = chromosome.getSize();

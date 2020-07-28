@@ -30,14 +30,14 @@ public class RegistrationController {
 		this.validator = validator;
 	}
 
-	@GetMapping("/register")
+	@GetMapping("/admin/register")
 	public String registerForm(Model model) {
 		model.addAttribute("subscriber", new Subscriber());
 		model.addAttribute("data", new RegistrationForm());
 		return "registration";
 	}
 
-	@PostMapping("/register")
+	@PostMapping("/admin/register")
 	public String processRegistration(Model model, @Valid @ModelAttribute("data") RegistrationForm formData,
 			Errors errors) {
 		validator.validate(formData, errors);
@@ -50,7 +50,7 @@ public class RegistrationController {
 		return "redirect:/login";
 	}
 
-	@GetMapping("/login")
+	@GetMapping("/admin/login")
 	public String getLoginPage(Model model) {
 		model.addAttribute("subscriber", new Subscriber());
 		return "login";

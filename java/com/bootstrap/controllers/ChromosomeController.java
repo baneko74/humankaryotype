@@ -115,12 +115,17 @@ public class ChromosomeController {
 
 	@GetMapping(path = "/rest/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public ResponseEntity<Chromosome> getChromosome(@PathVariable("id") Integer id) {
+	public ResponseEntity<ChromosomeResource> getChromosome(@PathVariable("id") Integer id) {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
+		if (id > 24) {
+			ChromosomeResource res = new ChromosomeResource();
+			return new ResponseEntity<ChromosomeResource>(res, HttpStatus.BAD_REQUEST);
+		}
 		if (lang.equals("rs")) {
 			id = id + 24;
 		}
 		Chromosome chrom = chromosomeService.findById(id, lang);
-		return new ResponseEntity<>(chrom, HttpStatus.OK);
+		ChromosomeResource chr = new ChromosomeResource(chrom);
+		return new ResponseEntity<ChromosomeResource>(chr, HttpStatus.OK);
 	}
 }

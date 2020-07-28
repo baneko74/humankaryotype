@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="transparent">
 <div th:replace="fragments :: header(activeLink='login', chromId = '', locusName='')"></div>
 <div class="container lead" id="locus">
 	<h1 class="mt-5 mb-5 font-weight-bold gradient text-center" th:text=#{login}></h1>
 	<div th:if="${param.error}" th:text="#{login.error}" class="login-error d-flex justify-content-center mb-5"></div>
 	<div class="d-flex justify-content-center mb-5">
-	<form method="post" th:action="@{/login}">
+	<form method="post" th:action="@{/admin/login}">
 		<div class="form-group">
 			<label for="username" th:text="#{registration.username}" class="badge badge-info"></label>
 			<input type="text" id="username" name="username" class="form-control col-md-12 border-info"/>
