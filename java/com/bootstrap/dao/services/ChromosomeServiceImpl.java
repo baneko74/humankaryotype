@@ -38,34 +38,40 @@ public class ChromosomeServiceImpl implements ChromosomeService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Optional<Chromosome> findById(Integer id) {
 		return Optional.of(
 				em.createNamedQuery(Chromosome.FIND_BY_ID, Chromosome.class).setParameter("id", id).getSingleResult());
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Chromosome findByName(String name) {
 		return em.createQuery("select distinct c from Chromosome c where c.name = :name", Chromosome.class)
 				.setParameter("name", name).getSingleResult();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Locus> findAllLoci() {
 		return em.createNamedQuery(Locus.FIND_ALL_LOCI, Locus.class).getResultList();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Chromosome> findAllWithLociAndDisease() {
 		return em.createNamedQuery(Chromosome.FIND_ALL_WITH_LOCI_AND_DISEASES, Chromosome.class).getResultList();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Page<Chromosome> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Chromosome> findAll(String lang) {
 		return em.createQuery("select distinct c from Chromosome c where c.lang = :lang", Chromosome.class)
 				.setParameter("lang", lang).getResultList();
@@ -73,6 +79,7 @@ public class ChromosomeServiceImpl implements ChromosomeService {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional(readOnly = true)
 	public Set<Locus> findAllLociByChromosome(Integer id, String lang) {
 		return (Set<Locus>) em
 				.createQuery("select l from Chromosome c join c.loci l where c.id = :id and c.lang = :lang",
@@ -81,36 +88,42 @@ public class ChromosomeServiceImpl implements ChromosomeService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Locus findLocusById(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Locus findLocusByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Page<Chromosome> findAll(Pageable pageable, String lang) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Chromosome findById(Integer id, String lang) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Locus findLocusByName(String name, String lang) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Chromosome findChromosomeByLocusName(String name, String lang) {
 		// TODO Auto-generated method stub
 		return null;
@@ -123,6 +136,7 @@ public class ChromosomeServiceImpl implements ChromosomeService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Disease findDiseaseByLocusName(String name, String lang) {
 		// TODO Auto-generated method stub
 		return null;

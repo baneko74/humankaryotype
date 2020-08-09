@@ -22,8 +22,8 @@ import com.bootstrap.dao.services.SubscriberService;
 @RequestMapping
 public class HomeController {
 
-	private SubscriberService subService;
-	private MatchService matchService;
+	private final SubscriberService subService;
+	private final MatchService matchService;
 
 	public HomeController(SubscriberService subService, MatchService matchService) {
 		this.subService = subService;

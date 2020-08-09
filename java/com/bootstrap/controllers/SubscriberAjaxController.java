@@ -22,14 +22,14 @@ import com.bootstrap.dao.model.Subscriber;
 import com.bootstrap.dao.services.SubscriberService;
 
 @RestController
-public class SubscriberAjax {
+public class SubscriberAjaxController {
 
-	private SubscriberService subService;
+	private final SubscriberService subService;
 
-	private MessageSource messageSource;
+	private final MessageSource messageSource;
 
 	@Autowired
-	public SubscriberAjax(SubscriberService subService, MessageSource messageSource) {
+	public SubscriberAjaxController(SubscriberService subService, MessageSource messageSource) {
 		this.messageSource = messageSource;
 		this.subService = subService;
 	}

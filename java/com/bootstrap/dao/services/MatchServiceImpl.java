@@ -34,7 +34,7 @@ public class MatchServiceImpl implements MatchService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public Page<Match> findByTerm(String searchTerm, Pageable pageable) throws IllegalArgumentException {
 		if (StringUtils.isEmpty(searchTerm)) {
 			throw new IllegalArgumentException(

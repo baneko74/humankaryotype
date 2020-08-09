@@ -22,11 +22,11 @@ import com.bootstrap.dao.repositories.jpa.LocusRepository;
 @Transactional
 public class ChromosomeRepositoryService implements ChromosomeService {
 
-	private LocusRepository locusRepository;
+	private final LocusRepository locusRepository;
 
-	private ChromosomeRepository chromosomeRepository;
+	private final ChromosomeRepository chromosomeRepository;
 
-	private DiseaseRepository diseaseRepository;
+	private final DiseaseRepository diseaseRepository;
 
 	public ChromosomeRepositoryService(ChromosomeRepository chromosomeRepository, LocusRepository locusRepository,
 			DiseaseRepository diseaseRepository) {
@@ -108,7 +108,7 @@ public class ChromosomeRepositoryService implements ChromosomeService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Chromosome> findAll(String lang) {
 		return chromosomeRepository.findAll(lang);
 	}
@@ -119,7 +119,7 @@ public class ChromosomeRepositoryService implements ChromosomeService {
 		return chromosomeRepository.findById(id, lang);
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public Chromosome findChromosomeByLocusName(String name, String lang) {
 		return chromosomeRepository.findChromosomeByLocusName(name, lang);
@@ -130,7 +130,7 @@ public class ChromosomeRepositoryService implements ChromosomeService {
 		return chromosomeRepository.save(chromosome);
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	@Override
 	public Disease findDiseaseByLocusName(String name, String lang) {
 		return diseaseRepository.findDiseaseByLocusName(name, lang);

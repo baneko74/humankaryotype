@@ -20,9 +20,9 @@ import com.bootstrap.dao.services.UserValidator;
 @RequestMapping
 public class RegistrationController {
 
-	private UserValidator validator;
-	private UserRepository userRepo;
-	private PasswordEncoder encoder;
+	private final UserValidator validator;
+	private final UserRepository userRepo;
+	private final PasswordEncoder encoder;
 
 	public RegistrationController(UserRepository userRepo, PasswordEncoder encoder, UserValidator validator) {
 		this.userRepo = userRepo;

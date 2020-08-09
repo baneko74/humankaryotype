@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.solr.repository.config.EnableSolrRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
 @ComponentScan(basePackages = "com.bootstrap")
+@EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.bootstrap.dao.repositories.jpa")
 @EnableSolrRepositories(basePackages = { "com.bootstrap.dao.repositories.solr" })
 public class ChromosomeConfig implements WebMvcConfigurer {

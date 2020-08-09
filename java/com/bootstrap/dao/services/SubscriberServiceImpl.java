@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,37 +12,44 @@ import com.bootstrap.dao.model.Subscriber;
 import com.bootstrap.dao.repositories.jpa.SubscriberRepository;
 
 @Service("subscriberService")
+@Repository
 @Transactional
 public class SubscriberServiceImpl implements SubscriberService {
 
 	@Autowired
-	private SubscriberRepository subscriberRepo;
+	private final SubscriberRepository subscriberRepo;
 
-	@Transactional(readOnly = true)
+	public SubscriberServiceImpl(SubscriberRepository subscriberRepo) {
+		this.subscriberRepo = subscriberRepo;
+	}
+
 	@Override
+	@Transactional(readOnly = true)
 	public List<Subscriber> findAll() {
 		return (List<Subscriber>) subscriberRepo.findAll();
 	}
 
-	@Transactional(readOnly = true)
 	@Override
+	@Transactional(readOnly = true)
 	public Optional<Subscriber> findByEmail(String email) {
 		return ((List<Subscriber>) subscriberRepo.findAll()).stream().filter(sub -> sub.getEmail().equals(email))
 				.findFirst();
 	}
 
-	@Transactional
 	@Override
+	@Transactional(readOnly = true)
 	public List<Subscriber> findAllByLang(String lang) {
 		return subscriberRepo.findAllByLang(lang);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Subscriber findById(Long id) {
 		return subscriberRepo.findById(id).get();
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Optional<Subscriber> findBySha1(String code) {
 		return subscriberRepo.findBySha1(code);
 	}

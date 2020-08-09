@@ -33,6 +33,10 @@ public class SolrServiceImpl implements SolrService {
 
 	@Transactional
 	public void saveSolrLocusDocument(String lang, Locus locus) {
+			saveNewSolrDoc(lang, locus);
+	}
+
+	private void saveNewSolrDoc(String lang, Locus locus) {
 		switch (lang) {
 		case "en":
 			SolrLocusEnDocument solrEnDoc = new SolrLocusEnDocument();

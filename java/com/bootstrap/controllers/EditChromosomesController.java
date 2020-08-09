@@ -32,11 +32,11 @@ import com.bootstrap.dao.services.SubscriberService;
 @SessionAttributes("locus")
 public class EditChromosomesController {
 
-	private ChromosomeService chromosomeService;
-	private ChromosomesProps props;
-	private SolrService solrService;
-	private SubscriberService subService;
-	private SendMailService sendMail;
+	private final ChromosomeService chromosomeService;
+	private final ChromosomesProps props;
+	private final SolrService solrService;
+	private final SubscriberService subService;
+	private final SendMailService sendMail;
 
 	public EditChromosomesController(ChromosomeService chromosomeService, ChromosomesProps props,
 			SolrService solrService, SubscriberService subService, SendMailService sendMail) {
@@ -109,9 +109,10 @@ public class EditChromosomesController {
 	}
 
 	@PostMapping("save-locus")
-	public String saveLocus(Model model, @ModelAttribute Locus locus) {
+	public String saveLocus(@ModelAttribute Locus locus) {
 		chromosomeService.saveLocus(locus);
-		return "redirect:/edit/chromosomes/";
+		Chromosome chrom = locus.getChromosome();
+		return "redirect:/edit/chromosomes/detail?chromId=" + chrom.getId();
 	}
 
 	@GetMapping("/locus-new")
@@ -177,13 +178,21 @@ public class EditChromosomesController {
 		return "edits/disease_edit";
 	}
 
-	@PostMapping("/save-disease")
+	@PostMapping("/save-new-disease")
 	public String saveDisease(@ModelAttribute Disease disease, Model model, RedirectAttributes redirAttr) {
 		chromosomeService.saveDisease(disease);
 		Locus locus = disease.getLocus();
 		redirAttr.addAttribute("locus", locus);
 		redirAttr.addAttribute("disease", disease);
 		return "redirect:/edit/chromosomes/index-new-data";
+	}
+
+	@PostMapping("save-disease")
+	public String saveDisease(@ModelAttribute Disease disease) {
+		chromosomeService.saveDisease(disease);
+		Chromosome chrom = disease.getLocus().getChromosome();
+		return "redirect:/edit/chromosomes/locus-detail?chromId=" + chrom.getId()
+				+ "&locusName=" + disease.getLocus().getName();
 	}
 
 	@GetMapping("/notify-subscribers")

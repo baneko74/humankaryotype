@@ -12,7 +12,7 @@ import com.bootstrap.dao.repositories.jpa.UserRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	private UserRepository userRepo;
+	private final UserRepository userRepo;
 
 	@Autowired
 	public UserDetailsServiceImpl(UserRepository userRepo) {

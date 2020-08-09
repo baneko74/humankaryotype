@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.HighlightPage;
+import org.springframework.data.solr.repository.Boost;
 import org.springframework.data.solr.repository.Highlight;
 import org.springframework.data.solr.repository.Query;
 import org.springframework.data.solr.repository.SolrCrudRepository;
@@ -17,5 +18,5 @@ public interface MatchEnRepository extends SolrCrudRepository<MatchEn, Integer> 
 			"id", "chromosomeName", "locusName", "chromId", "link" })
 	@Highlight(prefix = "<span class='highlight'>", postfix = "</span>", fields = { "description", "locusRole",
 			"diseaseRole", "fullName", "content" }, fragsize = 199)
-	HighlightPage<Match> findByNameIn(Collection<String> names, Pageable pageable);
+	HighlightPage<Match> findByNameIn(@Boost(2) Collection<String> names, Pageable pageable);
 }
