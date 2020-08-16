@@ -28,7 +28,7 @@ public class RestfulController {
 		this.chromosomeService = chromosomeService;
 	}
 
-	@GetMapping(path = "/rest/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/list-all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Resources<ChromosomeResource>> getChromInfo() {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
 		List<Chromosome> chroms = chromosomeService.findAll(lang);
@@ -39,7 +39,7 @@ public class RestfulController {
 		return new ResponseEntity<>(resources, HttpStatus.OK);
 	}
 
-	@GetMapping(path = "/rest/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(path = "/get-chromosome/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ChromosomeResource> getChromosome(@PathVariable("id") Integer id) {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
 		if (id > 24) {

@@ -23,7 +23,7 @@
 				<div class="collapse navbar-collapse" id="navbarResponsive">				
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-font-size" id="my_menu">
 						<li th:class="${#strings.equals(activeLink, 'home')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'home')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/}" th:text="#{navbar.home}"></a> </li>
-						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.about}"></a> </li>
+						<li th:class="${#strings.equals(activeLink, 'about')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'about')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/about}" th:text="#{navbar.about}"></a> </li>
 						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.methodology}"></a> </li>
 						<li th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-link disabled' : 'nav-link'" href="#" th:href="@{/chromosomes}" th:text="#{navbar.browse}"></a> </li>
 						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.karyotype}"></a> </li>
@@ -31,6 +31,7 @@
 							<ul class="dropdown-menu ">               			
                 				<li th:switch="${activeLink}">
                 					<a th:case="'home'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'about'" th:href="@{/about?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
                 					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
@@ -41,6 +42,7 @@
                 			
 				                <li th:switch="${activeLink}">
 				                	<a th:case="'home'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'about'" th:href="@{/about?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
                 					<a th:case="'chromosomes'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 									<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '/locus/' + ${locusName} + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
@@ -65,7 +67,7 @@
 		<div class="row text-left">
 				<div class="col-md-4">
 					<hr class="light"/>
-					<h5 th:text="#{footer.references}"></h5>
+					<i class="fas fa-link mr-5 mt-1 mb-1 float-right"></i><h5 th:text="#{footer.references}"></h5>
 					<hr class="light"/>
 					<p>[1]. <a href="https://en.wikipedia.org/wiki/Chromosome" target="_blank" id="wiki" class="info">Wikipedia [chromosome]</a></p>
 					<p>[2]. <a href="https://en.wikipedia.org/wiki/DNA" target="_blank" id="wikidna" class="info">Wikipedia [DNA]</a></p>
@@ -75,19 +77,24 @@
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5 th:text="#{site.map}"></h5>
+					<i class="fas fa-sitemap mt-1 mb-1 mr-5 float-right"></i><h5 th:text="#{site.map}"></h5>
 					<hr class="light">
-					<p>Monday: 9am - 5pm</p>
-					<p>Saturday: 10am - 4pm</p>
-					<p>Sunday: closed</p>
+					<p class="sitemap mt-5">
+						<a class="info" href="/" th:text="#{site.map.home}">Home</a>
+						<a class="info" href="/about" th:text="#{site.map.about}">About</a>
+						<a class="info" href="/" th:text="#{site.map.methodology}">Methodology</a>
+						<a class="info" href="/chromosomes" th:text="#{site.map.browse}">Browse</a>
+						<a class="info" href="/" th:text="#{site.map.karyotype}">Karyotype</a>
+					</p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
-					<h5 th:text="#{news.letter}">News letter area</h5>
+					<i class="fas fa-envelope mt-1 mb-1 mr-5 float-right"></i><h5 th:text="#{news.letter}"></h5>
 					<hr class="light">
 					
 					<form method="post"  th:object = "${subscriber}" th:action="@{/subscribe}"  id="lower_form">
 						<input type="hidden" th:field="*{id}" />
+						<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 						<div class="form-group form-group-sm">
 							<label for="email" class="col-form-label">Email:</label>
 							<div class="form-inline">
@@ -108,7 +115,7 @@
 				</div>
 				<div class="col-md-12 text-center">
 					<hr class="light">
-					<h5>&copy; www.humankaryotype.com</h5>
+					<h5 class="text-success h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</h5>
 					<h6><small class="font-weight-light font-weight-bold">poweredBy <img th:src="@{/images/spring_logo.png}" /> <span>Spring Boot</span></small> <small class="dev">devBy <a href="mailto:bane74@yahoo.com">author</a></small></h6>
 				</div>
 			</div>

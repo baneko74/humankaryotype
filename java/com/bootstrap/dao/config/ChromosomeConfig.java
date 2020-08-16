@@ -18,7 +18,6 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -29,11 +28,6 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @EnableJpaRepositories(basePackages = "com.bootstrap.dao.repositories.jpa")
 @EnableSolrRepositories(basePackages = { "com.bootstrap.dao.repositories.solr" })
 public class ChromosomeConfig implements WebMvcConfigurer {
-
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry reg) {
-		reg.addResourceHandler("/resources/**").addResourceLocations("/").setCachePeriod(0);
-	}
 
 	@Bean
 	public LocaleResolver localeResolver() {

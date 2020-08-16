@@ -67,6 +67,10 @@ html, body {
 .inline {
 	display: inline;
 }
+.sitemap {
+	word-spacing: 10px;
+	font-size: 1em;
+}
 .transparent {
 	background: rgba(224, 255, 255, 0.3);
 }

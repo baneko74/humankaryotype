@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,8 @@ public class SubscriberAjaxController {
 		this.subService = subService;
 	}
 
-	@PostMapping(path = "/subscribeEmail", consumes = "application/json")
+	@PostMapping(path = "/subscribeEmail", consumes = MediaType.APPLICATION_JSON_VALUE, headers = {
+			"Accept=application/json", "Content-Type=application/json" })
 	public ResponseEntity<AjaxResponse> getAjaxSubcsription(@Valid @RequestBody Subscriber subscriber, Errors errors) {
 		AjaxResponse result = new AjaxResponse();
 		if (errors.hasErrors()) {

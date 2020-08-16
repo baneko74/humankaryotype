@@ -62,4 +62,10 @@ public class HomeController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/about")
+	public String getAbout(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "about";
+	}
+
 }
