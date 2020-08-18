@@ -68,4 +68,15 @@ public class HomeController {
 		return "about";
 	}
 
+	@GetMapping("/methodology")
+	public String getMethodology(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "methodology";
+	}
+
+	@GetMapping("/karyotype")
+	public String getKaryotype(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "karyotype";
+	}
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body id="top" class="transparent">
+<div th:replace="fragments :: header(activeLink='methodology', chromId = '', locusName='')"></div>
+<div class="container lead min-height" id="locus">
+	<img th:src="@{/images/titlebar_1.jpg}" class="img-fluid rounded-bottom border-lbr" />
+	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{methodology}></h1>
+	<hr class="my-4" />
+	
+	<hr class="my-4" />
+	<p class="text-info h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<hr class="my-4 mb-5" />
+	
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

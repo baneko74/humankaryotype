@@ -7,15 +7,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityResult;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -23,11 +19,6 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "chromosome")
-@NamedQueries({ @NamedQuery(name = "Chromosome.FIND_ALL", query = "select c from Chromosome c"),
-		@NamedQuery(name = "Chromosome.FIND_BY_ID", query = "select distinct c from Chromosome c left join fetch c.loci l where c.id = :id"),
-		@NamedQuery(name = "Chromosome.FIND_ALL_WITH_LOCI", query = "select distinct c from Chromosome c left join fetch c.loci l"),
-		@NamedQuery(name = "Chromosome.FIND_ALL_WITH_LOCI_AND_DISEASES", query = "select distinct c from Chromosome c left join fetch c.loci l join l.disease d") })
-@SqlResultSetMapping(name = "chromosomeResult", entities = @EntityResult(entityClass = Chromosome.class))
 public class Chromosome implements Serializable {
 
 	public static final String FIND_ALL = "Chromosome.FIND_ALL";

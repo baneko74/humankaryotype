@@ -6,7 +6,9 @@
 <!-- auto refresh <meta http-equiv="refresh" content="10" />  -->
 <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
 <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
-<meta th:name="#{author.name.label}" th:content="#{author.name}" />
+<meta name="author" th:content="#{author.name}" />
+<meta name="keywords" th:content="#{seo.keywords}" />
+<meta name="description" th:content="#{seo.desc}" />
 <title th:text="#{page.title}"></title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" th:href="@{/css/final.css}" />
@@ -24,14 +26,16 @@
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-font-size" id="my_menu">
 						<li th:class="${#strings.equals(activeLink, 'home')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'home')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/}" th:text="#{navbar.home}"></a> </li>
 						<li th:class="${#strings.equals(activeLink, 'about')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'about')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/about}" th:text="#{navbar.about}"></a> </li>
-						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.methodology}"></a> </li>
-						<li th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-link disabled' : 'nav-link'" href="#" th:href="@{/chromosomes}" th:text="#{navbar.browse}"></a> </li>
-						<li class="nav-item p-1"> <a class="nav-link" href="#" th:text="#{navbar.karyotype}"></a> </li>
+						<li th:class="${#strings.equals(activeLink, 'methodology')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'methodology')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/methodology}" th:text="#{navbar.methodology}"></a> </li>
+						<li th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'chromosomes')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/chromosomes}" th:text="#{navbar.browse}"></a> </li>
+						<li th:class="${#strings.equals(activeLink, 'karyotype')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'karyotype')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/karyotype}" th:text="#{navbar.karyotype}"></a> </li>
 						<li class="dropdown p-1" th:classappend="${#strings.contains(activeLink, 'chromosomeEdit')} ? 'none': ${#strings.contains(activeLink, 'locusEdit') ? 'none' : #strings.contains(activeLink, 'locusNew') ? 'none' : #strings.contains(activeLink, 'notifySubs') ? 'none' : ''}"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{navbar.lang}"><b class="caret"></b></a>
 							<ul class="dropdown-menu ">               			
                 				<li th:switch="${activeLink}">
                 					<a th:case="'home'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'about'" th:href="@{/about?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
+                					<a th:case="'methodology'" th:href="@{/methodology?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
+                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
                 					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
@@ -43,6 +47,8 @@
 				                <li th:switch="${activeLink}">
 				                	<a th:case="'home'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
                 					<a th:case="'about'" th:href="@{/about?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'methodology'" th:href="@{/methodology?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
                 					<a th:case="'chromosomes'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 									<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '/locus/' + ${locusName} + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
@@ -82,9 +88,9 @@
 					<p class="sitemap mt-5">
 						<a class="info" href="/" th:text="#{site.map.home}">Home</a>
 						<a class="info" href="/about" th:text="#{site.map.about}">About</a>
-						<a class="info" href="/" th:text="#{site.map.methodology}">Methodology</a>
+						<a class="info" href="/methodology" th:text="#{site.map.methodology}">Methodology</a>
 						<a class="info" href="/chromosomes" th:text="#{site.map.browse}">Browse</a>
-						<a class="info" href="/" th:text="#{site.map.karyotype}">Karyotype</a>
+						<a class="info" href="/karyotype" th:text="#{site.map.karyotype}">Karyotype</a>
 					</p>
 				</div>
 				<div class="col-md-4">

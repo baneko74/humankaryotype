@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
@@ -55,6 +56,14 @@ public class ChromosomeConfig implements WebMvcConfigurer {
 		resourceBundleMessageSource.setBasename("i18n/messages");
 		resourceBundleMessageSource.setFallbackToSystemLocale(false);
 		return resourceBundleMessageSource;
+	}
+
+	@Bean
+	public CookieLocaleResolver cookieResolver() {
+		CookieLocaleResolver cookieResolver = new CookieLocaleResolver();
+		cookieResolver.setDefaultLocale(Locale.ENGLISH);
+		cookieResolver.setCookieMaxAge(3600);
+		return cookieResolver;
 	}
 
 	@Bean

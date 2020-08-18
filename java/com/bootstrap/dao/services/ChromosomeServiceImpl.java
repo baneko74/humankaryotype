@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -16,142 +13,137 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bootstrap.dao.model.Chromosome;
 import com.bootstrap.dao.model.Disease;
 import com.bootstrap.dao.model.Locus;
+import com.bootstrap.dao.repositories.jpa.ChromosomeRepository;
+import com.bootstrap.dao.repositories.jpa.DiseaseRepository;
+import com.bootstrap.dao.repositories.jpa.LocusRepository;
 
-@Service
+@Service("chromosomeService")
 @Repository
 @Transactional
 public class ChromosomeServiceImpl implements ChromosomeService {
 
-	@Autowired
-	private EntityManager em;
+	private final LocusRepository locusRepository;
+
+	private final ChromosomeRepository chromosomeRepository;
+
+	private final DiseaseRepository diseaseRepository;
+
+	public ChromosomeServiceImpl(ChromosomeRepository chromosomeRepository, LocusRepository locusRepository,
+			DiseaseRepository diseaseRepository) {
+		this.chromosomeRepository = chromosomeRepository;
+		this.locusRepository = locusRepository;
+		this.diseaseRepository = diseaseRepository;
+	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Chromosome> findAll() {
-		return em.createNamedQuery(Chromosome.FIND_ALL, Chromosome.class).getResultList();
+		return chromosomeRepository.findAll();
 	}
 
-	@Transactional(readOnly = true)
 	@Override
+	@Transactional(readOnly = true)
 	public List<Chromosome> findAllWithLoci() {
-		return em.createNamedQuery(Chromosome.FIND_ALL_WITH_LOCI, Chromosome.class).getResultList();
+		return chromosomeRepository.findAllWithLoci();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<Chromosome> findById(Integer id) {
-		return Optional.of(
-				em.createNamedQuery(Chromosome.FIND_BY_ID, Chromosome.class).setParameter("id", id).getSingleResult());
+		return chromosomeRepository.findById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Chromosome findByName(String name) {
-		return em.createQuery("select distinct c from Chromosome c where c.name = :name", Chromosome.class)
-				.setParameter("name", name).getSingleResult();
+		return chromosomeRepository.findByName(name);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Locus> findAllLoci() {
-		return em.createNamedQuery(Locus.FIND_ALL_LOCI, Locus.class).getResultList();
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public List<Chromosome> findAllWithLociAndDisease() {
-		return em.createNamedQuery(Chromosome.FIND_ALL_WITH_LOCI_AND_DISEASES, Chromosome.class).getResultList();
+		return chromosomeRepository.findAllLoci();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Page<Chromosome> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+		return chromosomeRepository.findAll(pageable);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Chromosome> findAll(String lang) {
-		return em.createQuery("select distinct c from Chromosome c where c.lang = :lang", Chromosome.class)
-				.setParameter("lang", lang).getResultList();
+	public List<Chromosome> findAllWithLociAndDisease() {
+		return chromosomeRepository.findAllWithLociAndDisease();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(readOnly = true)
 	public Set<Locus> findAllLociByChromosome(Integer id, String lang) {
-		return (Set<Locus>) em
-				.createQuery("select l from Chromosome c join c.loci l where c.id = :id and c.lang = :lang",
-						Locus.class)
-				.setParameter("id", id).setParameter("lang", lang).getResultList();
+		return locusRepository.findAllLociByChromosome(id, lang);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Locus findLocusById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return locusRepository.findById(id).get();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Locus findLocusByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public Page<Chromosome> findAll(Pageable pageable, String lang) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public Chromosome findById(Integer id, String lang) {
-		// TODO Auto-generated method stub
-		return null;
+		return locusRepository.findByName(name);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Locus findLocusByName(String name, String lang) {
-		// TODO Auto-generated method stub
-		return null;
+		return locusRepository.findByName(name, lang);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
+	public Page<Chromosome> findAll(Pageable pageable, String lang) {
+		return chromosomeRepository.findAll(pageable, lang);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Chromosome> findAll(String lang) {
+		return chromosomeRepository.findAll(lang);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Chromosome findById(Integer id, String lang) {
+		return chromosomeRepository.findById(id, lang);
+	}
+
+	@Transactional(readOnly = true)
+	@Override
 	public Chromosome findChromosomeByLocusName(String name, String lang) {
-		// TODO Auto-generated method stub
-		return null;
+		return chromosomeRepository.findChromosomeByLocusName(name, lang);
 	}
 
 	@Override
 	public Chromosome saveChromosome(Chromosome chromosome) {
-		// TODO Auto-generated method stub
-		return null;
+		return chromosomeRepository.save(chromosome);
 	}
 
-	@Override
 	@Transactional(readOnly = true)
+	@Override
 	public Disease findDiseaseByLocusName(String name, String lang) {
-		// TODO Auto-generated method stub
-		return null;
+		return diseaseRepository.findDiseaseByLocusName(name, lang);
 	}
 
 	@Override
 	public Locus saveLocus(Locus locus) {
-		// TODO Auto-generated method stub
-		return null;
+		return locusRepository.save(locus);
 	}
 
 	@Override
 	public Disease saveDisease(Disease disease) {
-		// TODO Auto-generated method stub
-		return null;
+		return diseaseRepository.save(disease);
 	}
 
 }

@@ -18,7 +18,7 @@
 			<div class="carousel-caption">
 				<h1 class="display-3  text-shadow" th:text="#{carousel.human.karyotype}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.human.karyotype.definition}"></h3>
-				<a href="#" class="btn btn-primary btn-md" th:text="#{carousel.human.karyotype.view}"></a>
+				<a th:href="@{/karyotype}" class="btn btn-primary btn-md" th:text="#{carousel.human.karyotype.view}"></a>
 			</div>
 		</div>
 		<div class="carousel-item" data-interval="4000">
@@ -26,7 +26,7 @@
 			<div class="carousel-caption">
 				<h1 class="display-3 text-shadow" th:text="#{carousel.precise}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.precise.methodology}"></h3>
-				<a href="#" class="btn btn-primary btn-md" th:text="#{carousel.precise.methodology.more}"></a>
+				<a th:href="@{/methodology}" class="btn btn-primary btn-md" th:text="#{carousel.precise.methodology.more}"></a>
 			</div>
 		</div>
 		<div class="carousel-item" data-interval="4000">
