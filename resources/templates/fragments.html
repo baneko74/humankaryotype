@@ -3,7 +3,7 @@
 <head th:fragment="head">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<!-- auto refresh <meta http-equiv="refresh" content="10" />  -->
+<meta http-equiv="refresh" content="900" />
 <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
 <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
 <meta name="author" th:content="#{author.name}" />
@@ -33,9 +33,9 @@
 							<ul class="dropdown-menu ">               			
                 				<li th:switch="${activeLink}">
                 					<a th:case="'home'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'about'" th:href="@{/about?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
-                					<a th:case="'methodology'" th:href="@{/methodology?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
-                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disable white' : 'nav-link'"></a>
+                					<a th:case="'about'" th:href="@{/about?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'methodology'" th:href="@{/methodology?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
@@ -80,6 +80,7 @@
 					<p>[3]. <a href="https://www.sciencedirect.com/topics/neuroscience/human-chromosome" target="_blank" class="info" id="science">ScienceDirect</a></p>
 					<p>[4]. <a href="https://www.ncbi.nlm.nih.gov/" target="_blank" class="info" id="national">National Center for Biotechnology</a></p>
 					<p>[5]. <a href="https://www.genecards.org/" target="_blank" class="info" id="gene_card">Gene Cards</a></p>
+					<p>[6]. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470033363" target="_blank" class="info" id="technics">Wiley online library</a></p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
@@ -121,8 +122,8 @@
 				</div>
 				<div class="col-md-12 text-center">
 					<hr class="light">
-					<h5 class="text-success h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</h5>
-					<h6><small class="font-weight-light font-weight-bold">poweredBy <img th:src="@{/images/spring_logo.png}" /> <span>Spring Boot</span></small> <small class="dev">devBy <a href="mailto:bane74@yahoo.com">author</a></small></h6>
+					<span class="text-success h6 font-weight-bold font-italic mr-2">&copy; www.humankaryotype.com</span>
+					<span><small class="font-weight-light font-weight-bold">poweredBy <img th:src="@{/images/spring_logo.png}" /> <span class="lightgreen">Spring Boot</span></small> <small class="dev">devBy <a href="mailto:bane74@yahoo.com">author</a></small></span>
 				</div>
 			</div>
 	</div>

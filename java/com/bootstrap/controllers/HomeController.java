@@ -1,5 +1,7 @@
 package com.bootstrap.controllers;
 
+import java.time.LocalDate;
+
 import javax.validation.Valid;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -34,7 +36,8 @@ public class HomeController {
 	public String performSearch(Model model, @RequestParam(value = "q", required = false) String query,
 			@PageableDefault(page = 0, size = MatchService.DEFAULT_PAGE_SIZE) Pageable pageable) {
 		try {
-			model.addAttribute("page", matchService.findByTerm(query, pageable));
+			String lang = LocaleContextHolder.getLocale().getLanguage();
+			model.addAttribute("page", matchService.findByTerm(query, pageable, lang));
 		} catch (IllegalArgumentException e) {
 			model.addAttribute("error", e.getMessage());
 		}
@@ -57,7 +60,6 @@ public class HomeController {
 		}
 		subscriber.setLang(LocaleContextHolder.getLocale().getLanguage());
 		subscriber.setSha1(DigestUtils.sha1Hex(subscriber.getEmail()));
-		// unsubscribe logic
 		subService.save(subscriber);
 		return "redirect:/";
 	}
@@ -65,6 +67,7 @@ public class HomeController {
 	@GetMapping("/about")
 	public String getAbout(Model model) {
 		model.addAttribute("subscriber", new Subscriber());
+		model.addAttribute("date", LocalDate.now());
 		return "about";
 	}
 

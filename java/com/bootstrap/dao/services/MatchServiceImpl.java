@@ -35,12 +35,11 @@ public class MatchServiceImpl implements MatchService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Match> findByTerm(String searchTerm, Pageable pageable) throws IllegalArgumentException {
+	public Page<Match> findByTerm(String searchTerm, Pageable pageable, String lang) throws IllegalArgumentException {
 		if (StringUtils.isEmpty(searchTerm)) {
 			throw new IllegalArgumentException(
 					messageSource.getMessage("empty.search", null, LocaleContextHolder.getLocale()));
 		}
-		String lang = LocaleContextHolder.getLocale().getLanguage();
 		if (lang.equals("en")) {
 			return matchEnRepo.findByNameIn(splitSearchTerms(searchTerm), pageable);
 		} else {

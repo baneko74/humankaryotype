@@ -23,7 +23,9 @@ jQuery.noConflict();
 		$("a#wiki").css("text-decoration", "none");
 		return $("a#wikidna").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
 	});
-	
+	$("a[href='#technics']").on('click', function(){
+		return $("a#technics").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+	});
 	
 	$("a[href^='#national']").on('click', function(){
 		$("a#science").css("text-decoration", "none");

@@ -33,8 +33,11 @@ a#chromosomesAct.nav-link:hover {
 .dev a {
 	color: rgba(112, 193, 249, 1);
 } 
-h6 small span {
+.lightgreen {
 	color: LightGreen;
+}
+.lightblue {
+	color: LightBlue;
 }
 .gradient {
 	background: repeating-linear-gradient(
@@ -48,6 +51,7 @@ h6 small span {
 	padding-left: 1em;
 	border-radius:.3em;
 	border: 1px solid LightGray;
+
 }
 html, body {
 	width: 100%;
@@ -75,7 +79,21 @@ html, body {
 	background: rgba(224, 255, 255, 0.3);
 }
 .tableTitle {
-	background-color: Azure;
+	background-color: DarkCyan;
+}
+.restpoints {
+	list-style: none;
+	background: rgba(193, 242, 250, .3);
+	line-height: 2em;
+	border: 1px solid lightgrey;
+}
+.restpoints li::before {
+	content: "\2726";
+	color: #17a2b8;
+	margin-left: -1em;
+	display: inline-block;
+	width: 1em;
+	font-weight: bold;
 }
 .error {
 	color: #ffffff;

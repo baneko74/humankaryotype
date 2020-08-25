@@ -13,7 +13,7 @@
 		<p class="mt-5 mb-5 lead" th:utext="#{browse.last.p}"></p>
 	<div class="mb-5">
 			<table class="table table-striped table-bordered" id="chroms">
-		<thead class="text-left tableTitle">
+		<thead class="text-left text-white tableTitle">
 			<tr class="text-center">
 				<th th:text="#{chromosomes.table.name}">Name:</th>
 				<th th:text="#{chromosomes.table.size}">Size:</th>
@@ -22,7 +22,7 @@
 			</thead>
 			<tbody>
 				<tr class="text-center" th:each="chromosome : ${chromosomes}">
-					<td><a th:href="@{/chromosomes/{id}(id=${chromosome.id})}"  class="btn btn-outline-info">[[${chromosome.name}]]</a></td>
+					<td><a th:href="@{/chromosomes/{id}(id=${chromosome.id})}"  class="btn btn-outline-info font-weight-bold">[[${chromosome.name}]]</a></td>
 					<td th:text="${chromosome.size}"></td>
 					<td th:text="${chromosome.genes}"></td>
 				</tr>
@@ -33,7 +33,9 @@
 			<a th:href="@{/chromosomes(page= ${i})} + '#chroms'" th:text="${i+1}" id="chromosomesAct" class="nav-link font-weight-bold info" th:classappend="${currentPage} == ${i} ? 'active disabled':''"></a>
 		</li>
 	</ul>
-	<hr class="light" />
+	<hr class="my-2 mt-5" />
+	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<hr class="my-2 mb-5" />
 	<div class="text-right">
 		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
 	</div>

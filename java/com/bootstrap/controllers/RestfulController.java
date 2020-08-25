@@ -34,7 +34,8 @@ public class RestfulController {
 		List<Chromosome> chroms = chromosomeService.findAll(lang);
 		List<ChromosomeResource> chromosomeResources = new ChromosomeResourceAssembler().toResources(chroms);
 		Resources<ChromosomeResource> resources = new Resources<ChromosomeResource>(chromosomeResources);
-		resources.add(ControllerLinkBuilder.linkTo(Chromosome.class).slash("chromosomes").slash("rest").slash("all")
+		resources.add(ControllerLinkBuilder.linkTo(Chromosome.class).slash("chromosomes")
+				.slash("list-all")
 				.withRel("allChromosomes"));
 		return new ResponseEntity<>(resources, HttpStatus.OK);
 	}

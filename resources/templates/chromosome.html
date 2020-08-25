@@ -21,6 +21,9 @@
 			<a th:href="@{/chromosomes/{id}(id=${chromosome.id})} + '/locus/' + ${c.name}" th:text="${c.name} + ' - ' + ${c.fullName}"></a>
 		</div>
 	</div>
+	<hr class="my-2 mt-5" />
+	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<hr class="my-2 mb-5" />
 	<div class="text-right mb-5">
 		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
 	</div>

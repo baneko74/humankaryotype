@@ -6,7 +6,7 @@
 <!-- HEADER -->			
 <div th:replace="fragments :: header(activeLink='home', chromId='', locusName='')"></div>
 <!--  C A R O U S E L  -->
-<div id="slides" class="carousel slide" data-ride="carousel" data-pause="false">
+<div id="slides" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
 	<ul class="carousel-indicators">
 		<li data-target="#slides" data-slide-to="0" class="active"></li>
 		<li data-target="#slides" data-slide-to="1"></li>
@@ -64,12 +64,12 @@
 		  <p class="lead display-5" th:text="#{jumbo.text}"></p>
 		  <hr class="my-4">
 		  <p th:text="#{jumbo.footer}"></p>
-		  <a class="btn btn-info btn-md ml-3" href="#" role="button" th:text="#{jumbo.button}"></a>
+		  <a class="btn btn-info btn-md ml-3" href="/karyotype" role="button" th:text="#{jumbo.button}"></a>
 	</div>
 </div>
 <div class="col-md-4 lead padd">
 	<h3><span class="badge badge-warning span-center" th:text="#{right.title}"></span></h3>
-			<p th:text="#{right.upper.top.column}"></p> 
+			<p th:utext="#{right.upper.top.column}"></p> 
 			<p th:utext="#{right.upper.bottom.column}"></p>
 </div>
 </div>
@@ -83,9 +83,9 @@
 					<div class="card-body">
 						<h4 class="card-title" th:text="#{left.middle.title}"></h4>
 						<p class="card-text" th:text="#{left.middle.text}"></p>
-						<a href="#" class="btn btn-info " th:text="#{left.middle.button}"></a>
+						<a href="/methodology" class="btn btn-info " th:text="#{left.middle.button}"></a>
 					</div>
-				</div>
+		   </div>
 		</div>		
 			
 			<div class="col-md-4 fixed p-4 padd" id="over_bgimg">
@@ -95,7 +95,7 @@
 
 		<div class="col-md-4 padd d-flex justify-content-center">
 		<p class="twitter">
-		<a class="twitter-timeline" data-width="400" data-height="650" data-theme="light" href="https://twitter.com/baneko74/lists/news-from-twitter?ref_src=twsrc%5Etfw">A Twitter List by baneko74</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     
+		<a class="twitter-timeline" data-width="400" data-height="650" data-theme="light" href="https://twitter.com/baneko74/lists/news-from-twitter?ref_src=twsrc%5Etfw">A Twitter List for genetics news</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     
 		</p>
 		</div>
 	</div>

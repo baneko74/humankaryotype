@@ -9,6 +9,6 @@ public interface MatchService {
 
 	int DEFAULT_PAGE_SIZE = 10;
 
-	Page<Match> findByTerm(String searhTerm, Pageable pageable);
+	Page<Match> findByTerm(String searhTerm, Pageable pageable, String lang);
 
 }

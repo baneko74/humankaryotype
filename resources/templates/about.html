@@ -7,11 +7,15 @@
 	<img th:src="@{/images/titlebar.png}" class="img-fluid rounded-bottom border-lbr" />
 	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{about}></h1>
 	<hr class="my-4" />
-	<p class="link" th:utext=#{about.paragraph}></p>
-	<hr class="my-4" />
-	<p class="text-info h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
-	<hr class="my-4 mb-5" />
-	
+	<p class="link pb-3" th:text="#{about.paragraph1}"></p>
+	<p class="link" th:utext=#{about.paragraph2}></p>
+	<p class="link text-info font-weight-bold" th:text="#{about.thanks}"></p>
+	<hr class="my-2" />
+	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<hr class="my-2 mb-5" />
+	<div class="text-right mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+	</div>
 </div>
 <div th:replace="fragments :: footer"></div>
 </body>
