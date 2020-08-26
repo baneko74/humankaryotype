@@ -13,6 +13,7 @@ jQuery.noConflict();
 	//reference links in square brackets [x]
 	$("a[href^='#science']").on('click', function(){
 		$("a#national").css("text-decoration", "none");
+		$("a#extraction").css("text-decoration", "none");
 		return $("a#science").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
 	});
 	$("a[href='#wiki']").on('click', function(){
@@ -30,6 +31,13 @@ jQuery.noConflict();
 	$("a[href^='#national']").on('click', function(){
 		$("a#science").css("text-decoration", "none");
 		return $("a#national").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+	});
+	$("a[href^='#extraction']").on('click', function(){
+		$("a#science").css("text-decoration", "none");
+		return $("a#extraction").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+	});
+	$("a[href^='#banding']").on('click', function(){
+		return $("a#banding").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
 	});
 	//static url for ajax call
 	let name = window.location.pathname.split("/")[1];

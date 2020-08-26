@@ -330,6 +330,8 @@ footer hr.light {
 	border:1px solid grey;
 }
 
+/*            MEDIA QUERIES   				*/
+
 @media screen and (max-width:992px){
 	ul#my_menu li a:hover {
 		background-color: transparent!important;
@@ -453,6 +455,12 @@ footer hr.light {
 	}
 	.error {
 		font-size: .8em;
+	}
+	.responsive {
+		font-size: 1.4em;
+	}
+	strong.btn-warning {
+		font-size: 1em;
 	}
 }
 

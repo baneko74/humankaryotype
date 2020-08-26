@@ -42,6 +42,8 @@
                 					<a th:case="'registration'" th:href="@{/admin/register?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'login'" th:href="@{/admin/login?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'search'" th:href="@{/search?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 				</li>
                 			
 				                <li th:switch="${activeLink}">
@@ -55,6 +57,8 @@
 				                	<a th:case="'registration'" th:href="@{/admin/register?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'login'" th:href="@{/admin/login?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'search'" th:href="@{/search?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                </li>
                 			</ul>							
 						</li>
@@ -81,6 +85,8 @@
 					<p>[4]. <a href="https://www.ncbi.nlm.nih.gov/" target="_blank" class="info" id="national">National Center for Biotechnology</a></p>
 					<p>[5]. <a href="https://www.genecards.org/" target="_blank" class="info" id="gene_card">Gene Cards</a></p>
 					<p>[6]. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470033363" target="_blank" class="info" id="technics">Wiley online library</a></p>
+					<p>[7]. <a href="https://en.wikipedia.org/wiki/DNA_extraction" target="_blank" class="info" id="extraction">Wikipedia [DNA extraction]</a></p>
+					<p>[8]. <a href="https://en.wikipedia.org/wiki/G_banding" target="_blank" class="info" id="banding">Wikipedia [G-banding]</a></p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
@@ -92,6 +98,8 @@
 						<a class="info" href="/methodology" th:text="#{site.map.methodology}">Methodology</a>
 						<a class="info" href="/chromosomes" th:text="#{site.map.browse}">Browse</a>
 						<a class="info" href="/karyotype" th:text="#{site.map.karyotype}">Karyotype</a>
+						<a class="info" href="/methodology/dna-extraction" th:text="#{site.map.extraction}">Extraction</a>
+						<a class="info" href="/methodology/G-banding" th:text="#{site.map.banding}">G-Banding</a>
 					</p>
 				</div>
 				<div class="col-md-4">

@@ -77,6 +77,18 @@ public class HomeController {
 		return "methodology";
 	}
 
+	@GetMapping("/methodology/dna-extraction")
+	public String getDnaExtraction(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "dna-extraction";
+	}
+
+	@GetMapping("/methodology/G-banding")
+	public String getBanding(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "G-banding";
+	}
+
 	@GetMapping("/karyotype")
 	public String getKaryotype(Model model) {
 		model.addAttribute("subscriber", new Subscriber());

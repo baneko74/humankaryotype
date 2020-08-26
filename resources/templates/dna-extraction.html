@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body id="top" class="transparent">
+<div th:replace="fragments :: header(activeLink='dna-extraction', chromId = '', locusName='')"></div>
+<div class="container lead min-height" id="locus">
+	<img th:src="@{/images/titlebar_1.jpg}" class="img-fluid rounded-bottom border-lbr" />
+	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{dna.extraction.title}></h1>
+	<hr class="my-4" />
+	<p th:utext="#{dna.extraction.paragraph1}"></p>
+	<h3 th:text="#{dna.extraction.paragraph2.title}" class="text-info mt-5 responsive"></h3>
+	<p th:utext="#{dna.extraction.paragraph2}"></p>
+	<h3 th:utext="#{dna.extraction.paragraph3.title}" class="text-info mt-5 responsive"></h3>
+	<p th:utext="#{dna.extraction.paragraph3}" class="mt-3"></p>
+	<div class="container-fluid text-center">
+		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/organic_extraction_en.jpg} : @{/images/organic_extraction_rs.jpg}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<p class="mt-4 mb-5 imagetitle"><span class="badge badge-primary" th:text="#{dna.legend}">Legend: </span> <span th:utext="#{dna.extraction.photo1}"></span> </p>
+	</div>
+	<p th:utext="#{dna.extraction.paragraph4}" class="mt-3"></p>
+	<div class="container-fluid text-center">
+		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/chelex_extraction_en.jpg} : @{/images/chelex_extraction_rs.jpg}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<p class="mt-4 mb-5 imagetitle"><span class="badge badge-primary" th:text="#{dna.legend}">Legend:</span> <span th:utext="#{dna.extraction.photo2}"></span> </p>
+	</div>
+	<p th:utext="#{dna.extraction.paragraph5}" class="mt-3"></p>
+	<div class="container-fluid text-center">
+		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/solid_phase_en.jpg} : @{/images/solid_phase_rs.jpg}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<p class="mt-4 mb-5 imagetitle"><span class="badge badge-primary" th:text="#{dna.legend}">Legend:</span> <span th:utext="#{dna.extraction.photo3}"></span> </p>
+	</div>
+	<hr class="my-2 mt-5" />
+	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<hr class="my-2 mb-5" />
+	<div class="text-right mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+	</div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>
