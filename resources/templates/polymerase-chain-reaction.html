@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body id="top" class="transparent">
+<div th:replace="fragments :: header(activeLink='PCR', chromId = '', locusName='')"></div>
+<div class="container lead min-height" id="locus">
+	<img th:src="@{/images/titlebar_1.jpg}" class="img-fluid rounded-bottom border-lbr" />
+	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{pcr.title}></h1>
+	<hr class="my-4" />
+	<p th:utext="#{pcr.paragraph1}"></p>
+	<p th:utext="#{pcr.paragraph2}"></p>
+	<h3 th:text="#{pcr.paragraph3.title}" class="text-info mt-5 responsive"></h3>
+	<p th:utext="#{pcr.paragraph3}"></p>
+	<p th:utext="#{pcr.paragraph4}"></p>
+	<h3 th:utext="#{pcr.paragraph5.title}" class="text-info mt-5 responsive"></h3>
+	<p th:utext="#{pcr.paragraph5}"></p>
+	<div class="container-fluid text-center">
+		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/pcr_en.png} : @{/images/pcr_rs.png}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<p class="mt-4 imagetitle mb-3" th:utext="#{pcr.photo1}"></p>
+	</div>
+	<h5 class="btn btn-info mt-5 font-weight-bold" th:text="#{pcr.steps}"></h5>
+	<div class="container-fluid jumbotron">
+		<div class="row">
+			<div class="col-4">
+				<p th:utext="#{pcr.paragraph6}"></p>
+				<img class="mt-5 img-fluid" th:src="@{/images/microscope_vector.png}" />
+			</div>
+			<div class="col-4">
+				<p th:utext="#{pcr.paragraph7}"></p>
+			</div>
+			<div class="col-4">
+				<p th:utext="#{pcr.paragraph8}"></p>
+			</div>
+		</div>
+	</div>
+	<p th:text="#{pcr.paragraph9}" class="mt-5"></p>
+	
+	<hr class="my-2 mt-5" />
+	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<hr class="my-2 mb-5" />
+	<div class="text-right mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+	</div>
+</div>
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

@@ -15,7 +15,7 @@ import com.bootstrap.dao.model.MatchRs;
 public interface MatchRsRepository extends SolrCrudRepository<MatchRs, Integer> {
 
 	@Query(value = "{!type=edismax v='?0' qf='chromosomeName description^5 locusName fullName locusRole diseaseRole content' pf='description^30.0 locusRole diseaseRole content ' pf2='description^30.0 locusRole diseaseRole'}", fields = {
-			"id", "chromosomeName", "locusName", "chromId", "link" })
+			"id", "chromosomeName", "locusName", "chromId", "link", "linkName" })
 	@Highlight(prefix = "<span class='highlight'>", postfix = "</span>", fields = { "description", "locusRole",
 			"diseaseRole", "fullName", "content" }, fragsize = 199)
 	HighlightPage<Match> findByNameIn(@Boost(2) Collection<String> names, Pageable pageable);

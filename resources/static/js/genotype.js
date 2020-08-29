@@ -13,31 +13,47 @@ jQuery.noConflict();
 	//reference links in square brackets [x]
 	$("a[href^='#science']").on('click', function(){
 		$("a#national").css("text-decoration", "none");
-		$("a#extraction").css("text-decoration", "none");
-		return $("a#science").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		return $("a#science").css("text-decoration", "underline");
 	});
 	$("a[href='#wiki']").on('click', function(){
 		$("a#wikidna").css("text-decoration", "none");
-		return $("a#wiki").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		return $("a#wiki").css("text-decoration", "underline");
 	});
 	$("a[href='#wikidna']").on('click', function(){
 		$("a#wiki").css("text-decoration", "none");
-		return $("a#wikidna").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		return $("a#wikidna").css("text-decoration", "underline");
 	});
 	$("a[href='#technics']").on('click', function(){
-		return $("a#technics").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		return $("a#technics").css("text-decoration", "underline");
 	});
 	
 	$("a[href^='#national']").on('click', function(){
 		$("a#science").css("text-decoration", "none");
-		return $("a#national").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		return $("a#national").css("text-decoration", "underline");
 	});
 	$("a[href^='#extraction']").on('click', function(){
-		$("a#science").css("text-decoration", "none");
-		return $("a#extraction").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		$("a#sd").css("text-decoration", "none");
+		return $("a#extraction").css("text-decoration", "underline");
 	});
 	$("a[href^='#banding']").on('click', function(){
-		return $("a#banding").css("text-decoration", "underline").animate({fontSize: "1.3em"}, 350).animate({fontSize: "1em"}, 450);
+		return $("a#banding").css("text-decoration", "underline");
+	});
+	$("a[href^='#sd']").on('click', function(){
+		$("a#extraction").css("text-decoration", "none");
+		return $("a#sd").css("text-decoration", "underline");
+	});
+	$("a[href^='#fish']").on('click', function(){
+		$("a#nick").css("text-decoration", "none");
+		$("a#technics").css("text-decoration", "none");
+		return $("a#fish").css("text-decoration", "underline");
+	});
+	$("a[href^='#nick']").on('click', function(){
+		$("a#fish").css("text-decoration", "none");
+		$("a#technics").css("text-decoration", "none");
+		return $("a#nick").css("text-decoration", "underline");
+	});
+	$("a[href^='#pcr']").on('click', () => {
+		return $("a#pcr").css("text-decoration", "underline");
 	});
 	//static url for ajax call
 	let name = window.location.pathname.split("/")[1];

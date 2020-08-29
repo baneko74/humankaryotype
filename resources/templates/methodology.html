@@ -39,7 +39,7 @@
 					<div class="card-body">
 						<h4 class="card-title text-info" th:utext="#{card.fish.title}">Fluorescent in situ hybridization (FISH)</h4>
 						<p class="card-text" th:text="#{card.fish.text}">FISH is a method of hybridization (linking) between specific DNA locus with complementary fluoroscently stained polynucleotids.</p>
-						<a class="btn btn-info" href="#" th:text="#{card.button}">See more</a>
+						<a class="btn btn-info" th:href="@{/methodology/fluorescent-in-situ-hybridization}" th:text="#{card.button}">See more</a>
 					</div>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 					<div class="card-body">
 						<h4 class="card-title text-info" th:text="#{card.pcr.title}">Polymerase chain reaction (PCR)</h4>
 						<p class="card-text" th:text="#{card.pcr.text}">PCR is a method of amplification specific DNA sequences.</p>
-						<a class="btn btn-info" href="#" th:text="#{card.button}">See more</a>
+						<a class="btn btn-info" th:href="@{/methodology/polymerase-chain-reaction}" th:text="#{card.button}">See more</a>
 					</div>
 				</div>
 			</div>

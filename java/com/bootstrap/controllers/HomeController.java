@@ -89,6 +89,18 @@ public class HomeController {
 		return "G-banding";
 	}
 
+	@GetMapping("/methodology/fluorescent-in-situ-hybridization")
+	public String getFISH(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "fluorescent-in-situ-hybridization";
+	}
+
+	@GetMapping("/methodology/polymerase-chain-reaction")
+	public String getPCR(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "polymerase-chain-reaction";
+	}
+
 	@GetMapping("/karyotype")
 	public String getKaryotype(Model model) {
 		model.addAttribute("subscriber", new Subscriber());

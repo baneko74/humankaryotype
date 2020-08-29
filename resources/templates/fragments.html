@@ -44,6 +44,8 @@
                 					<a th:case="'search'" th:href="@{/search?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 				</li>
                 			
 				                <li th:switch="${activeLink}">
@@ -59,6 +61,8 @@
 				                	<a th:case="'search'" th:href="@{/search?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                </li>
                 			</ul>							
 						</li>
@@ -79,14 +83,20 @@
 					<hr class="light"/>
 					<i class="fas fa-link mr-5 mt-1 mb-1 float-right"></i><h5 th:text="#{footer.references}"></h5>
 					<hr class="light"/>
-					<p>[1]. <a href="https://en.wikipedia.org/wiki/Chromosome" target="_blank" id="wiki" class="info">Wikipedia [chromosome]</a></p>
-					<p>[2]. <a href="https://en.wikipedia.org/wiki/DNA" target="_blank" id="wikidna" class="info">Wikipedia [DNA]</a></p>
-					<p>[3]. <a href="https://www.sciencedirect.com/topics/neuroscience/human-chromosome" target="_blank" class="info" id="science">ScienceDirect</a></p>
-					<p>[4]. <a href="https://www.ncbi.nlm.nih.gov/" target="_blank" class="info" id="national">National Center for Biotechnology</a></p>
-					<p>[5]. <a href="https://www.genecards.org/" target="_blank" class="info" id="gene_card">Gene Cards</a></p>
-					<p>[6]. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470033363" target="_blank" class="info" id="technics">Wiley online library</a></p>
-					<p>[7]. <a href="https://en.wikipedia.org/wiki/DNA_extraction" target="_blank" class="info" id="extraction">Wikipedia [DNA extraction]</a></p>
-					<p>[8]. <a href="https://en.wikipedia.org/wiki/G_banding" target="_blank" class="info" id="banding">Wikipedia [G-banding]</a></p>
+					<p>[1]. <a href="https://en.wikipedia.org/wiki/Chromosome" target="_blank" id="wiki" class="info mr-2">Wikipedia [chromosome]</a>
+					[2]. <a href="https://en.wikipedia.org/wiki/DNA" target="_blank" id="wikidna" class="info">Wikipedia [DNA]</a></p>
+					<p>[3]. <a href="https://www.sciencedirect.com/topics/neuroscience/human-chromosome" target="_blank" class="info mr-2" id="science">ScienceDirect</a>
+					[4]. <a href="https://www.ncbi.nlm.nih.gov/" target="_blank" class="info" id="national">National Center for Biotechnology</a></p>
+					<p>[5]. <a href="https://www.genecards.org/" target="_blank" class="info mr-2" id="gene_card">Gene Cards</a>
+					[6]. <a href="https://onlinelibrary.wiley.com/doi/book/10.1002/0470033363" target="_blank" class="info" id="technics">Wiley online library</a></p>
+					<p>[7]. <a href="https://en.wikipedia.org/wiki/DNA_extraction" target="_blank" class="info mr-2" id="extraction">Wikipedia [DNA extraction]</a>
+					[8]. <a href="https://en.wikipedia.org/wiki/G_banding" target="_blank" class="info" id="banding">Wikipedia [G-banding]</a></p>
+					<p>[9]. <a href="https://www.sciencedirect.com/topics/agricultural-and-biological-sciences/phenol-chloroform-extraction" target="_blank" class="info mr-2" id="sd">ScienceDirect [Phenol-Chloroform Extraction]</a>
+					[10]. <a href="https://en.wikipedia.org/wiki/Fluorescence_in_situ_hybridization" target="_blank" class="info" id="fish">Wikipedia [FISH]</a></p>
+					<p>[11]. <a href="https://en.wikipedia.org/wiki/Nick_translation" target="_blank" class="info mr-2" id="nick">Wikipedia [NICK TRANSLATION]</a>
+					[12]. <a href="https://www.pixabay.com" target="_blank" class="info mr-2">Pixabay</a>
+					[13]. <a href="https://www.researchgate.net" target="blank" class="info">ResearchGate</a></p>
+					<p>[14]. <a href="https://en.wikipedia.org/wiki/Polymerase_chain_reaction" target="_blank" class="info mr-2" id="pcr">Wikipedia [PCR]</a></p>
 				</div>
 				<div class="col-md-4">
 					<hr class="light">
@@ -100,6 +110,8 @@
 						<a class="info" href="/karyotype" th:text="#{site.map.karyotype}">Karyotype</a>
 						<a class="info" href="/methodology/dna-extraction" th:text="#{site.map.extraction}">Extraction</a>
 						<a class="info" href="/methodology/G-banding" th:text="#{site.map.banding}">G-Banding</a>
+						<a class="info" href="/methodology/fluorescent-in-situ-hybridization" th:text="#{site.map.fish}">FISH</a>
+						<a class="info" href="/methodology/polymerase-chain-reaction" th:text="#{site.map.pcr}">PCR</a>
 					</p>
 				</div>
 				<div class="col-md-4">

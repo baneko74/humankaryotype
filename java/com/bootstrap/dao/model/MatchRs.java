@@ -27,4 +27,7 @@ public class MatchRs implements Match {
 
 	@Field
 	private String link;
+
+	@Field
+	private String linkName;
 }

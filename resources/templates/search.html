@@ -24,7 +24,7 @@
 				<th:block th:each="item : ${page}">
 						<h5 class="inline" ><a th:href="@{${item.chromosomeName != null ? '/chromosomes/' + (item.id) : item.locusName != null ? '/chromosomes/' + 
 									item.chromId + '/locus/' + item.locusName : item.link}}" class="underlined">
-						[[${item.chromosomeName != null ? item.chromosomeName : item.locusName != null ? item.locusName : 'Page link'}]]</a></h5>
+						[[${item.chromosomeName != null ? item.chromosomeName : item.locusName != null ? item.locusName : item.linkName}]]</a></h5>
 					<span th:if="${item.chromId != null}" th:text="#{locus}"></span>
 					<span th:text="#{parenthesis}" class="snipplet2" th:if="${item.chromId != null}">(</span>
 					

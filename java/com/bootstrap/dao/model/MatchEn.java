@@ -28,4 +28,7 @@ public class MatchEn implements Match {
 	@Field
 	private String link;
 
+	@Field
+	private String linkName;
+
 }
