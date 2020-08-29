@@ -5,13 +5,27 @@
 <div th:replace="fragments :: header(activeLink='karyotype', chromId = '', locusName='')"></div>
 <div class="container lead min-height" id="locus">
 	<img th:src="@{/images/titlebar_2.jpg}" class="img-fluid rounded-bottom border-lbr" />
-	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{karyotype}></h1>
+	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{karyotype.title}></h1>
 	<hr class="my-4" />
-	
-	<hr class="my-2" />
+	<p class="mt-5" th:utext="#{karyotype.paragraph1}"></p>
+	<div class="container-fluid text-center">
+		<img th:src="@{/images/male_karyotype_spread.png}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<p class="mt-4 mb-5 imagetitle"> <span th:utext="#{karyotype.photo1}"></span> </p>
+	</div>
+	<p class="mt-5" th:utext="#{karyotype.paragraph2}"></p>
+	<p class="mt-5" th:utext="#{karyotype.paragraph3}"></p>
+	<div class="container-fluid text-center">
+		<img th:src="@{/images/male_karyotype.png}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<p class="mt-4 mb-5 imagetitle"> <span th:utext="#{karyotype.photo2}"></span> </p>
+	</div>
+	<p class="mt-5" th:utext="#{karyotype.paragraph4}"></p>
+	<p class="mt-5 mb-5" th:utext="#{karyotype.paragraph5}"></p>
+	<hr class="my-2 mt-5" />
 	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 	<hr class="my-2 mb-5" />
-	
+	<div class="text-right mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+	</div>
 </div>
 <div th:replace="fragments :: footer"></div>
 </body>

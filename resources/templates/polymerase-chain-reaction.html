@@ -8,14 +8,14 @@
 	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{pcr.title}></h1>
 	<hr class="my-4" />
 	<p th:utext="#{pcr.paragraph1}"></p>
-	<p th:utext="#{pcr.paragraph2}"></p>
+	<p class="mt-5" th:utext="#{pcr.paragraph2}"></p>
 	<h3 th:text="#{pcr.paragraph3.title}" class="text-info mt-5 responsive"></h3>
 	<p th:utext="#{pcr.paragraph3}"></p>
 	<p th:utext="#{pcr.paragraph4}"></p>
 	<h3 th:utext="#{pcr.paragraph5.title}" class="text-info mt-5 responsive"></h3>
 	<p th:utext="#{pcr.paragraph5}"></p>
 	<div class="container-fluid text-center">
-		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/pcr_en.png} : @{/images/pcr_rs.png}" class="img-fluid img-thumbnail border border-info mt-5" />
+		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/pcr_en.png} : @{/images/pcr_rs.png}" class="img-thumbnail border border-info mt-5" />
 		<p class="mt-4 imagetitle mb-3" th:utext="#{pcr.photo1}"></p>
 	</div>
 	<h5 class="btn btn-info mt-5 font-weight-bold" th:text="#{pcr.steps}"></h5>

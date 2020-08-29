@@ -11,43 +11,43 @@ jQuery.noConflict();
 			$(this).find("ul.dropdown-menu").stop(true, true).delay(100).fadeOut(120);
 	});
 	//reference links in square brackets [x]
-	$("a[href^='#science']").on('click', function(){
+	$("a[href^='#science']").on('click', () => {
 		$("a#national").css("text-decoration", "none");
 		return $("a#science").css("text-decoration", "underline");
 	});
-	$("a[href='#wiki']").on('click', function(){
+	$("a[href='#wiki']").on('click', () => {
 		$("a#wikidna").css("text-decoration", "none");
 		return $("a#wiki").css("text-decoration", "underline");
 	});
-	$("a[href='#wikidna']").on('click', function(){
+	$("a[href='#wikidna']").on('click', () => {
 		$("a#wiki").css("text-decoration", "none");
 		return $("a#wikidna").css("text-decoration", "underline");
 	});
-	$("a[href='#technics']").on('click', function(){
+	$("a[href='#technics']").on('click', () => {
 		return $("a#technics").css("text-decoration", "underline");
 	});
 	
-	$("a[href^='#national']").on('click', function(){
+	$("a[href^='#national']").on('click', () => {
 		$("a#science").css("text-decoration", "none");
 		return $("a#national").css("text-decoration", "underline");
 	});
-	$("a[href^='#extraction']").on('click', function(){
+	$("a[href^='#extraction']").on('click', () => {
 		$("a#sd").css("text-decoration", "none");
 		return $("a#extraction").css("text-decoration", "underline");
 	});
-	$("a[href^='#banding']").on('click', function(){
+	$("a[href^='#banding']").on('click', () => {
 		return $("a#banding").css("text-decoration", "underline");
 	});
-	$("a[href^='#sd']").on('click', function(){
+	$("a[href^='#sd']").on('click', () => {
 		$("a#extraction").css("text-decoration", "none");
 		return $("a#sd").css("text-decoration", "underline");
 	});
-	$("a[href^='#fish']").on('click', function(){
+	$("a[href^='#fish']").on('click', () => {
 		$("a#nick").css("text-decoration", "none");
 		$("a#technics").css("text-decoration", "none");
 		return $("a#fish").css("text-decoration", "underline");
 	});
-	$("a[href^='#nick']").on('click', function(){
+	$("a[href^='#nick']").on('click', () => {
 		$("a#fish").css("text-decoration", "none");
 		$("a#technics").css("text-decoration", "none");
 		return $("a#nick").css("text-decoration", "underline");
@@ -55,6 +55,21 @@ jQuery.noConflict();
 	$("a[href^='#pcr']").on('click', () => {
 		return $("a#pcr").css("text-decoration", "underline");
 	});
+	$("a[href^='#karyotype']").on('click', () => {
+		$("a#chromosome18").css("text-decoration", "none");
+		$("a#basic").css("text-decoration", "none");
+		return $("a#karyotype").css("text-decoration", "underline");
+	});
+	$("a[href^='#chromosome18']").on('click', () => {
+		$("a#basic").css("text-decoration", "none");
+		$("a#karyotype").css("text-decoration", "none");
+		return $("a#chromosome18").css("text-decoration", "underline");
+	});
+	$("a[href^='#basic']").on('click', () => {
+		$("a#chromosome18").css("text-decoration", "none");
+		$("a#karyotype").css("text-decoration", "none");
+		return $("a#basic").css("text-decoration", "underline");
+	})
 	//static url for ajax call
 	let name = window.location.pathname.split("/")[1];
 	let url = window.location.origin + "/" +  name + "/subscribeEmail";

@@ -246,7 +246,9 @@ ul#my_menu li a.nav-link:hover {
 .link a {
 	text-decoration: underline;
 }
-
+.bracket {
+	font-size: .8em;
+}
 .text-shadow {
 	text-shadow:2px 2px 5px #000;
 }

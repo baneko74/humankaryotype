@@ -8,7 +8,7 @@
 	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:utext=#{fish.title}></h1>
 	<hr class="my-4" />
 	<p th:utext="#{fish.paragraph1}"></p>
-	<p th:utext="#{fish.paragraph2}"></p>
+	<p class="mt-5" th:utext="#{fish.paragraph2}"></p>
 	<div class="container-fluid text-center">
 		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/fish_method_en.jpg} : @{/images/fish_method_rs.jpg}" class="img-fluid img-thumbnail border border-info mt-5" />
 		<p class="mt-4 imagetitle" th:utext="#{fish.photo1}"></p>
@@ -18,7 +18,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-6">
-			<p class="mt-5" th:utext="#{fish.paragraph4}"></p>
+			<p class="mt-5 ml-n3" th:utext="#{fish.paragraph4}"></p>
 			</div>
 			<div class="col-6">
 				<div class="container-fluid text-center">
