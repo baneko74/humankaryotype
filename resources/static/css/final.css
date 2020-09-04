@@ -28,7 +28,13 @@ a#chromosomesAct.nav-link:hover {
 	min-height: 400px;
 }
 .dev {
-	color: DarkGrey;
+	color: Gold;
+}
+a.underline {
+	text-decoration: underline;
+}
+a.underline:hover {
+	text-decoration: none;
 }
 .dev a {
 	color: rgba(112, 193, 249, 1);
@@ -94,6 +100,14 @@ html, body {
 	display: inline-block;
 	width: 1em;
 	font-weight: bold;
+}
+.map {
+	background-color: #337ba4;
+	color: #91c7ef;
+	border-radius: 2vh;
+}
+a.btn.btn-outline-secondary:hover {
+	background-color: #1b68a1;
 }
 .error {
 	color: #ffffff;
@@ -331,7 +345,14 @@ footer {
 footer hr.light {
 	border:1px solid grey;
 }
-
+a.btn-outline-secondary:hover {
+	background-color: #17a2b8;
+	color: white;
+}
+.box-1, .box-2, .box-3 {
+	padding: 1em;
+	padding-top:0;
+}
 /*            MEDIA QUERIES   				*/
 
 @media screen and (max-width:992px){
@@ -342,6 +363,14 @@ footer hr.light {
 }
 
 @media screen and (max-width:576px) {
+	#hor.my-4 {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+	p#p1-home, p#p2-home, p#p3-home, p#p4-home {
+		padding-top: 1em;
+	}
 	map {
 		display: none;
 	}
@@ -356,10 +385,10 @@ footer hr.light {
 		width: 50%;
 	}
 	ul.dropdown-menu li a{
-		font-size:.8em;
+		font-size:1em;
 	}
 	.navbar-font-size {
-		font-size: .8em;
+		font-size: 1em;
 	}
 	img[data-toggle] {
 		width:1.2em;
@@ -372,17 +401,17 @@ footer hr.light {
 		margin-left: 0;
 	}
 	span.error, span.success {
-		font-size: .8em;
+		font-size: .9em;
 	}
 	
 	h3 span.badge {
-		font-size: .6em;
+		font-size: .7em;
 	}
 	#lower_form input {
-		font-size: .7em;		
+		font-size: 1em;		
 	} 
 	button.navbar-toggler {
-		font-size: .8em;
+		font-size: 1em;
 	}
 	.padd p {
 		font-size: 2em;
@@ -408,19 +437,19 @@ footer hr.light {
 		display: none;
 	}
 	.col-md-4 p, .col-md-6 p {
-		font-size: .7em;
+		font-size: .9em;
 		padding:0;
 	}
 	.col-md-4 .jumbotron p {
-		font-size: 1em;
+		font-size: 1.3em;
 	}
 	.jumbotron h2 {
-		font-size: 1.3em;
+		font-size: 1.5em;
 	}
 	div#chromosomes p, 
 	div#chromosome p {
 		padding: .5em;
-		font-size: .7em;
+		font-size: .9em;
 	}
 	div#chromosomes table a , 
 	div#chromosomes table, 
@@ -428,14 +457,20 @@ footer hr.light {
 	div#chromosomes ul li a,
 	div#chromosome div div a
 	  {
-		font-size: .7em;
+		font-size: .9em;
 	}
 	div#locus {
-		font-size: .8em;
+		font-size: 1.1em;
+	}
+	hr#hr {
+		margin-top: 0;
+	}
+	.pcr-p {
+		display: block;
+		clear: both;
 	}
 	div#chromosomes h1, 
-	div#chromosome h1,
-	div#chromosome  {
+	div#chromosome h1 {
 		font-size: 1.2em;
 	}
 	div#locus h4,h1{
@@ -445,7 +480,7 @@ footer hr.light {
 		font-size: 1em;
 	}
 	form#upper_form button, form#upper_form input {
-		font-size:.7em;
+		font-size:1em;
 	}
 	div#error_container, div#error_container h3{
 		font-size: .9em;
@@ -464,9 +499,18 @@ footer hr.light {
 	strong.btn-warning {
 		font-size: 1em;
 	}
+	.disclaimer {
+		font-size: .9em;
+	}
+	div#refs {
+		font-size: 1em;
+	}
 }
 
 @media screen and (min-width: 576px) and (max-width:767px){
+	.box-1 p, .box-2 p, .box-3 p {
+		font-size: 1.2em;
+	}
 	h3#res_title {
 		font-size: 1.3em;
 	}
@@ -610,6 +654,7 @@ footer hr.light {
 @media screen and (min-width:1200px) {
 	div#home {
 		padding-top:1.3em;
+		padding: 3.3em;
 	}
 	#upper_form input, #upper_form button {
 		font-size:1em;
@@ -619,6 +664,21 @@ footer hr.light {
 	div#img_map {
 		display: none;
 	}
+}
+@media screen and (min-width: 992px) {
+	.container-1 {
+		display: flex;
+	}
+	box-1 {
+		flex: 1;
+	}
+	box-2 {
+		flex: 1;
+	}
+	box-3 {
+		flex: 1;
+	}
+	
 }
 @media screen and (min-width:576px) {
 	img#virtual_img {

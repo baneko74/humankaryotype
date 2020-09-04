@@ -46,6 +46,7 @@
                 					<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 					<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'contact'" th:href="@{/contact-author?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 				</li>
                 			
 				                <li th:switch="${activeLink}">
@@ -63,6 +64,7 @@
 				                	<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                	<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'contact'" th:href="@{/contact-author?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                </li>
                 			</ul>							
 						</li>
@@ -79,7 +81,7 @@
 	<footer class="bg-dark">
 	<div class="container-fluid">
 		<div class="row text-left">
-				<div class="col-md-4">
+				<div id="refs" class="col-md-4">
 					<hr class="light"/>
 					<i class="fas fa-link mr-5 mt-1 mb-1 float-right"></i><h5 th:text="#{footer.references}"></h5>
 					<hr class="light"/>
@@ -106,15 +108,15 @@
 					<i class="fas fa-sitemap mt-1 mb-1 mr-5 float-right"></i><h5 th:text="#{site.map}"></h5>
 					<hr class="light">
 					<p class="sitemap mt-5">
-						<a class="info btn btn-outline-secondary m-2" href="/" th:text="#{site.map.home}">Home</a>
-						<a class="info btn btn-outline-secondary m-2" href="/about" th:text="#{site.map.about}">About</a>
-						<a class="info btn btn-outline-secondary m-2" href="/methodology" th:text="#{site.map.methodology}">Methodology</a>
-						<a class="info btn btn-outline-secondary m-2" href="/chromosomes" th:text="#{site.map.browse}">Browse</a>
-						<a class="info btn btn-outline-secondary m-2" href="/karyotype" th:text="#{site.map.karyotype}">Karyotype</a>
-						<a class="info btn btn-outline-secondary m-2" href="/methodology/dna-extraction" th:text="#{site.map.extraction}">Extraction</a>
-						<a class="info btn btn-outline-secondary m-2" href="/methodology/G-banding" th:text="#{site.map.banding}">G-Banding</a>
-						<a class="info btn btn-outline-secondary m-2" href="/methodology/fluorescent-in-situ-hybridization" th:text="#{site.map.fish}">FISH</a>
-						<a class="info btn btn-outline-secondary m-2" href="/methodology/polymerase-chain-reaction" th:text="#{site.map.pcr}">PCR</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/}" th:text="#{site.map.home}">Home</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/about}" th:text="#{site.map.about}">About</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/methodology}" th:text="#{site.map.methodology}">Methodology</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/chromosomes}" th:text="#{site.map.browse}">Browse</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/karyotype}" th:text="#{site.map.karyotype}">Karyotype</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/methodology/dna-extraction}" th:text="#{site.map.extraction}">Extraction</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/methodology/G-banding}" th:text="#{site.map.banding}">G-Banding</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/methodology/fluorescent-in-situ-hybridization}" th:text="#{site.map.fish}">FISH</a>
+						<a class=" btn btn-outline-secondary m-2 map" th:href="@{/methodology/polymerase-chain-reaction}" th:text="#{site.map.pcr}">PCR</a>
 					</p>
 				</div>
 				<div class="col-md-4">
@@ -146,7 +148,7 @@
 				<div class="col-md-12 text-center">
 					<hr class="light">
 					<span class="text-success h6 font-weight-bold font-italic mr-2">&copy; www.humankaryotype.com</span>
-					<span><small class="font-weight-light font-weight-bold">poweredBy <img th:src="@{/images/spring_logo.png}" /> <span class="lightgreen">Spring Boot</span></small> <small class="dev">devBy <a href="mailto:bane74@yahoo.com">author</a></small></span>
+					<span> <small  class="badge badge-secondary dev">devBy <a class="underline" href="mailto:bane74@yahoo.com">author</a></small></span><img class="ml-2 img-fluid" th:src="@{/images/positivessl_trust_seal_sm_124x32.png}" />
 				</div>
 			</div>
 	</div>

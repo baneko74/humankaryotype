@@ -32,9 +32,9 @@ public class SendMailServiceImpl implements SendMailService {
 	}
 
 	@Override
-	public void sendEmail(Subscriber subscriber, String subject, String text) {
+	public void sendEmail(String subject, String text) {
 		SimpleMailMessage msg = new SimpleMailMessage();
-		msg.setTo(subscriber.getEmail());
+		msg.setTo("bane74@yahoo.com");
 		msg.setSubject(subject);
 		msg.setText(text);
 		mailSender.send(msg);

@@ -71,8 +71,8 @@ jQuery.noConflict();
 		return $("a#basic").css("text-decoration", "underline");
 	})
 	//static url for ajax call
-	let name = window.location.pathname.split("/")[1];
-	let url = window.location.origin + "/" +  name + "/subscribeEmail";
+	//let name = window.location.pathname.split("/")[1];
+	let url = window.location.origin  + "/subscribeEmail";
 	//ajax request
 	$("#lower_form").on('submit', function(e){
 		e.preventDefault();
@@ -83,7 +83,7 @@ jQuery.noConflict();
 		};
 		$.ajax({
 			method: "POST",
-			url: '/subscribeEmail', //url - for production,
+			url: url,
 			headers: {
 				'Accept': "application/json",
 				'Content-Type': "application/json",

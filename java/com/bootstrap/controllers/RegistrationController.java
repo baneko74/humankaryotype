@@ -32,9 +32,7 @@ public class RegistrationController {
 
 	@GetMapping("/admin/register")
 	public String registerForm(Model model) {
-		model.addAttribute("subscriber", new Subscriber());
-		model.addAttribute("data", new RegistrationForm());
-		return "registration";
+		return "accessDenied";
 	}
 
 	@PostMapping("/admin/register")
@@ -47,7 +45,7 @@ public class RegistrationController {
 			return "registration";
 		}
 		userRepo.save(formData.toUser(encoder));
-		return "redirect:/login";
+		return "redirect:/admin/login";
 	}
 
 	@GetMapping("/admin/login")
