@@ -14,7 +14,7 @@ import com.bootstrap.dao.model.MatchRs;
 
 public interface MatchRsRepository extends SolrCrudRepository<MatchRs, Integer> {
 
-	@Query(value = "{!edismax v='?0' qf='chromosomeName description locusName fullName locusRole diseaseRole content' pf='description^5.0 locusRole^3.0 diseaseRole content^4.0' pf2='description^8 locusRole^15.0 diseaseRole^10 content^35' q.op='OR'}", fields = {
+	@Query(value = "{!edismax v='?0' qf='chromosomeName description locusName fullName locusRole diseaseRole content' pf='description^5.0 locusRole^3.0 diseaseRole content^4.0' pf2='chromosomeName^20.0 description^15.0 locusRole^8.0 diseaseRole^10 content' q.op='OR'}", fields = {
 			"id", "chromosomeName", "locusName", "chromId", "link", "linkName" })
 	@Highlight(prefix = "<span class='highlight'>", postfix = "</span>", fields = { "description", "locusRole",
 			"diseaseRole", "fullName", "content" }, fragsize = 199)

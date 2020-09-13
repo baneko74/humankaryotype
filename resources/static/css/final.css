@@ -106,6 +106,7 @@ html, body {
 	color: #91c7ef;
 	border-radius: 2vh;
 }
+
 a.btn.btn-outline-secondary:hover {
 	background-color: #1b68a1;
 }
@@ -141,6 +142,9 @@ h6 small {
 }
 .info {
 	color: DeepSkyBlue;
+}
+.ref-size {
+	font-size: .8em;
 }
 .highlight {
 	color:#17a2b8;
@@ -353,6 +357,22 @@ a.btn-outline-secondary:hover {
 	padding: 1em;
 	padding-top:0;
 }
+div#fade p{
+	padding: 2em;
+	padding-top: 1em;
+}
+div#fade h5 {
+	padding: 0 2em;
+}
+div#fade {
+	padding-top: 2em;
+}
+div#chromosomeDetails {
+	padding: 3em;
+}
+div#chromosomeDetails div {
+	margin-top:.6em;
+}
 /*            MEDIA QUERIES   				*/
 
 @media screen and (max-width:992px){
@@ -363,6 +383,13 @@ a.btn-outline-secondary:hover {
 }
 
 @media screen and (max-width:576px) {
+	.lightblue {
+		font-size: .8em;
+	}
+	.footer {
+		margin: 0;
+		padding: 0;
+	}
 	#hor.my-4 {
 		margin: 0;
 		padding: 0;
@@ -431,7 +458,10 @@ a.btn-outline-secondary:hover {
 		padding: 0;
 	}
 	#upper_form input {
-		width: 75%!important;
+		width: 100%!important;
+	}
+	#upper_form button {
+		display: none;
 	}
 	div#slides {
 		display: none;
@@ -457,7 +487,7 @@ a.btn-outline-secondary:hover {
 	div#chromosomes ul li a,
 	div#chromosome div div a
 	  {
-		font-size: .9em;
+		font-size: .8em;
 	}
 	div#locus {
 		font-size: 1.1em;
@@ -499,12 +529,32 @@ a.btn-outline-secondary:hover {
 	strong.btn-warning {
 		font-size: 1em;
 	}
-	.disclaimer {
+	p.disclaimer {
+		font-size: .8em;
+	}
+	p.ref-size {
+		font-size: .7em;
+	}
+	span.address {
 		font-size: .9em;
 	}
-	div#refs {
-		font-size: 1em;
+	p.imagetitle {
+		font-size: .8em;
 	}
+	div#fade p, div#fade h5 {
+		padding-right: 0.7em;
+		padding-left: 0.7em;
+	}
+	h1.mb-5 {
+		margin-bottom:.5em;
+	}
+	div#chromosomeDetails {
+		padding: 1em;
+	}
+	li.page-item a#page {
+		display: none;
+	}
+	
 }
 
 @media screen and (min-width: 576px) and (max-width:767px){

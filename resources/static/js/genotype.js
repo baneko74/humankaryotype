@@ -1,5 +1,8 @@
 jQuery.noConflict();
 (function($){
+	setTimeout(() => {
+		location.reload()
+	}, 900000);
 	//csrf token 
 	let $token = $("meta[name='_csrf']").attr('content');
 	//enabling tootips

@@ -9,7 +9,7 @@
 	<h4 th:text="${locus.fullName}"></h4>
 	
 	<h5 class="badge badge-warning"><span th:text="#{locus.position}">Position: </span> <span  th:text="${locus.position}"></span></h5>
-	<div id="fade" class="card p-5 mt-3 mb-5 bg-light">
+	<div id="fade" class="card mt-3 mb-5 bg-light">
 		<h5 class="font-weight-bold mb-3" th:text="#{organism.role}">Role in the organism:</h5>
 		<p th:utext="${locus.bioRole}" class="link"></p>
 		<h5 class="font-weight-bold mb-3 mt-3" th:text="#{disorder.role}">Role in the disorder:</h5>

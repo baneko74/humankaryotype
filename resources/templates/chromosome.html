@@ -15,10 +15,10 @@
 		</p>	
 		<p class="lead mt-5" th:text="${chromosome.description}"></p>
 	</div>
-	<div id="chromosomeDetails" class="card p-5 mb-5 mt-5 bg-light" >
+	<div id="chromosomeDetails" class="card mb-5 mt-5 bg-light" >
 		<p class="font-italic font-weight-bold" th:text="#{chromosome.loci.title}"></p>
 		<div th:each="c : ${chromosome.loci}">
-			<a th:href="@{/chromosomes/{id}(id=${chromosome.id})} + '/locus/' + ${c.name}" th:text="${c.name} + ' - ' + ${c.fullName}"></a>
+			<a th:href="@{/chromosomes/{id}(id=${chromosome.id})} + '/locus/' + ${c.name}" th:utext="${c.name} + ' - ' + ${c.fullName}"></a>
 		</div>
 	</div>
 	<hr class="my-2 mt-5" />

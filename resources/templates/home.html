@@ -14,7 +14,7 @@
 	</ul>	
 	<div class="carousel-inner mb-3">
 		<div class="carousel-item active" data-interval="4000">
-			<img th:src="@{/images/carousel_2.png}" class="w-100"/>
+			<img th:src="@{/images/carousel_2.jpg}" class="w-100"/>
 			<div class="carousel-caption">
 				<h1 class="display-3  text-shadow" th:text="#{carousel.human.karyotype}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.human.karyotype.definition}"></h3>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="carousel-item" data-interval="4000">
-			<img th:src="@{/images/carousel_1.png}" class="w-100"/>
+			<img th:src="@{/images/carousel_1.jpg}" class="w-100"/>
 			<div class="carousel-caption">
 				<h1 class="display-3 text-shadow" th:text="#{carousel.precise}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.precise.methodology}"></h3>
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<div class="carousel-item" data-interval="4000">
-			<img th:src="@{/images/carousel_3.png}" class="w-100 "/>
+			<img th:src="@{/images/carousel_3.jpg}" class="w-100 "/>
 			<div class="carousel-caption">
 				<h1 class="display-3  text-shadow" th:text="#{carousel.browse.genes}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.browse.genes.insight}"></h3>
@@ -48,7 +48,7 @@
   	</a>
 </div>
 	
-<img id="virtual_img" th:src="${#strings.equals(#locale, 'en')} ? @{'/images/carousel_3_small_en.png'} : @{'/images/carousel_3_small_rs.png'}" class="img-fluid"/>
+<img id="virtual_img" th:src="${#strings.equals(#locale, 'en')} ? @{'/images/carousel_3_small_en.jpg'} : @{'/images/carousel_3_small_rs.jpg'}" class="img-fluid"/>
 <div id="home" class="container-fluid">
 <div class="row ">
 <div class="col-md-4  lead padd">

@@ -62,7 +62,7 @@
 				    <li class="page-item" 
 				    th:each="i : ${#numbers.sequence(beginIndex, endIndex)}"
 				    th:classappend="${i eq page.number} ? 'active disabled' : ''">
-				    	<a class="page-link" th:href="@{/search?page={id}(id = ${i})} + '&amp;q=' + ${query}" th:text="${i+1}"></a>
+				    	<a id="page" class="page-link" th:href="@{/search?page={id}(id = ${i})} + '&amp;q=' + ${query}" th:text="${i+1}"></a>
 				    </li>
 				    <li class="page-item" th:classappend="${page.number + 1 eq page.totalPages} ? 'disabled' : ''">
 				      <a class="page-link" th:href="@{/search?page={id}(id= ${page.number + 1})} + '&amp;q=' + ${query}" th:title="#{next.txt}">
