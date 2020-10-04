@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{page.title.anex.register})"></head>
 <body class="transparent">
 <div th:replace="fragments :: header(activeLink='registration', chromId = '', locusName='')"></div>
 <div class="container lead" id="locus">

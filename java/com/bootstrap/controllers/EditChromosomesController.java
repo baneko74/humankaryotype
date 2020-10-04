@@ -52,6 +52,11 @@ public class EditChromosomesController {
 		return new Locus();
 	}
 
+	@ModelAttribute("chromosome")
+	public Chromosome chromosome() {
+		return new Chromosome();
+	}
+
 	@GetMapping
 	public String getAllChromosomes(Model model, @RequestParam(defaultValue = "0") Integer page) {
 		String lang = LocaleContextHolder.getLocale().getLanguage();

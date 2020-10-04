@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{page.title.anex.home})"></head>
 <body id="top" class="transparent">
 <!-- HEADER -->			
 <div th:replace="fragments :: header(activeLink='home', chromId='', locusName='')"></div>
@@ -14,7 +14,7 @@
 	</ul>	
 	<div class="carousel-inner mb-3">
 		<div class="carousel-item active" data-interval="4000">
-			<img th:src="@{/images/carousel_2.jpg}" class="w-100"/>
+			<img th:src="@{/images/carousel_2.jpg}" class="w-100 h-100" width="1900" height="500" th:alt="#{carousel.human.karyotype}"/>
 			<div class="carousel-caption">
 				<h1 class="display-3  text-shadow" th:text="#{carousel.human.karyotype}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.human.karyotype.definition}"></h3>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="carousel-item" data-interval="4000">
-			<img th:src="@{/images/carousel_1.jpg}" class="w-100"/>
+			<img th:src="@{/images/carousel_1.jpg}" class="w-100 h-100" width="1900" height="500" th:alt="#{carousel.precise}"/>
 			<div class="carousel-caption">
 				<h1 class="display-3 text-shadow" th:text="#{carousel.precise}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.precise.methodology}"></h3>
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<div class="carousel-item" data-interval="4000">
-			<img th:src="@{/images/carousel_3.jpg}" class="w-100 "/>
+			<img th:src="@{/images/carousel_3.jpg}" class="w-100 h-100" width="1900" height="500" th:alt="#{carousel.browse.genes}"/>
 			<div class="carousel-caption">
 				<h1 class="display-3  text-shadow" th:text="#{carousel.browse.genes}"></h1>
 				<h3 class="text-shadow" th:text="#{carousel.browse.genes.insight}"></h3>
@@ -48,19 +48,20 @@
   	</a>
 </div>
 	
-<img id="virtual_img" th:src="${#strings.equals(#locale, 'en')} ? @{'/images/carousel_3_small_en.jpg'} : @{'/images/carousel_3_small_rs.jpg'}" class="img-fluid"/>
+<img id="virtual_img" th:src="${#strings.equals(#locale, 'en')} ? @{'/images/carousel_3_small_en.jpg'} : @{'/images/carousel_3_small_rs.jpg'}" class="img-fluid"
+	width="576" height="152" th:alt="#{page.title}"/>
 <div id="home" class="container-fluid">
 <div class="row ">
 <div class="col-md-4  lead padd">
 	<h3><span class="badge badge-info span-center" th:text="#{left.title}"></span></h3>
 			<p id="p1-home" th:text="#{left.upper.top.column}"></p>
-			<p th:utext="#{left.upper.bottom.column}"></p>
+			<p id="p2-home" th:utext="#{left.upper.bottom.column}"></p>
 			 
 </div>
 <div  class = "col-md-4 padd">
 	<div class="jumbotron">
-		  <img th:src="@{/images/microscope_objectives.jpg}" class="img-fluid img-thumbnail img-jumbo" />
-		  <h2 class="display-6 p-3" th:text="#{jumbo.title}"></h2>
+		  <img th:src="@{/images/microscope_objectives.jpg}" class="img-fluid img-thumbnail img-jumbo" width="626" height="200" th:alt="#{jumbo.title}"/>
+		  <h2 class="display-6 p-3 text-center" th:text="#{jumbo.title}"></h2>
 		  <p class="lead display-5" th:text="#{jumbo.text}"></p>
 		  <hr class="my-4">
 		  <p th:text="#{jumbo.footer}"></p>
@@ -69,8 +70,8 @@
 </div>
 <div class="col-md-4 lead padd">
 	<h3><span class="badge badge-warning span-center" th:text="#{right.title}"></span></h3>
-			<p id="p2-home"><a class="text-info" th:href="@{/chromosomes}" th:text="#{right.upper.top.column.link}"></a><span th:utext="#{right.upper.top.column}"></span></p> 
-			<p th:utext="#{right.upper.bottom.column}"></p>
+			<p id="p3-home"><a class="text-info underlined" th:href="@{/chromosomes}" th:text="#{right.upper.top.column.link}"></a> <span th:utext="#{right.upper.top.column}"></span></p> 
+			<p id="p4-home" th:utext="#{right.upper.bottom.column}"></p>
 </div>
 </div>
 
@@ -79,7 +80,7 @@
 	<div id="card_container_row" class="row lead ">
 		<div class="col-md-4 p-4  ">
 			<div class="card">
-					<img class="card-img-top img-thumbnail" th:src="@{/images/test_tubes.jpg}" />
+					<img class="card-img-top img-thumbnail" th:src="@{/images/test_tubes.jpg}" width="626" height="417" th:alt="#{carousel.precise}"/>
 					<div class="card-body">
 						<h4 class="card-title" th:text="#{left.middle.title}"></h4>
 						<p class="card-text" th:text="#{left.middle.text}"></p>
@@ -88,32 +89,31 @@
 		   </div>
 		</div>		
 			
-			<div class="col-md-4 fixed padd" id="over_bgimg">
+		<div class="col-md-4 fixed padd">
 			<p class="text-left text-shadow font-weight-bold  p-3" th:text="#{middle.middle.text}"></p>
-			</div>		
-		
-
+		</div>		
 		<div class="col-md-4 padd d-flex justify-content-center">
-		<p class="twitter">
-		<a class="twitter-timeline" data-width="400" data-height="650" data-theme="light" href="https://twitter.com/baneko74/lists/news-from-twitter?ref_src=twsrc%5Etfw">A Twitter List for genetics news</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     
-		</p>
+			<p class="twitter">
+			<a class="twitter-timeline" data-width="400" data-height="650" data-theme="light" href="https://twitter.com/baneko74/lists/news-from-twitter?ref_src=twsrc%5Etfw">A Twitter List for genetics news</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     
+			</p>
 		</div>
 	</div>
 	<hr id="hor" class="my-4">
 	<div id="lower_text" class="row lead">
-		<div class="col-md-12 padd mb-2"><h3><span id="dna" class="badge badge-info" th:text="#{dna.title}"></span></h3></div>
+		<div class="col-md-12 padd mb-2"><h3><span id="dna" class="badge badge-info " th:text="#{dna.title}"></span></h3></div>
 		
-		<div class="col-md-6 padd">
-		<p id="p3-home"th:utext="#{dna.text.upper}"></p>
-		<p id="p4-home" th:text="#{dna.text.lower}"></p></div>
+		<div class="col-md-6 lead padd">
+			<p id="p5-home" th:utext="#{dna.text.upper}"></p>
+			<p id="p6-home" th:text="#{dna.text.lower}"></p>
+		</div>
 		 <div class="col-md-6 padd">
-		<p class="text-center"><img class="img-fluid ml-3 rounded" th:src="${#strings.equals(#locale, 'en')} ? @{/images/dna_structure.png} : @{/images/dna_structure_rs.png}" /></p>
-		<p class="imagetitle" th:utext="#{dna.structure}"></p>
+			<p class="text-center"><img class="img-fluid ml-3 rounded" th:src="${#strings.equals(#locale, 'en')} ? @{/images/dna_structure.png} : @{/images/dna_structure_rs.png}" width="580" height="563" th:alt="#{dna.structure.photo.alt}" /></p>
+			<p class="imagetitle" th:utext="#{dna.structure}"></p>
 		</div>
 	</div>
 	<hr id="hor" class="my-4" />
-	<div class="text-center mb-5">
-		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" data-type="info"  th:title="#{top.page}" /></a>
+	<div class="text-center col-12 mb-5">
+		<a href="#top"><img th:src="@{/images/top.png}" class="img-fluid" data-toggle="tooltip" data-placement="bottom" data-type="info" width="32" height="28" th:alt="#{top.page}"  th:title="#{top.page}" /></a>
 	</div>	
 	</div>
 	<!-- FOOTER -->	

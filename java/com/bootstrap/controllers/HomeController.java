@@ -106,4 +106,10 @@ public class HomeController {
 		model.addAttribute("subscriber", new Subscriber());
 		return "karyotype";
 	}
+
+	@GetMapping("/cookie")
+	public String getCookieInfoPage(Model model) {
+		model.addAttribute("subscriber", new Subscriber());
+		return "cookie";
+	}
 }

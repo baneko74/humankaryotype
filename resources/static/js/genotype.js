@@ -1,5 +1,14 @@
 jQuery.noConflict();
 (function($){
+	//cookie note
+	let lang = $("span:first").attr("id");
+	$.cookieBar({
+		style: "bottom",
+		language: lang,
+		infoLink: "/cookie",
+		infoTarget: "_blank"
+	});
+	//refresh page
 	setTimeout(() => {
 		location.reload()
 	}, 900000);
@@ -73,8 +82,7 @@ jQuery.noConflict();
 		$("a#karyotype").css("text-decoration", "none");
 		return $("a#basic").css("text-decoration", "underline");
 	})
-	//static url for ajax call
-	//let name = window.location.pathname.split("/")[1];
+	//url for ajax call
 	let url = window.location.origin  + "/subscribeEmail";
 	//ajax request
 	$("#lower_form").on('submit', function(e){

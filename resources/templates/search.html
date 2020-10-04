@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{navbar.search})"></head>
 <body id="top" class="transparent">
 <div th:replace="fragments :: header(activeLink='search', chromId = '', locusName='')"></div>
 <div class="container lead mt-5" id="locus">
@@ -17,7 +17,8 @@
 			<th:block th:unless="${#lists.isEmpty(page.content)}">
 				<p><span th:text="#{results.total}"></span><span th:unless="${#strings.equals(#locale, 'en')}"
 				th:text="#{${page.totalElements % page.size eq 1 && page.totalElements != 11 || page.totalElements eq 1} ? 'resj': 
-				${page.totalElements % page.size >= 2 && page.totalElements % page.size <= 4 || page.totalElements >= 2 && page.totalElements <= 4 ? 'resm' : 'resmm'}}"></span> 
+				${page.totalElements % page.size >= 2 && page.totalElements % page.size <= 4 && page.totalElements != 12 &&
+				page.totalElements != 13 && page.totalElements != 14 || page.totalElements >= 2 && page.totalElements <= 4 ? 'resm' : 'resmm'}}"></span> 
 				<span th:text="${page.totalElements}"></span> 
 				<span th:with="modulus=${page.totalElements % page.size}" th:text="${modulus eq 1 && page.totalElements != 11} ? #{result.doc} : #{results.doc}"></span></p>
 				<hr class="my-2" />

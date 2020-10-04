@@ -2,7 +2,6 @@ package com.bootstrap;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
-import org.apache.catalina.webresources.StandardRoot;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +16,6 @@ import org.springframework.context.annotation.Bean;
 public class HumanKaryotypeApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(HumanKaryotypeApplication.class, args);
 	}
 
@@ -31,16 +29,12 @@ public class HumanKaryotypeApplication extends SpringBootServletInitializer {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
 			@Override
 			protected void postProcessContext(Context context) {
-				final int cacheSize = 256 * 1024;
 				SecurityConstraint constraint = new SecurityConstraint();
 				constraint.setUserConstraint("CONFIDENTIAL");
 				SecurityCollection collection = new SecurityCollection();
 				collection.addPattern("/*");
 				constraint.addCollection(collection);
 				context.addConstraint(constraint);
-				StandardRoot stdRoot = new StandardRoot(context);
-				stdRoot.setCacheMaxSize(cacheSize);
-				context.setResources(stdRoot);
 			}
 		};
 		tomcat.addAdditionalTomcatConnectors(httpToHttpsRedirectConnector());
@@ -51,9 +45,9 @@ public class HumanKaryotypeApplication extends SpringBootServletInitializer {
 	private Connector httpToHttpsRedirectConnector() {
 		Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
 		connector.setScheme("http");
-		connector.setPort(80);
+		connector.setPort(8080);
 		connector.setSecure(false);
-		connector.setRedirectPort(443);
+		connector.setRedirectPort(8443);
 		return connector;
 	}
 }

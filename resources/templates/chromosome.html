@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(${chromosome.name})"></head>
 <body id="top" class="transparent">
 <div th:replace="fragments :: header(activeLink = 'chromosome', chromId = ${chromosome.id}, locusName='')"></div>
 <div class="container lead" id="chromosome">
-	<h1 class="mt-5 mb-5 font-weight-bold gradient" th:text="${chromosome.name}"></h1>
+	<img th:src="@{/images/titlebar.jpg}" class="img-fluid rounded-bottom border-lbr"  width="1900" height="212" th:alt="${chromosome.name}"/>
+	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text="${chromosome.name}"></h1>
 	<hr class="my-4"/>
 	<div class="">
 		<p>
@@ -12,8 +13,9 @@
 			<span class="font-weight-bold text-info" th:text="${chromosome.size}"></span><br />
 			<span class="font-weight-bold text-info" th:text="#{chromosome.genes}">Approx. no. of genes:</span>
 			<span class="font-weight-bold text-info" th:text="${chromosome.genes}"></span>
-		</p>	
-		<p class="lead mt-5" th:text="${chromosome.description}"></p>
+		</p>
+		
+		<p class="lead mt-5" ><img class="float-left pr-4" th:src="${chromosome.imgurl}" th:alt="${chromosome.name}"/><span th:utext="${chromosome.description}"></span></p>	
 	</div>
 	<div id="chromosomeDetails" class="card mb-5 mt-5 bg-light" >
 		<p class="font-italic font-weight-bold" th:text="#{chromosome.loci.title}"></p>
@@ -22,10 +24,10 @@
 		</div>
 	</div>
 	<hr class="my-2 mt-5" />
-	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<p id="browse" class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 	<hr class="my-2 mb-5" />
 	<div class="text-right mb-5">
-		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" width="32" height="28" th:alt="#{top.page}" th:title="#{top.page}" /></a>
 	</div>
 </div>
 <div th:replace="fragments :: footer"></div>

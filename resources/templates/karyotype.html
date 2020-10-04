@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{page.title.anex.karyotype})"></head>
 <body id="top" class="transparent">
 <div th:replace="fragments :: header(activeLink='karyotype', chromId = '', locusName='')"></div>
-<div class="container lead min-height" id="locus">
-	<img th:src="@{/images/titlebar_2.jpg}" class="img-fluid rounded-bottom border-lbr" />
+<div class="container lead" id="chromosomes">
+	<img th:src="@{/images/titlebar_2.jpg}" class="img-fluid border-lbr" />
 	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{karyotype.title}></h1>
 	<hr  class="my-4" />
-	<p class="mt-5"><span  th:utext="#{karyotype.paragraph1}"></span><a class="text-info" th:href="@{/methodology/G-banding}" th:utext="#{site.map.banding}"></a><span th:utext="#{karyotype.paragraph1.finish}"></span></p>
+	<div class="row">
+		<div class="col-md-12 padd">
+			<p ><span  th:utext="#{karyotype.paragraph1}"></span><a class="text-info underlined" th:href="@{/methodology/G-banding}" th:utext="#{site.map.banding}"></a><span th:utext="#{karyotype.paragraph1.finish}"></span></p>
+		</div>
+	</div>
 	<div class="container-fluid text-center">
 		<img th:src="@{/images/male_karyotype_spread.png}" class="img-fluid img-thumbnail border border-info mt-5" />
-		<p class="mt-4 mb-5 imagetitle"> <span th:utext="#{karyotype.photo1}"></span> </p>
+		<p class="mt-4 imagetitle"> <span th:utext="#{karyotype.photo1}"></span> </p>
 	</div>
-	<p class="mt-5" th:utext="#{karyotype.paragraph2}"></p>
-	<p class="mt-5" th:utext="#{karyotype.paragraph3}"></p>
+	<div class="row">
+		<div class="col-md-12 padd">
+			<p th:utext="#{karyotype.paragraph2}"></p>
+		</div>
+		<div class="col-md-12 padd">
+			<p th:utext="#{karyotype.paragraph3}"></p>
+		</div>
+	</div>
 	<div class="container-fluid text-center">
 		<img th:src="@{/images/male_karyotype.png}" class="img-fluid img-thumbnail border border-info mt-5" />
-		<p class="mt-4 mb-5 imagetitle"> <span th:utext="#{karyotype.photo2}"></span> </p>
+		<p class="mt-4 imagetitle"> <span th:utext="#{karyotype.photo2}"></span> </p>
 	</div>
-	<p class="mt-5" th:utext="#{karyotype.paragraph4}"></p>
-	<p class="mt-5 mb-5" th:utext="#{karyotype.paragraph5}"></p>
+	<div class="row">
+		<div class="col-md-12 padd">
+			<p th:utext="#{karyotype.paragraph4}"></p>
+		</div>
+		<div class="col-md-12 padd">
+			<p th:utext="#{karyotype.paragraph5}"></p>
+		</div>
+	</div>
 	<hr class="my-2 mt-5" />
-	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<p id="karyo" class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 	<hr class="my-2 mb-5" />
 	<div class="text-right mb-5">
 		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>

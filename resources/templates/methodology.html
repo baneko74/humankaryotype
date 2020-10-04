@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{page.title.anex.methodology})"></head>
 <body id="top" class="transparent">
 <div th:replace="fragments :: header(activeLink='methodology', chromId = '', locusName='')"></div>
-<div class="container lead min-height" id="locus">
-	<img th:src="@{/images/titlebar_1.jpg}" class="img-fluid rounded-bottom border-lbr" />
+<div class="container lead" id="chromosomes">
+	<img th:src="@{/images/titlebar_1.jpg}" class="img-fluid border-lbr" width="1900" height="212" th:alt="#{methodology}"/>
 	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{methodology}></h1>
 	<hr class="my-4" />
-	<p th:text="#{methodology.first.paragraph}"></p>
-	<p class="mt-5" th:utext="#{methodology.second.paragraph}"></p>
-	<p class="mt-5" th:utext=#{methodology.third.paragraph}></p>
-	<p class="mt-5" th:utext=#{methodology.fourth.paragraph}></p>
+	<div class="row">
+		<div class="col-md-12 padd">
+			<p th:text="#{methodology.first.paragraph}"></p>
+		</div>
+		<div class="col-md-12 padd">
+			<p th:utext="#{methodology.second.paragraph}"></p>
+		</div>
+		<div class="col-md-12 padd">
+			<p th:utext="#{methodology.third.paragraph}"></p>
+		</div>
+		<div class="col-md-12 padd">
+			<p th:utext="#{methodology.fourth.paragraph}"></p>
+		</div>		
+	</div>
+	<div class="row"></div>
 	<div class="container-fluid">
 		<div class="row d-flex justify-content-between mt-5 mb-5">
 			<div class="col-md-3 mt-3">
 				<div class="card">
-					<img class="card-img-top img-thumbnail" th:src="@{/images/erlen.jpg}" />
+					<img class="card-img-top img-thumbnail" th:src="@{/images/erlen.jpg}" width="415" height="337" th:alt="#{card.extraction.title}"/>
 					<div class="card-body">
 						<h4 class="card-title text-info" th:text="#{card.extraction.title}">DNA extraction</h4>
 						<p class="card-text" th:text="#{card.extraction.text}">DNA extraction is a process of getting DNA from the cell's nucleus.</p>
@@ -25,7 +36,7 @@
 			</div>
 			<div class="col-md-3 mt-3">
 				<div class="card">
-					<img class="card-img-top img-thumbnail" th:src="@{/images/g_banding.jpg}" />
+					<img class="card-img-top img-thumbnail" th:src="@{/images/g_banding.jpg}" width="415" height="337" th:alt="#{card.g.title}"/>
 					<div class="card-body">
 						<h4 class="card-tile text-info" th:text="#{card.g.title}">G - banding</h4>
 						<p class="card-text" th:text="#{card.g.text}">G-banding is a method of staining chromosomes to make them visible under the light microscope.</p>
@@ -35,7 +46,7 @@
 			</div>
 			<div class="col-md-3 mt-3">
 				<div class="card">
-					<img class="card-img-top img-thumbnail" th:src="@{/images/FISH.jpg}" />
+					<img class="card-img-top img-thumbnail" th:src="@{/images/FISH.jpg}" width="415" height="337" th:alt="#{card.fish.title}"/>
 					<div class="card-body">
 						<h4 class="card-title text-info" th:utext="#{card.fish.title}">Fluorescent in situ hybridization (FISH)</h4>
 						<p class="card-text" th:text="#{card.fish.text}">FISH is a method of hybridization (linking) between specific DNA locus with complementary fluoroscently stained polynucleotids.</p>
@@ -45,7 +56,7 @@
 			</div>
 			<div class="col-md-3 mt-3">
 				<div class="card">
-					<img class="card-img-top img-thumbnail" th:src="@{/images/dna_part.jpg}" />
+					<img class="card-img-top img-thumbnail" th:src="@{/images/dna_part.jpg}" width="415" height="337" th:alt="#{card.pcr.title}" />
 					<div class="card-body">
 						<h4 class="card-title text-info" th:text="#{card.pcr.title}">Polymerase chain reaction (PCR)</h4>
 						<p class="card-text" th:text="#{card.pcr.text}">PCR is a method of amplification specific DNA sequences.</p>
@@ -56,10 +67,10 @@
 		</div>
 	</div>
 	<hr class="my-2 mt-5" />
-	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
+	<p id="method"class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 	<hr class="my-2 mb-5" />
 	<div class="text-right mb-5">
-		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" width="32" height="28" th:alt="#{top.page}" th:title="#{top.page}" /></a>
 	</div>
 </div>
 <div th:replace="fragments :: footer"></div>

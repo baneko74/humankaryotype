@@ -17,14 +17,12 @@ import javax.persistence.Version;
 
 import org.hibernate.annotations.Type;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "chromosome")
+@Data
 public class Chromosome implements Serializable {
-
-	public static final String FIND_ALL = "Chromosome.FIND_ALL";
-	public static final String FIND_BY_ID = "Chromosome.FIND_BY_ID";
-	public static final String FIND_ALL_WITH_LOCI = "Chromosome.FIND_ALL_WITH_LOCI";
-	public static final String FIND_ALL_WITH_LOCI_AND_DISEASES = "Chromosome.FIND_ALL_WITH_LOCI_AND_DISEASES";
 
 	private static final long serialVersionUID = 1L;
 
@@ -48,6 +46,9 @@ public class Chromosome implements Serializable {
 	@Column
 	private String lang;
 
+	@Column
+	private String imgurl;
+
 	@Column(columnDefinition = "text") // not fully portable
 	@Type(type = "text")
 	private String description;
@@ -64,50 +65,6 @@ public class Chromosome implements Serializable {
 		this.size = size;
 		this.genes = genes;
 		this.description = description;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public Integer getGenes() {
-		return genes;
-	}
-
-
-	public String getDescription() {
-		return description;
-	}
-
-	public String getLang() {
-		return lang;
-	}
-
-	public Set<Locus> getLoci() {
-		return loci;
-	}
-
-	public void setLoci(Set<Locus> loci) {
-		this.loci = loci;
-	}
-
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
 	}
 
 	public void addLocus(Locus locus) {
@@ -144,12 +101,6 @@ public class Chromosome implements Serializable {
 		} else if (!lang.equals(other.lang))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Chromosome [name=" + name + ", size=" + size + ", genesNumber=" + genes + ", description=" + description
-				+ "]";
 	}
 
 }

@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{page.title.anex.about})"></head>
 <body id="top" class="transparent">
 <div th:replace="fragments :: header(activeLink='about', chromId = '', locusName='')"></div>
-<div class="container lead min-height" id="locus">
-	<img th:src="@{/images/titlebar.jpg}" class="img-fluid rounded-bottom border-lbr" />
+<div class="container" id="chromosomes">
+	<img th:src="@{/images/titlebar.jpg}" class="img-fluid border-lbr" width="1900" height="212" th:alt="#{about}"/>
 	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text=#{about}></h1>
 	<hr id="hr" class="my-4" />
-	<p class="link pb-3" th:text="#{about.paragraph1}"></p>
-	<p class="link" th:utext=#{about.paragraph2}></p>
+	<div class="row">
+		<div class="col-md-12 lead padd">
+			<p class="link" th:text="#{about.paragraph1}"></p>
+		</div>
+		<div class="col-md-12 lead padd">
+			<p id="restParagraph" class="link" th:utext=#{about.paragraph2}></p>
+		</div>
+		<div class="col-md-12 lead padd">
+			<p id="restParagraph" class="link" th:utext=#{about.paragraph3}></p>
+		</div>
+	</div>
 	<p class="link text-info font-weight-bold" th:text="#{about.thanks}"></p>
 	<hr class="my-2" />
 	<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 	<hr class="my-2 mb-5" />
 	<div class="text-right mb-5">
-		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" width="32" height="28" th:alt="#{top.page}" th:title="#{top.page}" /></a>
 	</div>
 </div>
 <div th:replace="fragments :: footer"></div>

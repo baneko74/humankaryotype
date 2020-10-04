@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
-<meta charset="utf-8">
+<head th:fragment="head(titleanex)">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="refresh" content="900" />
-<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
 <meta name="author" th:content="#{author.name}" />
 <meta name="keywords" th:content="#{seo.keywords}" />
 <meta name="description" th:content="#{seo.desc}" />
-<title th:text="#{page.title}"></title>
+<title th:text="#{page.title} + ' :: ' + ${titleanex}"></title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" th:href="@{/css/final.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/jquery.cookieBar.min.css}" />
 <link rel="icon" type="image/x-icon" th:href="@{/public/favicon.ico}" />
-<link rel="stylesheet" th:href="@{/fontawesome/css/all.css}" />
 </head>
 <body>
 <div th:fragment="header(activeLink, chromId, locusName)">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark " role="navigation">			
+			<span th:id="${#strings.equals(#locale, 'en')} ? 'en' : 'rs'"></span>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">			
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" th:href="@{/}" ><img class="img-fluid" th:src="@{/images/logo_1.png}" th:with="text=#{alt.text}" th:attr="alt=${text}" /></a>
+				<a class="navbar-brand" th:href="@{/}" ><img class="img-fluid littleimg" th:src="@{/images/logo_1.png}" th:with="text=#{alt.text}" width="124" height="50" th:attr="alt=${text}" /></a>
 				<div class="collapse navbar-collapse" id="navbarResponsive">				
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-font-size" id="my_menu">
 						<li th:class="${#strings.equals(activeLink, 'home')} ? 'nav-item active p-1' : 'nav-item p-1'"> <a th:class="${#strings.equals(activeLink, 'home')} ? 'nav-link disabled' : 'nav-link'" th:href="@{/}" th:text="#{navbar.home}"></a> </li>
@@ -70,10 +71,7 @@
 						</li>
 					</ul>					
 				</div>				
-					<form class="form-inline  my-2 my-lg-0" id="upper_form" method="get" th:action="@{/search}">				
-				    	<input class="form-control mr-sm-1" type="search" th:placeholder="#{navbar.search}" name="q" aria-label="Search" />
-				    	<button id="search" class="btn btn-info " ><i class="fab fa-searchengin"></i></button>
-			  		</form>
+					
 		  			
 			</nav>
 </div>
@@ -148,13 +146,15 @@
 				<div class="col-md-12 text-center">
 					<hr class="light">
 					<span class="text-success h6 font-weight-bold font-italic mr-2 address">&copy; www.humankaryotype.com</span>
-					<span> <small  class="badge badge-secondary dev">devBy <a class="underline" href="mailto:bane74@yahoo.com">author</a></small></span><img class="ml-2 img-fluid" th:src="@{/images/positivessl_trust_seal_sm_124x32.png}" />
+					<span> <small  class="badge badge-secondary dev">devBy <a class="underline" href="mailto:branimir.kosanovic@gmail.com">author</a></small></span><img class="ml-2 img-fluid" th:src="@{/images/positivessl_trust_seal_sm_124x32.png}" />
 				</div>
 			</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/4d4e9d930c.js" crossorigin="anonymous"></script>
+<script th:src="@{/js/jquery.cookieBar.min.js}"></script>
 <script th:src="@{/js/genotype.js}"></script>
 </footer>
 

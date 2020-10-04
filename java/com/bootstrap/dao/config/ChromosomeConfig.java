@@ -4,18 +4,19 @@ import java.util.Locale;
 
 import javax.validation.Validator;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.solr.repository.config.EnableSolrRepositories;
+import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -28,6 +29,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.bootstrap.dao.repositories.jpa")
 @EnableSolrRepositories(basePackages = { "com.bootstrap.dao.repositories.solr" })
+@EnableMBeanExport(registration = RegistrationPolicy.IGNORE_EXISTING)
 public class ChromosomeConfig implements WebMvcConfigurer {
 
 	@Bean
@@ -83,9 +85,11 @@ public class ChromosomeConfig implements WebMvcConfigurer {
 	}
 
 	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
+	public CharacterEncodingFilter characterEncodingFilter() {
+		CharacterEncodingFilter filter = new CharacterEncodingFilter();
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);
+		return filter;
 	}
-
 
 }

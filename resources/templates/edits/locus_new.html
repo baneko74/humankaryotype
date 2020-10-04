@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head(#{locus.new})"></head>
 <body class="transparent">
 <div th:replace="fragments :: header(activeLink='locusNew', chromId = '${chromosome.id}', locusName=${locus.name})"></div>
 <div class="container lead" id="locus">
