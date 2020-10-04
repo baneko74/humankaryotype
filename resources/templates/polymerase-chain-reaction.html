@@ -29,9 +29,9 @@
 	</div>	
 	<div class="container-fluid text-center">
 		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/pcr_en.png} : @{/images/pcr_rs.png}" class="img-thumbnail border border-info mt-5" width="920" height="480" th:alt="#{pcr.photo1.alt}"/>
-		<p class="mt-4 imagetitle mb-3" th:utext="#{pcr.photo1}"></p>
+		<p class="pt-3"><span class="imagetitle" th:utext="#{pcr.photo1}"></span></p>
 	</div>
-	<h5 id="steps" class="btn btn-info mt-5 font-weight-bold" th:text="#{pcr.steps}"></h5>
+	<h5 id="steps" class="btn btn-info mt-3 font-weight-bold" th:text="#{pcr.steps}"></h5>
 	<div class="container-1 jumbotron">
 			<div class="box-1">
 				<p th:utext="#{pcr.paragraph6}"></p>

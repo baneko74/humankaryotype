@@ -17,8 +17,8 @@
 	</div>
 	<div class="container-fluid text-center">
 		<img th:src="${#strings.equals(#locale, 'en')} ? @{/images/fish_method_en.jpg} : @{/images/fish_method_rs.jpg}" class="img-fluid img-thumbnail border border-info mt-5" width="881" height="751" th:alt="#{fish.photo1.alt}" />
-		<p class="mt-4 imagetitle" th:utext="#{fish.photo1}"></p>
-		<p class="mb-5 imagetitle"><span class="badge badge-primary" th:text="#{dna.legend}">Legend: </span> <span th:utext="#{fish.photo1.legend}"></span> </p>
+		<p class="pt-3 "><span class="imagetitle" th:utext="#{fish.photo1}"></span></p>
+		<p class="mb-5 "><span class="badge badge-primary imagetitle" th:text="#{dna.legend}">Legend: </span> <span class="imagetitle" th:utext="#{fish.photo1.legend}"></span> </p>
 	</div>
 	<p th:utext="#{fish.paragraph3}"></p>
 	<div class="container-fluid">
@@ -29,7 +29,7 @@
 			<div class="box-5 padd">
 				<div class="container-fluid text-center">
 					<img th:src="@{/images/fish_abl_bcr.jpg}" class="img-fluid img-thumbnail border border-info mt-5" width="213" height="244" th:alt="#{fish.photo2.alt}" />
-					<p class="mt-4 imagetitle" th:utext="#{fish.photo2}"></p>
+					<p class="pt-3"><span class="imagetitle" th:utext="#{fish.photo2}"></span></p>
 				</div>
 			</div>
 		</div>

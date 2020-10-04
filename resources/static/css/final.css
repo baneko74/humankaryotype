@@ -635,6 +635,9 @@ div#chromosomeDetails div {
 	div#lower_text div p.imagetitle {
 		font-size: .7em;
 	}
+	ul#pcr_steps li , ul#extraction li{
+		font-size: .9em;
+	}
 }
 
 @media screen and (min-width: 576px) and (max-width:767px){
