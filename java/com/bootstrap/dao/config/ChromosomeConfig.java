@@ -4,7 +4,6 @@ import java.util.Locale;
 
 import javax.validation.Validator;
 
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,7 +15,6 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -73,23 +71,6 @@ public class ChromosomeConfig implements WebMvcConfigurer {
 		LocalValidatorFactoryBean validatorBean = new LocalValidatorFactoryBean();
 		validatorBean.setValidationMessageSource(messageSource());
 		return validatorBean;
-	}
-
-	@Bean
-	public FilterRegistrationBean<ChromosomeFilter> chromosomeFilter() {
-		FilterRegistrationBean<ChromosomeFilter> regBean = new FilterRegistrationBean<ChromosomeFilter>();
-		regBean.setFilter(new ChromosomeFilter());
-		regBean.addUrlPatterns(new String[] {});
-		return regBean;
-
-	}
-
-	@Bean
-	public CharacterEncodingFilter characterEncodingFilter() {
-		CharacterEncodingFilter filter = new CharacterEncodingFilter();
-		filter.setEncoding("UTF-8");
-		filter.setForceEncoding(true);
-		return filter;
 	}
 
 }

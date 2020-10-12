@@ -3,7 +3,7 @@
 		xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head(#{page.title.anex.home})"></head>
 <body id="top" class="transparent">
-<!-- HEADER -->			
+	<!-- HEADER -->			
 <div th:replace="fragments :: header(activeLink='home', chromId='', locusName='')"></div>
 <!--  C A R O U S E L  -->
 <div id="slides" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
@@ -47,9 +47,10 @@
     	<span class="sr-only">Next</span>
   	</a>
 </div>
-	
 <img id="virtual_img" th:src="${#strings.equals(#locale, 'en')} ? @{'/images/carousel_3_small_en.jpg'} : @{'/images/carousel_3_small_rs.jpg'}" class="img-fluid"
 	width="576" height="152" th:alt="#{page.title}"/>
+<div class="container-fluid">
+
 <div id="home" class="container-fluid">
 <div class="row ">
 <div class="col-md-4  lead padd">
@@ -75,9 +76,9 @@
 </div>
 </div>
 
-<hr id="hor" class="my-4">
+<hr id="hor1" class="my-4">
 	
-	<div id="card_container_row" class="row lead ">
+	<div class="row lead ">
 		<div class="col-md-4 p-4  ">
 			<div class="card">
 					<img class="card-img-top img-thumbnail" th:src="@{/images/test_tubes.jpg}" width="626" height="417" th:alt="#{carousel.precise}"/>
@@ -94,11 +95,11 @@
 		</div>		
 		<div class="col-md-4 padd d-flex justify-content-center">
 			<p class="twitter">
-			<a class="twitter-timeline" data-width="500" data-height="650" data-theme="light" href="https://twitter.com/baneko74/lists/news-from-twitter?ref_src=twsrc%5Etfw">A Twitter List for genetics news</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     
+			<a class="twitter-timeline" data-width="500" data-height="650" data-theme="light" href="https://twitter.com/baneko74/lists/news-from-twitter?ref_src=twsrc%5Etfw">A Twitter List for genetics news</a> <script async src="https://platform.twitter.com/widgets.js"></script>     
 			</p>
 		</div>
 	</div>
-	<hr id="hor" class="my-4">
+	<hr id="hor2" class="my-4">
 	<div id="lower_text" class="row lead">
 		<div class="col-md-12 padd mb-2"><h3><span id="dna" class="badge badge-info " th:text="#{dna.title}"></span></h3></div>
 		
@@ -111,12 +112,13 @@
 			<p class="imagetitle" th:utext="#{dna.structure}"></p>
 		</div>
 	</div>
-	<hr id="hor" class="my-4" />
-	<div class="text-center col-12 mb-5">
-		<a href="#top"><img th:src="@{/images/top.png}" class="img-fluid" data-toggle="tooltip" data-placement="bottom" data-type="info" width="32" height="28" th:alt="#{top.page}"  th:title="#{top.page}" /></a>
+	<hr id="hor3" class="my-4" />
+	<div class="text-center lead mb-5">
+		<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-2x"></i></a>
 	</div>	
 	</div>
-	<!-- FOOTER -->	
+</div>
+<!-- FOOTER -->	
 	<div th:replace="fragments :: footer"></div>
 </body>
 </html>

@@ -67,6 +67,9 @@ public class Locus implements Serializable {
 	@Column
 	private String lang;
 
+	@Column
+	private String link;
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "chrom_id")
@@ -158,6 +161,14 @@ public class Locus implements Serializable {
 
 	public void setDisease(Disease disease) {
 		this.disease = disease;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	@Override

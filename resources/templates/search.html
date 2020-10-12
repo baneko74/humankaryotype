@@ -23,8 +23,8 @@
 				<span th:with="modulus=${page.totalElements % page.size}" th:text="${modulus eq 1 && page.totalElements != 11} ? #{result.doc} : #{results.doc}"></span></p>
 				<hr class="my-2" />
 				<th:block th:each="item : ${page}">
-						<h5 class="inline" ><a th:href="@{${item.chromosomeName != null ? '/chromosomes/' + (item.id) : item.locusName != null ? '/chromosomes/' + 
-									item.chromId + '/locus/' + item.locusName : item.link}}" class="underlined">
+						<h5 class="inline" ><a th:href="@{${item.chromosomeName != null ? '/chromosomes/' + (item.id) : item.locusUrl != null ? '/chromosomes/' + 
+									item.chromId + '/locus/' + item.locusUrl : item.link}}" class="underlined">
 						[[${item.chromosomeName != null ? item.chromosomeName : item.locusName != null ? item.locusName : item.linkName}]]</a></h5>
 					<span th:if="${item.chromId != null}" th:text="#{locus}"></span>
 					<span th:text="#{parenthesis}" class="snipplet2" th:if="${item.chromId != null}">(</span>
@@ -83,7 +83,7 @@
 				<p class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 				<hr class="my-2 mb-5" />
 				<div class="text-right mb-5">
-					<a href="#top" th:with="modulus=${page.totalElements % page.size}" th:classappend="${page eq null} ? 'none' : ${modulus gt 0 && modulus lt 6 && !page.hasNext() ? 'none' : ''}"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" th:title="#{top.page}" /></a>
+					<a href="#top" th:with="modulus=${page.totalElements % page.size}" th:classappend="${page eq null} ? 'none' : ${modulus gt 0 && modulus lt 6 && !page.hasNext() ? 'none' : ''}"><i class="fas fa-arrow-alt-circle-up fa-2x"></i></a>
 				</div>
 			</th:block>
 		

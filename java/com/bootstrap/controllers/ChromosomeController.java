@@ -63,19 +63,19 @@ public class ChromosomeController {
 		return "chromosome";
 	}
 
-	@GetMapping("/{chrom_id}/locus/{name}")
-	public String getLoci(@PathVariable("chrom_id") Integer chromId, @PathVariable String name, Model model) {
+	@GetMapping("/{chrom_id}/locus/{link}")
+	public String getLoci(@PathVariable("chrom_id") Integer chromId, @PathVariable String link, Model model) {
 		String lang = LocaleContextHolder.getLocale().getLanguage();
 		Locus locus = null;
 		Chromosome chro = null;
 		if (lang.equals("rs") || lang.equals("en")) {
-			locus = chromosomeService.findLocusByName(name, lang);
+			locus = chromosomeService.findLocusByName(link, lang);
 			if (locus == null) {
 				return "redirect:/chromosomes/" + chromId + "/locus?lang=" + lang;
 			}
 			chro = locus.getChromosome();
 		} else {
-			locus = chromosomeService.findLocusByName(name, "en");
+			locus = chromosomeService.findLocusByName(link, "en");
 			if (locus == null) {
 				return "redirect:/chromosomes/" + chromId + "/locus?lang=en";
 			}

@@ -5,8 +5,8 @@
 <div th:replace="fragments :: header(activeLink='G-banding', chromId = '', locusName='')"></div>
 <div class="container lead" id="chromosomes">
 	<img th:src="@{/images/titlebar_1.jpg}" class="img-fluid border-lbr" width="1900" height="212" th:alt="#{dna.banding.title}"/>
-	<h1 class="mt-2 mb-5 font-weight-bold gradient" th:text="#{dna.banding.title}"></h1>
-	<hr class="my-4" />
+	<h1 class="font-weight-bold" th:text="#{dna.banding.title}"></h1>
+	<hr />
 	<div class="row">
 		<div class="col-md-12 padd">
 			<p th:utext="#{dna.banding.paragraph1}"></p>
@@ -28,7 +28,7 @@
 	<p id="g-band" class="lightblue h6 font-weight-bold font-italic">&copy; www.humankaryotype.com</p>
 	<hr class="my-2 mb-5" />
 	<div class="text-right mb-5">
-		<a href="#top"><img th:src="@{/images/top.png}" data-toggle="tooltip" data-placement="bottom" width="32" height="28" th:alt="#{top.page}" th:title="#{top.page}" /></a>
+		<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-2x"></i></a>
 	</div>
 </div>
 <div th:replace="fragments :: footer"></div>

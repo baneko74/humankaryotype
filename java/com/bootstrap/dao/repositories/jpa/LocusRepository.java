@@ -10,10 +10,10 @@ import com.bootstrap.dao.model.Locus;
 
 public interface LocusRepository extends CrudRepository<Locus, Integer> {
 
-	Locus findByName(String name);
+	Locus findByLink(String name);
 
-	@Query("select l from Locus l where l.name = :name and l.lang = :lang")
-	Locus findByName(@Param("name") String name, @Param("lang") String lang);
+	@Query("select l from Locus l where l.link = :link and l.lang = :lang")
+	Locus findByLink(@Param("link") String name, @Param("lang") String lang);
 
 	@Query("select distinct l from Chromosome c join c.loci l where c.id = :id and c.lang = :lang")
 	Set<Locus> findAllLociByChromosome(@Param("id") Integer id, @Param("lang") String lang);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#strings.equals(#locale, 'en')} ? 'en' : 'rs'">
 <head th:fragment="head(titleanex)">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +20,7 @@
 			<span th:id="${#strings.equals(#locale, 'en')} ? 'en' : 'rs'"></span>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">			
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
+					<span class="navbar-toggler-icon"></span>
 				</button>
 				<a class="navbar-brand" th:href="@{/}" ><img class="img-fluid littleimg" th:src="@{/images/logo_1.png}" th:with="text=#{alt.text}" width="124" height="50" th:attr="alt=${text}" /></a>
 				<div class="collapse navbar-collapse" id="navbarResponsive">				
@@ -33,45 +33,49 @@
 						<li class="dropdown p-1" th:classappend="${#strings.contains(activeLink, 'chromosomeEdit')} ? 'none': ${#strings.contains(activeLink, 'locusEdit') ? 'none' : #strings.contains(activeLink, 'locusNew') ? 'none' : #strings.contains(activeLink, 'notifySubs') ? 'none' : ''}"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" th:text="#{navbar.lang}"><b class="caret"></b></a>
 							<ul class="dropdown-menu ">               			
                 				<li th:switch="${activeLink}">
-                					<a th:case="'home'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'about'" th:href="@{/about?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'methodology'" th:href="@{/methodology?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'registration'" th:href="@{/admin/register?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'login'" th:href="@{/admin/login?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'search'" th:href="@{/search?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
-                					<a th:case="'contact'" th:href="@{/contact-author?lang=en}" id="lang-choice" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'home'" th:href="@{?lang=en}" id="lche" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'about'" th:href="@{/about?lang=en}" id="lcae" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'methodology'" th:href="@{/methodology?lang=en}" id="lcme" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=en}" id="lcke" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'chromosomes'" th:href="@{?lang=en}" id="lccse" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '?lang=en'}" id="lcce" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} <= 24 ? ${chromId} : ${chromId} - 24) + '/locus/' + ${locusName} + '?lang=en'}" id="lclce" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'registration'" th:href="@{/admin/register?lang=en}" id="lcre" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'login'" th:href="@{/admin/login?lang=en}" id="lcle" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'search'" th:href="@{/search?lang=en}" id="lcse" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=en}" id="lcde" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=en}" id="lcge" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=en}" id="lcfe" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=en}" id="lcpe" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
+                					<a th:case="'contact'" th:href="@{/contact-author?lang=en}" id="lccte" th:text="#{navbar.lang.choice1}" th:class="${#strings.equals(#locale, 'en')} ? 'nav-link disabled white' : 'nav-link'"></a>
                 				</li>
                 			
 				                <li th:switch="${activeLink}">
-				                	<a th:case="'home'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-                					<a th:case="'about'" th:href="@{/about?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-                					<a th:case="'methodology'" th:href="@{/methodology?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-                					<a th:case="'chromosomes'" th:href="@{?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-                					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-									<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '/locus/' + ${locusName} + '?lang=rs'}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'registration'" th:href="@{/admin/register?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'login'" th:href="@{/admin/login?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'search'" th:href="@{/search?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
-				                	<a th:case="'contact'" th:href="@{/contact-author?lang=rs}" id="lang-choice" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'home'" th:href="@{?lang=rs}" id="lchr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'about'" th:href="@{/about?lang=rs}" id="lcar" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'methodology'" th:href="@{/methodology?lang=rs}" id="lcmr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'karyotype'" th:href="@{/karyotype?lang=rs}" id="lckr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'chromosomes'" th:href="@{?lang=rs}" id="lccsr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+                					<a th:case="'chromosome'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '?lang=rs'}" id="lccr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+									<a th:case="'locus'" th:href="@{'/chromosomes/' + (${chromId} > 24 ? ${chromId} : ${chromId} + 24) + '/locus/' + ${locusName} + '?lang=rs'}" id="lclcr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'registration'" th:href="@{/admin/register?lang=rs}" id="lcrr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'login'" th:href="@{/admin/login?lang=rs}" id="lclr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'search'" th:href="@{/search?lang=rs}" id="lcsr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'dna-extraction'" th:href="@{/methodology/dna-extraction?lang=rs}" id="lcdr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'G-banding'" th:href="@{/methodology/G-banding?lang=rs}" id="lcgr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'FISH'" th:href="@{/methodology/fluorescent-in-situ-hybridization?lang=rs}" id="lcfr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'PCR'" th:href="@{/methodology/polymerase-chain-reaction?lang=rs}" id="lcpr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
+				                	<a th:case="'contact'" th:href="@{/contact-author?lang=rs}" id="lcctr" th:text="#{navbar.lang.choice2}" th:class="${#strings.equals(#locale, 'rs')} ? 'nav-link disabled white': ''"></a>
 				                </li>
                 			</ul>							
 						</li>
 					</ul>					
 				</div>				
 					
+					<form class="form-inline  my-2 my-lg-0" id="upper_form" method="get" th:action="@{/search}">				
+				    	<input class="form-control mr-sm-1" type="search" th:placeholder="#{navbar.search}" name="q" aria-label="Search" />
+				    	<button id="search" class="btn btn-info " ><i class="fab fa-searchengin"></i></button>
+			  		</form>
 		  			
 			</nav>
 </div>
@@ -146,7 +150,7 @@
 				<div class="col-md-12 text-center">
 					<hr class="light">
 					<span class="text-success h6 font-weight-bold font-italic mr-2 address">&copy; www.humankaryotype.com</span>
-					<span> <small  class="badge badge-secondary dev">devBy <a class="underline" href="mailto:branimir.kosanovic@gmail.com">author</a></small></span><img class="ml-2 img-fluid" th:src="@{/images/positivessl_trust_seal_sm_124x32.png}" />
+					<span> <small  class="badge badge-secondary dev">devBy <a class="underline" href="mailto:branimir.kosanovic@gmail.com">author</a></small></span><img class="ml-2 img-fluid" th:src="@{/images/positivessl_trust_seal_sm_124x32.png}" width="124" height="32" alt="Sectigo Positive SSL" />
 				</div>
 			</div>
 	</div>

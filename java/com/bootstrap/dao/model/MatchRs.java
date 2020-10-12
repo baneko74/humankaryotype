@@ -30,4 +30,7 @@ public class MatchRs implements Match {
 
 	@Field
 	private String linkName;
+
+	@Field
+	private String locusUrl;
 }

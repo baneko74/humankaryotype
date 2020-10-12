@@ -31,4 +31,7 @@ public class MatchEn implements Match {
 	@Field
 	private String linkName;
 
+	@Field
+	private String locusUrl;
+
 }

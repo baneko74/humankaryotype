@@ -91,14 +91,14 @@ public class ChromosomeServiceImpl implements ChromosomeService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Locus findLocusByName(String name) {
-		return locusRepository.findByName(name);
+	public Locus findLocusByName(String link) {
+		return locusRepository.findByLink(link);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public Locus findLocusByName(String name, String lang) {
-		return locusRepository.findByName(name, lang);
+	public Locus findLocusByName(String link, String lang) {
+		return locusRepository.findByLink(link, lang);
 	}
 
 	@Override
